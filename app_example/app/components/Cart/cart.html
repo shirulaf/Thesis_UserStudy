@@ -1,0 +1,106 @@
+<link rel="stylesheet" href="../../components/Products/css_products.css">
+
+
+<div class="col-md-1"  ></div>
+<div class="col-md-1"  ></div>
+
+<div class="col-md-5"   >
+<div id="cart" class="products" style="align-content: center;  width: 70%;  background-color: green;  border-style: solid;  border-width: 2px;">
+
+
+
+    <h1 align="center"> Cart List! </h1>
+
+    <ul class="cent" style="list-style-type: none;">
+
+        <li ng-repeat="x in cartList track by $index" >
+          
+            <table  style="width: 50%; background-color: white; align-content: center;margin: 20px; padding: 30px"  >
+                <tr>
+
+                    <th ></th>
+                    <th ></th>
+                </tr>
+
+
+                <tr>
+                    <td style="  white-space: nowrap;">Product Name: {{x.ProductName}}</td>
+                     <td rowspan="3" style="padding:10px">  <img id="imgSrc" ng-src="{{x.img}}" style="height: 100px;"></td>
+                
+                </tr>
+                <tr>
+                    <td>Brand: {{x.Brand}}</td>
+                </tr>
+                <tr>
+                    <td>Price: {{x.Price}}$</td>
+                </tr>
+                <tr>
+                    <td>Amount:{{x.Amount}}</td>
+                </tr>
+                
+                 <tr >
+                    <td ><button ng-click="getDetails($index)" >Get More Details!</button></td>
+                    <td>  <button ng-click="Remove($index)">Remove</button></td>
+                </tr>
+              
+                </div>
+
+            </table>
+
+        </li>
+        <h2 ng-show="ready == true">Total Price : {{total}}</h2>
+    </ul>
+
+
+
+</div>
+
+</div>
+
+<div class="col-md-1"  ></div>
+
+
+
+
+<div class="col-md-5"   >
+
+    <div id="filter" >
+
+        <h1> Old Orders  </h1>
+        <button ng-click ="MyOrders()">Click Here To See Your Previous Orders</button>
+    <ul style="list-style-type: none;" >
+
+
+
+        <li  ng-repeat="order in OrderList track by $index" >
+            <table style="width: 30%;   margin: 40px; border-bottom:2pt solid black;"  >
+                <tr>
+
+                    <th ></th>
+                    <th ></th>
+                </tr>
+
+
+                <tr>
+
+                    
+                    <td style="  white-space: nowrap;">{{$index + 1}})OrderDate: {{order.OrderDate}}</td>
+                </tr>
+                
+                
+                <tr >
+                    <td><button ng-click="getOrderDetails($index)">Show Details</button></td>
+                </tr>
+                
+                
+
+
+            </table>
+
+        </li>
+    </ul>
+</div>
+</div>
+
+</div>
+

@@ -1,0 +1,202 @@
+
+
+
+<div class="col-md-6" id="questLeft" style="background-color: black;  height: 100%;
+        overflow: auto;" >
+  <!--Questionnaire instructions-->
+
+  <div class="" style=" text-align: center; direction: rtl; font-size: 120%; background-color: #011624 ; color:#d9e7ee; padding: 5px"><b>
+    <p style="border: groove; border-color: #d9e7ee">
+      הערך את טיב ההמלצה עבור כל אחד מהסרטים, המופיעים במקרה לניתוח, בחלקו הימני של המסך.<br>
+      התחשב בהערכתך בסרט בו צפה המשתמש בעבר וכן בסרט בו בחר המשתמש לצפות למרות ההמלצות.</p>
+  <p> <h3>מה דעתך על איכות ההמלצה עבור כל אחד מהסרטים הבאים: </h3></p> </b>
+  </div>
+  <div >
+    <form  name="questForm" style="direction: rtl; font-size: 120%">
+      <b>
+        <div ng-style="set_color($index)" style="padding: 5px" ng-repeat="mov in moviesNames">
+
+          <p class="" style="font-weight: 800; direction: rtl; font-family: 'Book Antiqua'; font-size: 135%; ">{{$index+1}}. הסרט: {{mov}}</p>
+          <input type="checkbox" id="myCheck" name="checkbox-familiar{{mov}}" ng-model="myCheck"  ng-click="saveClick($event, this)" >
+            הסרט שונה מדי מהסרטים בהם אני צופה בדרך כלל ואינני מצליח לגבש דעה לגביו
+            <div ng-hide="myCheck">
+              <div class="row" style="margin-bottom: 5px;">
+              <div class="col-md-4" >
+                <a href="{{movieTMDsrc}}{{moviesLinks[$index]}}" target="_blank">
+                <img class="imgBox" title="לחץ כדי לעבור לאתר הסרט"  style="margin-top: 7px" ng-src={{posterSRC}}{{moviesPosters[$index]}} >
+                </a>
+              </div>
+
+                <div class="col-md-8">
+                  <ng-form name="ratingFieldForm">
+                  <span ng-show="ratingFieldForm.mov_rating.$invalid" style="color: #ffa07a">&emsp;אנא דרג את
+                    ההמלצה</span>
+                  <br>
+                  <input type="radio" name="mov_rating" value="1" ng-model="mov_rating"  ng-click="saveClick($event)" required> 1 (המלצה גרועה)
+                  <br>
+                  <input type="radio" name="mov_rating" value="2"  ng-model="mov_rating"  ng-click="saveClick($event)" required> 2
+                  <br>
+                  <input type="radio" name="mov_rating" value="3"  ng-model="mov_rating"  ng-click="saveClick($event)" required> 3
+                  <br>
+                  <input type="radio" name="mov_rating" value="4"  ng-model="mov_rating"  ng-click="saveClick($event)" required> 4
+                  <br>
+                  <input type="radio" name="mov_rating" value="5"  ng-model="mov_rating"  ng-click="saveClick($event)" required> 5 (המלצה מצויינת)
+                  </ng-form>
+                  <br>
+                  <br>
+                </div>
+              </div>
+              <div class="row">
+                <p ng-show=currentQuest<=2>
+                  <label>&emsp; הנימוק לבחירתך:
+                    <span ng-show="explainFieldForm.explain_mov.$touched && explainFieldForm.explain_mov.$invalid" style="color: #ffa07a">&emsp;אנא נמק את
+                    בחירתך</span>
+                    <br>&emsp;
+                    <ng-form name="explainFieldForm">
+                    <input  type="text" style=" color:black" size="60" name="explain_mov" placeholder="כתוב את נימוקך כאן"   ng-click="saveClick($event,moviesNames[$index])" ng-blur="saveClick($event, $index)"  ng-model="explain_mov" required>
+                      TODOOOO!!!! :   לסדר את השליחת פרמטרים ולהבין מה הקטע של שמות דינאמיים
+                    </ng-form>
+
+                  </label>
+
+                </p>
+              </div>
+            </div>
+        </div>
+      </b>
+    </form>
+
+
+
+        <!--<li style="  padding-bottom: 30px; "> <b>
+          <p class="">הסרט {{rec_1}}</p> </b>
+          <input type="checkbox" id="myCheck" ng-model="myCheck.know1">
+          אני לא מכיר מספיק טוב את תוכן הסרט על מנת להעריך את ההמלצה לגביו
+          <div ng-hide="myCheck.know1">
+            <br>
+            <input type="radio" name="rating1" value="1"  ng-click="saveClick($event)"> 1 (המלצה גרועה)
+            <br>
+            <input type="radio" name="rating1" value="2"   ng-click="saveClick($event)"> 2
+            <br>
+            <input type="radio" name="rating1" value="3"   ng-click="saveClick($event)"> 3
+            <br>
+            <input type="radio" name="rating1" value="4"   ng-click="saveClick($event)"> 4
+            <br>
+            <input type="radio" name="rating1" value="5"   ng-click="saveClick($event)"> 5 (המלצה מצויינת)
+            <br>
+            <br> ההסבר לבחירתך:
+            <br>
+            <input type="text" size="60" name="explain1" placeholder="נימוק"  ng-click="saveClick($event)">
+          </div>
+        </li>
+        <li style="    padding-bottom: 30px; ">
+          <p class=""><b>הסרט {{rec_2}}</b></p>
+          <input type="checkbox" id="myCheck" ng-model="myCheck.know2">
+          אני לא מכיר מספיק טוב את תוכן הסרט על מנת להעריך את ההמלצה לגביו
+          <div ng-hide="myCheck.know2">
+            <br>
+            <input type="radio" name="rating2" value="1"  ng-click="saveClick($event)"> 1 (המלצה גרועה)
+            <br>
+            <input type="radio" name="rating2" value="2"  ng-click="saveClick($event)"> 2
+            <br>
+            <input type="radio" name="rating2" value="3"  ng-click="saveClick($event)"> 3
+            <br>
+            <input type="radio" name="rating2" value="4"  ng-click="saveClick($event)"> 4
+            <br>
+            <input type="radio" name="rating2" value="5"  ng-click="saveClick($event)"> 5 (המלצה מצויינת)
+            <br>
+            <br> ההסבר לבחירתך:
+            <br>
+            <input type="text" size="60" name="explain2" placeholder="נימוק"  ng-click="saveClick($event)">
+          </div>
+        </li>
+        <li style="    padding-bottom: 30px; ">
+          <p class=""><b>הסרט {{rec_3}}</b></p>
+          <input type="checkbox" id="myCheck" ng-model="myCheck.know3">
+          אני לא מכיר מספיק טוב את תוכן הסרט על מנת להעריך את ההמלצה לגביו
+          <div ng-hide="myCheck.know3">
+            <br>
+            <input type="radio" name="rating3" value="1"  ng-click="saveClick($event)"> 1 (המלצה גרועה)
+            <br>
+            <input type="radio" name="rating3" value="2"  ng-click="saveClick($event)"> 2
+            <br>
+            <input type="radio" name="rating3" value="3"  ng-click="saveClick($event)"> 3
+            <br>
+            <input type="radio" name="rating3" value="4"  ng-click="saveClick($event)"> 4
+            <br>
+            <input type="radio" name="rating3" value="5"  ng-click="saveClick($event)"> 5 (המלצה מצויינת)
+            <br>
+            <br> ההסבר לבחירתך:
+            <br>
+            <input type="text" size="60" name="explain3" placeholder="נימוק"  ng-click="saveClick($event)">
+          </div>
+        </li>-->
+
+
+    <div style="text-align: center; color: white; font-size: medium"><b> שאלון :         {{currentQuest}}/{{QuestAmount}}
+      </b> &emsp;
+      <button type="submit" style="color: white" ng-hide="Last" ng-click="nextEval()" ><b>עבור להערכה הבאה</b></button>
+        <button type="submit" style="color: white" ng-show="Last" ng-click="nextEval()" ><b>לסיום הניסוי</b></button>
+
+
+      <br>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-6"  id="questRight" style="direction: rtl; font-size: large ;  height: 100%;
+     overflow-y: auto;   overflow-x: hidden;background-color: #012F38"  >
+
+
+
+
+
+  <div style="font-size: 105%; color: white; font-weight: bold; margin: 10px; ">
+    <!--Current movies presented to the user-->
+
+
+    <u>        משתמש צפה בעבר ואהב את הסרט:</u>
+    <div  style="text-align: center; vertical-align: middle;" >
+        <br>
+        <a class="thumb" href="{{movieTMDsrc}}{{watched_tmdb}}"  target="_blank" >
+        <img class="poster" ng-src={{posterSRC}}{{watched_poster}} >
+          <span class="test" >
+            {{watched}}<br><img ng-src={{posterSRC}}{{watched_poster}} style="z-index: 100;" width="70%" alt=""></span>
+      </a>
+    </div>
+
+
+    <br>
+    <u>  המשתמש קיבל המלצה על הסרטים הבאים:</u>
+
+    <div id="thumbs" style="font-size: 80%;" >
+      <p   ng-repeat="mov in moviesNames">
+        <a class="thumb" href="{{movieTMDsrc}}{{moviesLinks[$index]}}" target="_blank" >
+          <img class="poster"  style="font-size: 50px; z-index: -1; " ng-src="{{posterSRC}}{{moviesPosters[$index]}}"  >
+
+          <span class="test" style="z-index: 1;" >
+            {{mov}}<br><img ng-src="{{posterSRC}}{{moviesPosters[$index]}}" width="70%"  alt=""></span>
+        </a>
+        <span class="stretch"></span>
+      </p>
+
+
+    </div>
+    <p class="">
+<br>
+      <u>למרות ההמלצות, המשתמש בחר לצפות בסרט אחר שלא הומלץ: </u>
+      <br>
+    <div style="text-align: center; margin-bottom: 30px; vertical-align: middle;font-size: 80%;" >
+      <a   class="thumb" href="{{movieTMDsrc}}{{chose_tmdb}}"  target="_blank"  >
+        <img ng-src="{{posterSRC}}{{chose_poster}}" class="poster">
+        <span class="test" style="z-index: 1; top:-200px; left: -200px;width: 200% " >
+            {{chose}}<br><img ng-src="{{posterSRC}}{{chose_poster}}" width="60%"  alt=""></span>
+      </a>
+    </div>
+    </p>
+  </div>
+
+</div>
+
+
+

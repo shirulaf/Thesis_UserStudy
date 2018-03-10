@@ -1,0 +1,46 @@
+
+	<div class="col-md-1"  ></div>
+
+	<div class="col-md-5"   >
+
+		<div id="guestUserHome" ng-hide="logged"  style="background-color:  #f2f2f2;  border-style: solid;  border-width: 2px;">
+
+			<div>
+				<h3> <b>login</b></h3>
+			</div>
+
+			<form name="loginForm" ng-submit="logCtrl.login(loginForm.$valid)" novalidate>
+				<div class="form-group">
+
+					<label for="UserName">
+						User Name
+					</label>
+
+					<input type="text" class="form-control" name="UserName" ng-model="user.UserName" ng-required="true" ng-minlength="3" ng-maxlength="8" ng-pattern="/[a-zA-Z]/" >
+
+					<span ng-show="loginForm.UserName.$error.required">The user name is required!</span>
+					<span ng-show="loginForm.UserName.$error.minlength || loginForm.UserName.$error.maxlength ">The user name must be between 3-8 chracters!</span>
+					<span ng-show="loginForm.UserName.$error.pattern  ">The user name can contains only letters!</span>
+				</div>
+
+
+				<div class="form-group">
+
+					<label for="password">
+						Password
+					</label>
+					<input type="password" class="form-control" name="password" ng-model="user.password" ng-required="true" ng-minlength="5" ng-maxlength="10" ng-pattern="/[a-zA-Z0-9]/" >
+					<span ng-show="loginForm.password.$error.required">The password is required!</span>
+					<span ng-show="loginForm.password.$error.minlength || loginForm.password.$error.maxlength ">The user name must be between 5-10 chracters!</span>
+					<span ng-show="loginForm.password.$error.pattern  ">The password can contains only letters and numbers!</span>
+				</div>
+
+				<button type="submit" ng-disabled="loginForm.password.$invalid || loginForm.UserName.$invalid" class="btn btn-default" ng-click= "login($valid)" >
+					Login
+				</button>
+				<br>
+				<br>
+				<p> <a href="#/register" >Dont have an account yet? CLICK TO REGISTER NOW! </a> </p>
+			</form>
+
+

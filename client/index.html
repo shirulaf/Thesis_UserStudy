@@ -1,0 +1,41 @@
+<html ng-app="myApp">
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <title>Angular Example</title>
+        
+        <script src="node_modules/angular/angular.js"></script>
+        <script src="node_modules/angular/angular-local-storage.min.js"></script>
+
+        <script src="app.js"></script>
+        <script type="text/javascript" src="node_modules/angular/angular-route.js"></script>
+        <script type="text/javascript" src="node_modules/angular/angular-local-storage.min.js"></script>
+        <script type="text/javascript" src="components/Home/home_controller.js"></script>
+
+        <script type="text/javascript" src="shared/localStorage/localStorageModel.js"></script>
+
+        <script type="text/javascript" src="components\Questionnaire\quest.html"></script>
+        <script type="text/javascript" src="components\Questionnaire\quest_controller.js"></script>
+
+        <link href="components/Questionnaire/quest.css" rel="stylesheet">
+
+        <link href="bootstrap/bootstrap-theme.min.css" rel="stylesheet">
+        <link href="bootstrap/bootstrap.min.css" rel="stylesheet">
+        <link   href="components/Home/home.css" rel="stylesheet"  >
+        <link href="components/Questionnaire/quest.css" rel="stylesheet">
+
+
+
+    </head>
+    <body >
+
+        <div class="view">
+                <ng-view></ng-view>
+
+        </div>
+    </div>
+
+
+    </body>
+  
+</html>

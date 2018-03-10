@@ -1,0 +1,17 @@
+#bgImg {
+    height: 100px;
+    text-align: right;
+    margin: 10px;
+
+}
+
+#imageCont {
+    background: url("cinema.jpg") no-repeat;
+
+
+opacity: 0.3;
+    border: 1px solid;
+
+    background-size:cover;
+}
+

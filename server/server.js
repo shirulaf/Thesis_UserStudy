@@ -21,7 +21,7 @@ obj.from.path('../data.csv').to.array(function (data) {
         MyData.push(new MyCSV(data[index][0], data[index][1], data[index][2], data[index][3], data[index][4], data[index][5], data[index][6], data[index][7], data[index][8], data[index][9], data[index][10], data[index][11], data[index][12], data[index][13], data[index][14], data[index][15], data[index][16], data[index][17], data[index][18]));
     }
 
-   // console.log(MyData)
+    // console.log(MyData)
 });
 
 
@@ -48,17 +48,18 @@ app.post('/submitUserDetails', function (req, res) {
     console.log("submitUserDetails")
 
     var fileName= req.body.email;
+    var directory= 'C:/Users/user/downloads'
 
     var writeData=  JSON.stringify(req.body) + '\r\n';
 
     //creates user file and writes his details
-    fs.appendFile(fileName+'.txt',writeData , function (err) {
+    fs.appendFile(directory+fileName+'.txt',writeData , function (err) {
         if (err) throw err;
         console.log('Updated!');
     });
 
 
-    console.log("my data res:" + MyData);
+    //console.log("my data res:" + JSON.stringify(MyData));
     res.writeHead(200, {'Content-Type': 'text/plain'});
     res.write(JSON.stringify(MyData));
     //console.log("my data res:" + MyData);
@@ -140,7 +141,7 @@ function MyCSV(watched, watched_tmdb, watched_poster, chose, chose_tmdb, chose_p
 //-------------------------------------------------------------------
 //-------------------------------------------------------------------
 
-var server = app.listen(8000, function () {
+var server = app.listen(8010, function () {
     var host = server.address().address
     var port = server.address().port
     app.use('/', router);

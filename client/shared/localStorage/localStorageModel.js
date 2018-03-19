@@ -4,7 +4,6 @@ angular.module("myApp")
         var self=this;
 
         self.addLocalStorage = function (key, value) {
-            console.log("LOcal")
             var dataVal = localStorageService.get(key);
             console.log(dataVal)
             if (!dataVal)

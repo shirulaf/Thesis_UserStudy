@@ -18,15 +18,16 @@
 
   <div class="py-5"    style="text-align:center; ; z-index: auto;" >
     <div class="container">
-      <div class="row" style="z-index: 1">
         <div class="col-md-1" ></div>
         <div class="col-md-10" >
 
           <h1 class="text-center" style="font-size: 30px; z-index: 1; background-color: rgba(255, 180, 0,0.8); padding:
           30px" >
-          <b>  <br>שאלון הערכת המלצות על סרטים
-            <h2 class="text-center" style="font-size: 25px">אנא השיבו ומלאו את כלל הפרטים הבאים לפני המעבר לשאלון <br> חובה למלא את כל השדות למעט כתובת מייל למי שאינו סטודנט</h2>
-            <h3 style="color: #4e4e4e">פרטי השאלון חסויים, כתובת המייל משמשת לצורך מתן נקודות בונוס על השתתפות לסטודנטים<br> אנו מתחייבים לא להעביר את כתובת המייל לגורם שלישי וכן לא לעשות בה שימוש נוסף</h3>
+          <b>  <br>ניסוי משתמשים להערכת המלצות על סרטים
+            <h2 class="text-center" style="font-size: 25px">אנא השיבו ומלאו את כלל הפרטים הבאים בשאלון לפני המעבר לניסוי עצמו <br> חובה למלא את כל השדות למעט כתובת מייל למי שאינו סטודנט</h2>
+            <h3 style="color: #4e4e4e">פרטי השאלון חסויים, כתובת המייל משמשת לצורך מתן נקודות בונוס על השתתפות לסטודנטים<br> אנו מתחייבים לא להעביר את כתובת המייל לגורם שלישי וכן לא לעשות בה שימוש נוסף
+            <br>
+            הניסוי מנוסח בלשון זכר מטעמי נוחות בלבד, אך פונה כמובן לשני המינים</h3>
           </b> </h1>
         </div>
         <div class="col-md-1" >
@@ -38,7 +39,7 @@
 
     <div class="container" style="color: #d9d9d9;" >
 
-      <!--<div class="row">-->
+            <!--<div class="row">-->
 
         <div class="col-md-1"></div>
         <div class="col-md-10" >
@@ -46,11 +47,12 @@
 <div class="text-right" style="direction: rtl ; ">
   <div style="color:#f1f227; font-size: x-large">
             <input type="checkbox" id="myCheck" name="isStudent" ng-model="isStudent"  ng-change="defeaultMail()">
-  <b>סמן תיבה זו במידה <u>ואינך</u> מבצע את הניסוי במסגרת קורס</b></div>
-            <div ng-hide="isStudent" class="form-group text-right" style="direction: rtl"> <label class="text-right">כתובת מייל אוניברסיטאית - חובה לסטודנטים העונים במסגרת קורס</label>
+  <b>סמן תיבה זו במידה <u>ואינך</u> מבצע את הניסוי במסגרת קורס</b></div><br>
+            <div ng-hide="isStudent" class="form-group text-right" style="direction: rtl"> <label class="text-right">שם המשתמש אוניברסיטאי - חובה לסטודנטים העונים במסגרת קורס</label>
 
-              <input type="email"  name="email" class="form-control text-right" style="font-size: medium" placeholder="הזן כתובת מייל אוניברסיטאית בלבד - סיומת bgu.ac.il"  ng-model="DF.email" ng-pattern="/bgu.ac.il$/" required>
-              <span ng-show="(detailsForm.email.$touched || error) &&( detailsForm.email.$error.pattern ||detailsForm.email.$invalid )" style="color: #ffa07a">כתובת מייל לא חוקית, הזן כתובת מהצורה: example@post.bgu.ac.il</span>
+              <input type="text"  name="email" class="form-control text-right" style="font-size: medium" placeholder="לדוגמא אם כתובת המייל האוניברסיטאי שלך היא: plony@post.bgu.ac.il, עליך להזין: plony"  ng-model="DF.email"  required>
+              <span ng-show="(detailsForm.email.$touched || error) && detailsForm.email.$invalid  " style="color: #ffa07a">אנא הזן את שם המשתמש האוניברסיטאי שלך
+                </span>
 
             </div>
 </div><br>
@@ -96,13 +98,6 @@
               <ol>
 
                 <li>
-                  <label class="text-right">היכן אתה צופה לרוב בסרטים?            </label>  <span ng-show="error && detailsForm.movies_watchplace.$invalid " style="color: #ffa07a">&emsp; סמנו את האופציה המתאימה</span>
-                  <br>
-                  <input type="radio" ng-model="DF.movies_watchplace" name="movies_watchplace" value="theatre" style="direction: rtl"  required>בקולנוע
-                  &emsp;<input type="radio" ng-model="DF.movies_watchplace" name="movies_watchplace" value="home/computer" style="direction: rtl"  required>בבית (מחשב/טלוויזיה)
-                </li>
-              <br>
-                <li>
                   <label class="text-right">עד כמה צפייה בסרטים היא בילוי המועדף עליך?            </label><span ng-show="error && detailsForm.movies_plessure.$invalid " style="color: #ffa07a">&emsp; סמנו את האופציה המתאימה</span>
                   <br>
                   <input type="radio" ng-model="DF.movies_plessure" name="movies_plessure" value="1" style="direction: rtl"  required> 1 - לא מועדף כלל
@@ -110,10 +105,18 @@
                   &emsp; <input type="radio" ng-model="DF.movies_plessure" name="movies_plessure" value="3" style="direction: rtl"  required> 3
                   &emsp; <input type="radio" ng-model="DF.movies_plessure" name="movies_plessure" value="4" style="direction: rtl"  required> 4
                   &emsp; <input type="radio" ng-model="DF.movies_plessure" name="movies_plessure" value="5" style="direction: rtl"  required> 5 - מאוד מועדף
-                </li> <br>
+                </li>  <br>
+                <li>
+                  <label class="text-right">היכן אתה צופה לרוב בסרטים?            </label>  <span ng-show="error && detailsForm.movies_watchplace.$invalid " style="color: #ffa07a">&emsp; סמנו את האופציה המתאימה</span>
+                  <br>
+                  <input type="radio" ng-model="DF.movies_watchplace" name="movies_watchplace" value="theatre" style="direction: rtl"  required>בקולנוע
+                  &emsp;<input type="radio" ng-model="DF.movies_watchplace" name="movies_watchplace" value="home/computer" style="direction: rtl"  required>בבית (מחשב/טלוויזיה)
+                </li>
+
+              <br>
                 <li class="text-right">
 
-                  <label >השאלות הבאות מתייחסות לתדירות הצפייה שלך בסרטים, הן בקולנוע והן ביתית:            </label>
+                  <label >השאלות הבאות מתייחסות לתדירות הצפייה שלך בסרטים, הן בקולנוע והן בבית:            </label>
 
                   <label class="text-right">בכמה סרטים צפית בשנה האחרונה?            </label><span ng-show="error && detailsForm.movies_freaq_1year.$invalid " style="color: #ffa07a">&emsp; סמנו את האופציה המתאימה</span>
                   <br>

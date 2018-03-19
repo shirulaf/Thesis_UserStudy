@@ -8,16 +8,19 @@
   <div class="" style=" text-align: center; direction: rtl; font-size: 120%; background-color: #011624 ; color:#d9e7ee; padding: 5px"><b>
     <p style="border: groove; border-color: #d9e7ee">
       הערך את טיב ההמלצה עבור כל אחד מהסרטים, המופיעים במקרה לניתוח, בחלקו הימני של המסך.<br>
-      התחשב בהערכתך בסרט בו צפה המשתמש בעבר וכן בסרט בו בחר המשתמש לצפות למרות ההמלצות.</p>
-  <p> <h3>מה דעתך על איכות ההמלצה עבור כל אחד מהסרטים הבאים: </h3></p> </b>
+      התחשב בהערכתך בסרט בו צפה המשתמש בעבר וכן בסרט בו בחר המשתמש לצפות למרות ההמלצות.
+    </p>
+      <p>
+    <h3>מה דעתך על איכות ההמלצה עבור כל אחד מהסרטים הבאים: </h3>
+    </p> </b>
   </div>
   <div >
-    <form  name="questForm" style="direction: rtl; font-size: 120%">
+    <form  name="questForm" ng-model="questForm" style="direction: rtl; font-size: 120%" novalidate>
       <b>
         <div ng-style="set_color($index)" style="padding: 5px" ng-repeat="mov in moviesNames">
 
           <p class="" style="font-weight: 800; direction: rtl; font-family: 'Book Antiqua'; font-size: 135%; ">{{$index+1}}. הסרט: {{mov}}</p>
-          <input type="checkbox" id="myCheck" name="checkbox-familiar{{mov}}" ng-model="myCheck"  ng-click="saveClick($event, this)" >
+          <input type="checkbox" id={{$index}} name="checkbox-familiar_{{$index}}" ng-model="myCheck"  ng-click="checkedClick($event, this, $index, myCheck)" >
             הסרט שונה מדי מהסרטים בהם אני צופה בדרך כלל ואינני מצליח לגבש דעה לגביו
             <div ng-hide="myCheck">
               <div class="row" style="margin-bottom: 5px;">
@@ -28,19 +31,19 @@
               </div>
 
                 <div class="col-md-8">
-                  <ng-form name="ratingFieldForm">
-                  <span ng-show="ratingFieldForm.mov_rating.$invalid" style="color: #ffa07a">&emsp;אנא דרג את
+                  <ng-form name="ratingFieldForm_{{$index}}" ng-model="ratingFieldForm" novalidate>
+                  <span ng-show="ratingFieldForm_{{$index}}.mov_rating1.$invalid && ratingFieldForm_{{$index}}.mov_rating2.$invalid && ratingFieldForm_{{$index}}.mov_rating3.$invalid && ratingFieldForm_{{$index}}.mov_rating4.$invalid && ratingFieldForm_{{$index}}.mov_rating5.$invalid && error" style="color: #ffa07a">&emsp;אנא דרג את
                     ההמלצה</span>
                   <br>
-                  <input type="radio" name="mov_rating" value="1" ng-model="mov_rating"  ng-click="saveClick($event)" required> 1 (המלצה גרועה)
+                  <input type="radio" name="mov_rating1" value="1" ng-model="mov_rating"  ng-click="saveClick($event,moviesNames[$index])" required> 1 (המלצה גרועה)
                   <br>
-                  <input type="radio" name="mov_rating" value="2"  ng-model="mov_rating"  ng-click="saveClick($event)" required> 2
+                  <input type="radio" name="mov_rating2" value="2"  ng-model="mov_rating"  ng-click="saveClick($event,moviesNames[$index])" required> 2
                   <br>
-                  <input type="radio" name="mov_rating" value="3"  ng-model="mov_rating"  ng-click="saveClick($event)" required> 3
+                  <input type="radio" name="mov_rating3" value="3"  ng-model="mov_rating"  ng-click="saveClick($event,moviesNames[$index])" required> 3
                   <br>
-                  <input type="radio" name="mov_rating" value="4"  ng-model="mov_rating"  ng-click="saveClick($event)" required> 4
+                  <input type="radio" name="mov_rating4" value="4"  ng-model="mov_rating"  ng-click="saveClick($event,moviesNames[$index])" required> 4
                   <br>
-                  <input type="radio" name="mov_rating" value="5"  ng-model="mov_rating"  ng-click="saveClick($event)" required> 5 (המלצה מצויינת)
+                  <input type="radio" name="mov_rating5" value="5"  ng-model="mov_rating"  ng-click="saveClick($event,moviesNames[$index])" required> 5 (המלצה מצויינת)
                   </ng-form>
                   <br>
                   <br>
@@ -49,12 +52,12 @@
               <div class="row">
                 <p ng-show=currentQuest<=2>
                   <label>&emsp; הנימוק לבחירתך:
-                    <span ng-show="explainFieldForm.explain_mov.$touched && explainFieldForm.explain_mov.$invalid" style="color: #ffa07a">&emsp;אנא נמק את
+                    <span ng-show="(error ||  explainFieldForm_{{$index}}.explain_mov.$touched )&& explainFieldForm_{{$index}}.explain_mov.$invalid " style="color: #ffa07a">&emsp;אנא נמק את
                     בחירתך</span>
                     <br>&emsp;
-                    <ng-form name="explainFieldForm">
+                    <ng-form name="explainFieldForm_{{$index}}" ng-model="explainFieldForm" novalidate>
                     <input  type="text" style=" color:black" size="60" name="explain_mov" placeholder="כתוב את נימוקך כאן"   ng-click="saveClick($event,moviesNames[$index])" ng-blur="saveClick($event, $index)"  ng-model="explain_mov" required>
-                      TODOOOO!!!! :   לסדר את השליחת פרמטרים ולהבין מה הקטע של שמות דינאמיים
+
                     </ng-form>
 
                   </label>
@@ -64,7 +67,8 @@
             </div>
         </div>
       </b>
-    </form>
+
+
 
 
 
@@ -135,14 +139,17 @@
 
     <div style="text-align: center; color: white; font-size: medium"><b> שאלון :         {{currentQuest}}/{{QuestAmount}}
       </b> &emsp;
-      <button type="submit" style="color: white" ng-hide="Last" ng-click="nextEval()" ><b>עבור להערכה הבאה</b></button>
-        <button type="submit" style="color: white" ng-show="Last" ng-click="nextEval()" ><b>לסיום הניסוי</b></button>
+      <button type="submit" style="color: white" ng-hide="Last" ng-click="nextEval(questForm.$valid)" novalidate ><b>עבור להערכה הבאה</b></button>
+        <button type="submit" style="color: white" ng-show="Last" ng-click="nextEval(questForm.$valid) " novalidate ><b>לסיום הניסוי</b></button>
+
 
 
       <br>
     </div>
+    </form>
   </div>
 </div>
+
 
 <div class="col-md-6"  id="questRight" style="direction: rtl; font-size: large ;  height: 100%;
      overflow-y: auto;   overflow-x: hidden;background-color: #012F38"  >

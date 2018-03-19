@@ -1,10 +1,11 @@
-app.controller('quest_controller' ,['localStorageModel','$scope','$location','$http','$window','UserService','moviesExists', function (localStorageModel,$scope,$locale,$http,$window, UserService,moviesExists) {
+app.controller('quest_controller' ,['localStorageModel','$scope','$location','$http','$window','UserService','moviesExists', function (localStorageModel,$scope,$location,$http,$window, UserService,moviesExists) {
     var i=0;
     var movies;
 
     $scope.moviesPosters= [];
     $scope.moviesLinks= [];
     $scope.expList = ['exp1', 'exp2', 'exp3', 'אחר'];
+    $scope.error=false;
 
     $scope.posterSRC= "https://image.tmdb.org/t/p/w600_and_h900_bestv2/";
     $scope.movieTMDsrc= "https://www.themoviedb.org/movie/";
@@ -68,8 +69,31 @@ app.controller('quest_controller' ,['localStorageModel','$scope','$location','$h
 
 
 
-    $scope.nextEval = function () {
-        console.log(  $scope.explain)
+    $scope.nextEval = function (isValid) {
+
+        if ($scope.currentQuest>2)
+        {
+            for (index=0 ; index< $scope.moviesNames.length ; index++)
+                $scope.questForm['explainFieldForm_' + index].explain_mov.$setValidity('required', true);
+
+        }
+
+        if (!isValid)
+        {
+
+                        $scope.error=true;
+            console.log($scope.questForm )
+
+            return;
+        }
+        else
+            $scope.error=false;
+
+
+
+
+
+
         var elmnt = document.getElementById("questLeft");
         elmnt.scrollTop = 0; // For Safari
         elmnt.scrollTop = 0; // For Chrome, Firefox, IE and Opera
@@ -99,25 +123,41 @@ app.controller('quest_controller' ,['localStorageModel','$scope','$location','$h
         if (i < movies.length)
         {
           setMoviesElements($scope,movies,i);
+            updateMoviesInfo(i);
+
         }
         else
-            $window.alert("סיימת! תודה שלקחת חלק בניסוי!");
+            $location.path('/goodBye')
 
-        updateMoviesInfo(i);
+    }
 
+    $scope.checkedClick= function ($event, elem, index, check)
+    {
+        var req=false
+        if (check)
+            req=true;
+        
+            $scope.questForm['ratingFieldForm_' + index].mov_rating1.$setValidity('required', req);
+            $scope.questForm['ratingFieldForm_' + index].mov_rating2.$setValidity('required', req);
+            $scope.questForm['ratingFieldForm_' + index].mov_rating3.$setValidity('required', req);
+            $scope.questForm['ratingFieldForm_' + index].mov_rating4.$setValidity('required', req);
+            $scope.questForm['ratingFieldForm_' + index].mov_rating5.$setValidity('required', req);
+            $scope.questForm['explainFieldForm_' + index].explain_mov.$setValidity('required', req);
 
+        $event.check=check
+        $scope.saveClick($event, $scope.moviesNames[elem.$id])
 
     }
 
 
-    $scope.saveClick = function ($event,elem) {
+    $scope.saveClick = function ($event,movie_name) {
 
-        console.log(elem)
+        console.log($event)
         var d = new Date().toUTCString();
-        var params = {'userID': localStorageModel.getLocalStorage('userEmail'), 'TimeStamp':d, 'QustionID': "TODO!!!" , 'ElementName' : $event.target.name ,'event':$event.type}
+        var params = {'userID': localStorageModel.getLocalStorage('userEmail'), 'TimeStamp':d, 'QustionID': "TODO!!!" , 'ElementName' : `${$event.target.name} | ${movie_name}` ,'event':$event.type};
 
         if($event.target.type === 'checkbox') {
-            params['value'] = elem.myCheck;
+            params['value'] = $event.check;
         }
         else
             params['value'] = $event.target.value

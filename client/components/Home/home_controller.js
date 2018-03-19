@@ -1,7 +1,7 @@
 app.controller('home_controller' ,['localStorageModel','$scope','$location','$rootScope', '$document','$http','$window', function (localStorageModel,$scope, $location,$rootScope,$document,$http,$window) {
 
     $scope.detailsForm={};
-    console.log("Iinitiate movies status")
+    console.log("Iinitiate movies status");
     localStorageModel.addLocalStorage('moviesExists',false);
 
 
@@ -41,11 +41,9 @@ app.controller('home_controller' ,['localStorageModel','$scope','$location','$ro
 
         localStorageModel.addLocalStorage('userEmail',$scope.DF.email);
 
-        localStorageModel.addLocalStorage('birthYear',$scope.DF.birthYear);
-
         $scope.detailsForm["creationTS"]=new Date().toUTCString();
 
-        $http.post("http://localhost:8000/submitUserDetails", $scope.DF)
+        $http.post("http://localhost:8010/submitUserDetails", $scope.DF)
             .then(function (response) {
                 console.log("got POST")
                 console.log(response.data)

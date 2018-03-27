@@ -1,5 +1,5 @@
 
-let app = angular.module('myApp', ['ngRoute', 'LocalStorageModule']);
+let app = angular.module('myApp', ['ngRoute', 'LocalStorageModule','ui.bootstrap' ]);
 
 app.value('moviesExists',false);
 //-------------------------------------------------------------------------------------------------------------------
@@ -25,9 +25,14 @@ app.config( ['$routeProvider', function($routeProvider) {
             templateUrl : "./components/Questionnaire/quest.html",
             controller : "quest_controller as questCtrl"
         })
-        .when("/goodBye", {
-            templateUrl : "/End.html"
+        .when("/Final", {
+            templateUrl : "./components/FinalQuest/Bye.html",
+            controller : "final_controller as finCtrl"
         })
+        .when("/Bye", {
+            templateUrl : "./components/Bye.html",
+        })
+
 
 
         .otherwise({redirect: '/'

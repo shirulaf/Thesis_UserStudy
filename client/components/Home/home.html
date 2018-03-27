@@ -43,12 +43,12 @@
 
         <div class="col-md-1"></div>
         <div class="col-md-10" >
-          <form name="detailsForm" ng-submit="submitDetails(detailsForm.$valid)" style="font-size: large; background-color: #0c2840; padding: 30px" action="localhost:8000/form" method="post" novalidate>
+          <form name="detailsForm" ng-submit="submitDetails(detailsForm.$valid, detailsForm)" style="font-size: large; background-color: #0c2840; padding: 30px" action="localhost:8000/form" method="post" novalidate>
 <div class="text-right" style="direction: rtl ; ">
   <div style="color:#f1f227; font-size: x-large">
-            <input type="checkbox" id="myCheck" name="isStudent" ng-model="isStudent"  ng-change="defeaultMail()">
+            <input type="checkbox" id="myCheck" name="NotStudent" ng-model="NotStudent"  ng-change="defeaultMail()">
   <b>סמן תיבה זו במידה <u>ואינך</u> מבצע את הניסוי במסגרת קורס</b></div><br>
-            <div ng-hide="isStudent" class="form-group text-right" style="direction: rtl"> <label class="text-right">שם המשתמש אוניברסיטאי - חובה לסטודנטים העונים במסגרת קורס</label>
+            <div ng-hide="NotStudent" class="form-group text-right" style="direction: rtl"> <label class="text-right">שם המשתמש אוניברסיטאי - חובה לסטודנטים העונים במסגרת קורס</label>
 
               <input type="text"  name="email" class="form-control text-right" style="font-size: medium" placeholder="לדוגמא אם כתובת המייל האוניברסיטאי שלך היא: plony@post.bgu.ac.il, עליך להזין: plony"  ng-model="DF.email"  required>
               <span ng-show="(detailsForm.email.$touched || error) && detailsForm.email.$invalid  " style="color: #ffa07a">אנא הזן את שם המשתמש האוניברסיטאי שלך
@@ -56,127 +56,235 @@
 
             </div>
 </div><br>
-            <div class="form-group text-right">
-              <select style="color:black" name="birthYear" ng-model="DF.birthYear" ng-options="y for y in birthYear"
-                      required
-              ><option></option>
+            <div class="form-group text-right" dir="rtl">
+              <label>שנת לידה</label>
+              <span ng-show="(detailsForm.birthYear.$touched || error) && detailsForm.birthYear.$invalid " style="color: #ffa07a"> &emsp;בחר שנת לידה</span>
+              <br>
+              <select style="font-size: smaller; color:black" name="birthYear" ng-model="DF.birthYear" ng-options="y for y in birthYear"
+                      required>
+                <option value="" disabled="true">בחר שנה מהרשימה</option>
               </select>
-              &emsp;<label>שנת לידה</label><br>
-              <span ng-show="(detailsForm.birthYear.$touched || error) && detailsForm.birthYear.$invalid " style="color: #ffa07a">בחר שנת לידה</span>
-
             </div>
 
               <div class="form-group text-right" dir="rtl">
-                <label>מין </label><br>
-            <input type="radio"  ng-model="DF.sex" name="sex" value="F" style="direction: rtl"  required> נקבה
-            &emsp; <input type="radio" ng-model="DF.sex" name="sex" value="M" style="direction: rtl"  required> זכר
-              &emsp; <input type="radio" ng-model="DF.sex" name="sex" value="X" style="direction: rtl"  required>מעדיף לא לומר
-                <span ng-show="error && detailsForm.sex.$invalid " style="color: #ffa07a">&emsp; סמנו את האופציה המתאימה</span>
-                <br>
-                <label>השכלה</label><br>
-                <input type="radio" ng-model="DF.education"  name="education" value="high-school" style="direction:
-                rtl"  required> תיכונית
-                &emsp; <input type="radio"  ng-model="DF.education" name="education" value="Advanced" style="direction: rtl"  required>בוגר תארים מתקדמים
-                &emsp;
-                <input type="radio"  ng-model="DF.education" name="education" value="other" style="direction:rtl" required> אחר
-                <span ng-show="error && detailsForm.education.$invalid " style="color: #ffa07a">&emsp; סמנו את האופציה המתאימה</span>
-                <br>
+                <p>
+                  <label>מין </label>
+                  <span ng-show="error && detailsForm.gender.$invalid " style="color: #ffa07a">&emsp; סמן את
+                    האופציה המתאימה</span>
+                  <br>
+                  <input type="radio" id="gender_F" ng-model="DF.gender" name="gender" value="F" style="direction: rtl"
+                         required>&nbsp;
+                    <label class="pointer" for="gender_F">נקבה</label>
 
-                <label>עיסוק</label><br>
-                <input type="radio"  ng-model="DF.Occupation" name="Occupation" value="solider" style="direction: rtl"  required> חייל
-                &emsp; <input type="radio"  ng-model="DF.Occupation" name="Occupation" value="student" style="direction: rtl"  required>סטודנט
-                &emsp; <input type="radio"  ng-model="DF.Occupation" name="Occupation" value="wage" style="direction: rtl"  required>שכיר
-                &emsp;
-                 <input type="radio"  size="10" ng-model="DF.Occupation" name="Occupation" value="Independent"
-                        style="direction:rtl" required>עצמאי
-                &emsp;
-                <input type="radio" size="10" ng-model="DF.Occupation" name="Occupation"  value="other" style="direction:rtl" required> אחר
-                <span ng-show="error && detailsForm.Occupation.$invalid " style="color: #ffa07a">&emsp; סמנו את האופציה המתאימה</span>
-                <br>
-                <br>
+                  &emsp; <input type="radio" id="gender_M" ng-model="DF.gender" name="gender" value="M" style="direction: rtl"
+                                required>&nbsp;
+                    <label class="pointer" for="gender_M">זכר</label>
+
+                  &emsp; <input type="radio" id="gender_U" ng-model="DF.gender" name="gender" value="X" style="direction: rtl"
+                                required>&nbsp;
+                    <label class="pointer" for="gender_U">מעדיף לא לומר</label>
+
+
+                </p>
+
+                <!--<p>-->
+                  <!--<label>השכלה</label><br>-->
+                  <!--<input type="radio" ng-model="DF.education"  name="education" value="high-school" style="direction:-->
+                <!--rtl"  required> תיכונית-->
+                  <!--&emsp; <input type="radio"  ng-model="DF.education" name="education" value="Advanced" style="direction: rtl"  required>&nbsp;בוגר תארים מתקדמים-->
+                  <!--&emsp;-->
+                  <!--<input type="radio"  ng-model="DF.education" name="education" value="other" style="direction:rtl" required> אחר-->
+                  <!--<span ng-show="error && detailsForm.education.$invalid " style="color: #ffa07a">&emsp; סמנו את האופציה המתאימה</span>-->
+                <!--</p>-->
+
+                <p>
+                  <label>עיסוק</label>
+                  <span ng-show="error && detailsForm.Occupation.$invalid " style="color: #ffa07a">&emsp; סמנו את האופציה המתאימה</span>
+                  <br>
+                  <input type="radio" id="occ_UG" ng-click="setRequiresForOccup()"  ng-model="DF.Occupation"
+                         name="Occupation"
+                         value="UG" style="direction:
+                  rtl" required> &nbsp;
+                    <label class="pointer" for="occ_UG">סטודנט לתואר ראשון</label>
+
+                    &emsp; <input type="radio" id="occ_Ma" ng-click="setRequiresForOccup()" ng-model="DF.Occupation"
+                                  name="Occupation" value="Master"
+                                style="direction: rtl"  required>&nbsp;
+                    <label class="pointer" for="occ_Ma">סטודנט לתואר שני</label>
+
+                    &emsp; <input type="radio" id="occ_wa" ng-disabled="!NotStudent" ng-click="setRequiresForOccup()"
+                                  ng-model="DF.Occupation" name="Occupation" value="wage"
+                                style="direction: rtl"  required>&nbsp;
+                    <label class="pointer" for="occ_wa"> שכיר/עצמאי</label>
+
+                    &emsp;
+                  <input type="radio" id="sold" ng-disabled="!NotStudent" ng-click="setRequiresForOccup()" size="10"
+                         ng-model="DF.Occupation" name="Occupation" value="Solider"
+                         style="direction:rtl" required>&nbsp;
+                    <label class="pointer" for="sold"> חייל</label>
+
+                    &emsp;
+                  <input type="radio" id="occ_other" ng-disabled="!NotStudent" ng-click="setRequiresForOccup()" size="10" ng-model="DF.Occupation" name="Occupation"  value="other" style="direction:rtl" required>
+                    <label class="pointer" for="occ_other"> אחר</label>
+
+
+                </p>
+                <p>
+                <div  ng-show=" DF.Occupation=='UG' || DF.Occupation=='Master'">
+                &emsp;<label>פקולטת לימודים</label>
+                  <select  required ng-click="hi(detailsForm.Faculty)" style="color:black;direction: rtl;font-size: smaller"
+                           name="Faculty"
+                           ng-model="DF.faculty"
+                          ng-options="f for f in faculties" >
+                    <option value="" disabled="true">אנא בחר פקולטה מהרשימה</option>
+
+                  </select>
+
+                <span ng-show="(detailsForm.Faculty.$touched || error) && detailsForm.Faculty.$invalid" style="color: #ffa07a">בחר בפקולטה בה אתה לומד</span>
+                </div>
+                </p>
+
                 <h2 class="text-right"><u>השאלות הבאות מתייחסות להרגלי הצריכה והעדפותיך באשר לצפייה בסרטים:           </u></h2><br>
               <ol>
 
                 <li>
                   <label class="text-right">עד כמה צפייה בסרטים היא בילוי המועדף עליך?            </label><span ng-show="error && detailsForm.movies_plessure.$invalid " style="color: #ffa07a">&emsp; סמנו את האופציה המתאימה</span>
                   <br>
-                  <input type="radio" ng-model="DF.movies_plessure" name="movies_plessure" value="1" style="direction: rtl"  required> 1 - לא מועדף כלל
-                  &emsp; <input type="radio" ng-model="DF.movies_plessure" name="movies_plessure" value="2" style="direction: rtl"  required> 2
-                  &emsp; <input type="radio" ng-model="DF.movies_plessure" name="movies_plessure" value="3" style="direction: rtl"  required> 3
-                  &emsp; <input type="radio" ng-model="DF.movies_plessure" name="movies_plessure" value="4" style="direction: rtl"  required> 4
-                  &emsp; <input type="radio" ng-model="DF.movies_plessure" name="movies_plessure" value="5" style="direction: rtl"  required> 5 - מאוד מועדף
+                  <input type="radio" id="mov_pls_1" ng-model="DF.movies_plessure" name="movies_plessure" value="1"
+                         style="direction: rtl"  required>
+                    <label class="pointer" for="mov_pls_1"> 1 - לא מועדף כלל</label>
+                    &emsp; <input type="radio"  id="mov_pls_2" ng-model="DF.movies_plessure" name="movies_plessure"
+                                  value="2"
+                                  style="direction: rtl"  required>
+                    <label class="pointer" for="mov_pls_2"> 2</label>
+                  &emsp; <input type="radio"  id="mov_pls_3" ng-model="DF.movies_plessure" name="movies_plessure"
+                                value="3" style="direction: rtl"  required>
+                    <label class="pointer" for="mov_pls_3"> 3</label>
+                    &emsp; <input type="radio"  id="mov_pls_4" ng-model="DF.movies_plessure" name="movies_plessure"
+                                  value="4"
+                                  style="direction: rtl"  required>
+                    <label class="pointer"  for="mov_pls_4">4</label>
+                    &emsp; <input type="radio"  id="mov_pls_5" ng-model="DF.movies_plessure" name="movies_plessure"
+                                  value="5" style="direction: rtl"  required>
+                    <label class="pointer" for="mov_pls_5"> 5 - מאוד מועדף</label>
+
                 </li>  <br>
                 <li>
                   <label class="text-right">היכן אתה צופה לרוב בסרטים?            </label>  <span ng-show="error && detailsForm.movies_watchplace.$invalid " style="color: #ffa07a">&emsp; סמנו את האופציה המתאימה</span>
                   <br>
-                  <input type="radio" ng-model="DF.movies_watchplace" name="movies_watchplace" value="theatre" style="direction: rtl"  required>בקולנוע
-                  &emsp;<input type="radio" ng-model="DF.movies_watchplace" name="movies_watchplace" value="home/computer" style="direction: rtl"  required>בבית (מחשב/טלוויזיה)
+                  <input type="radio" id="wp_thet" ng-model="DF.movies_watchplace" name="movies_watchplace"
+                         value="theatre"
+                         style="direction: rtl"  required>
+                    <label class="pointer" for="wp_thet">בקולנוע</label>&emsp;
+
+                    <input type="radio" id="wp_home" ng-model="DF.movies_watchplace" name="movies_watchplace"
+                           value="home/computer" style="direction: rtl"  required>
+                    <label class="pointer" for="wp_home">בבית (מחשב/טלוויזיה)</label>&emsp;
+
                 </li>
+
+
 
               <br>
                 <li class="text-right">
 
-                  <label >השאלות הבאות מתייחסות לתדירות הצפייה שלך בסרטים, הן בקולנוע והן בבית:            </label>
-
+                  <label ><u>השאלות הבאות מתייחסות לתדירות הצפייה שלך בסרטים, הן בקולנוע והן בבית:</u></label>
+                    <br><br>
                   <label class="text-right">בכמה סרטים צפית בשנה האחרונה?            </label><span ng-show="error && detailsForm.movies_freaq_1year.$invalid " style="color: #ffa07a">&emsp; סמנו את האופציה המתאימה</span>
                   <br>
-                  <input type="radio" ng-model="DF.movies_freaq_1year" name="movies_freaq_1year" value="max5" style="direction: rtl"  required>   עד 5 סרטים
-                  &emsp;<input type="radio" ng-model="DF.movies_freaq_1year" name="movies_freaq_1year" value="5-10" style="direction: rtl"  required> בין 5 ל-10 סרטים
-                  &emsp;<input type="radio" ng-model="DF.movies_freaq_1year" name="movies_freaq_1year" value="min10" style="direction: rtl"  required> מעל 10 סרטים
+                  <input type="radio" if="f_year_max5" ng-model="DF.movies_freaq_1year" name="movies_freaq_1year"
+                         value="max5"
+                         style="direction: rtl"  required>
+                    <label class="pointer" for="f_year_max5">עד 5 סרטים</label>&emsp;
 
-                  <br><br>
+                 <input type="radio" id="f_year_510" ng-model="DF.movies_freaq_1year" name="movies_freaq_1year"
+                        value="5-10"
+                        style="direction: rtl"  required>
+                    <label class="pointer" for="f_year_510">בין 5 ל-10 סרטים</label>&emsp;
 
-                  <label class="text-right">בכמה סרטים צפית בחודש הקודם?            </label> <span ng-show="error && detailsForm.movies_freaq_month.$invalid " style="color: #ffa07a">&emsp; סמנו את האופציה המתאימה</span>
+                    <input type="radio" id="f_year_min10" ng-model="DF.movies_freaq_1year"
+                                 name="movies_freaq_1year" value="min10" style="direction: rtl"  required>
+                    <label class="pointer" for="f_year_min10">מעל 10 סרטים</label>&emsp;
+
+
+                    <br><br>
+
+                  <label dir="rtl" class="headers">בכמה סרטים צפית בחודש הקודם?</label>
+                    <span ng-show="error && detailsForm.movies_freaq_month.$invalid " style="color: #ffa07a">&emsp; סמנו את האופציה המתאימה</span>
                   <br>
-                  <input type="radio" ng-model="DF.movies_freaq_month" name="movies_freaq_month" value="0-1" style="direction: rtl"  required>  בין 0 ל-1 סרטים
-                  &emsp;
-                  <input type="radio" ng-model="DF.movies_freaq_month" name="movies_freaq_month" value="max5" style="direction: rtl"  required>   עד 5 סרטים
-                  &emsp;<input type="radio" ng-model="DF.movies_freaq_month" name="movies_freaq_month" value="5-10" style="direction: rtl"  required>         בין 5 ל-10 סרטים
-                  &emsp;<input type="radio" ng-model="DF.movies_freaq_month" name="movies_freaq_month" value="min10" style="direction: rtl"  required>  מעל 10 סרטים
+                  <input type="radio" id="f_mon_0-1"  ng-model="DF.movies_freaq_month" name="movies_freaq_month" value="0-1" style="direction: rtl"  required>
+                    <label class="pointer" for="f_mon_0-1"> בין 0 ל-1 סרטים</label>&emsp;
+                  <input type="radio" id="f_mon_max5" ng-model="DF.movies_freaq_month" name="movies_freaq_month"
+                         value="max5"
+                         style="direction: rtl"  required>
+                    <label class="pointer" for="f_mon_max5">עד 5 סרטים</label>&emsp;
+
+                  <input type="radio" id="f_mon_5-10" ng-model="DF.movies_freaq_month" name="movies_freaq_month"
+                         value="5-10"
+                         style="direction: rtl"  required>
+                    <label class="pointer" for="f_mon_5-10">בין 5 ל-10 סרטים</label>&emsp;
+
+                  <input type="radio" id="f_mon_min10" ng-model="DF.movies_freaq_month" name="movies_freaq_month" value="min10"
+                               style="direction: rtl"  required>
+                    <label class="pointer" for="f_mon_min10">מעל 10 סרטים</label>&emsp;
+
                 </li>
 
                 <br>
-                  <label class="text-right">מהם הג'אנרים המועדפים עליך ביותר?           </label>
+                  <label dir="rtl" class="headers">מהם הג'אנרים המועדפים עליך ביותר?           </label>
 
                   <br>
-                  <input type="checkbox" ng-model="DF.fav_genre_action"  name="fav_genre" value="Action"
-                         style="direction: rtl"  > פעולה
-                  &emsp; <input type="checkbox" ng-model="DF.fav_genre_adventure" name="fav_genre" value="Adventure" style="direction: rtl"  > הרפתקאות
-                  &emsp; <input type="checkbox" ng-model="DF.fav_genre_animation" name="fav_genre" value="Animation" style="direction: rtl"  > אנימציה
-                  &emsp; <input type="checkbox" ng-model="DF.fav_genre_child" name="fav_genre"
-                                value="Children's" style="direction: rtl"  > ילדים
-                  &emsp; <input type="checkbox" ng-model="DF.fav_genre_comedy" name="fav_genre"
-                                value="Comedy"
-                                style="direction: rtl"  > קומדיה
-                  <input type="checkbox" ng-model="DF.fav_genre_crime"  name="fav_genre" value="Crime"
-                         style="direction: rtl"  > פשע
-                      &emsp; <input type="checkbox" ng-model="DF.fav_genre_docum" name="fav_genre" value="Documentary" style="direction: rtl"  > דוקומנטרי
-                  <br></b> <input type="checkbox" ng-model="DF.fav_genre_drama" name="fav_genre" value="Drama"
-                                  style="direction: rtl"  > דרמה
-                  &emsp; <input type="checkbox" ng-model="DF.fav_genre_fantasy" name="fav_genre" value="Fantasy"
-                                style="direction: rtl"  > פנטסיה
-                  &emsp; <input type="checkbox" ng-model="DF.fav_genre_horror" name="fav_genre" value="Horror"
-                                style="direction: rtl"  > אימה
-                  &emsp; <input type="checkbox" ng-model="DF.fav_genre_musical" name="fav_genre" value="Musical"
-                                style="direction: rtl"  > מחזמר
-                  &emsp; <input type="checkbox" ng-model="DF.fav_genre_mystery" name="fav_genre" value="Mystery"
-                                style="direction: rtl"  > מיסתורין
-                   <input type="checkbox" ng-model="DF.fav_genre_romance" name="fav_genre" value="Romance"
-                          style="direction: rtl"  > רומנטי
-                  &emsp; <input type="checkbox" ng-model="DF.fav_genre_scifi" name="fav_genre" value="Sci-Fi" style="direction: rtl"  > מדע-בדיוני
-                  &emsp; <input type="checkbox" ng-model="DF.fav_genre_thriller" name="fav_genre"
-                                value="Thriller" style="direction: rtl"  > מותחן
-                  &emsp; <input type="checkbox" ng-model="DF.fav_genre_war" name="fav_genre" value="War"
-                                style="direction: rtl"  > מלחמה
-                  &emsp; <input type="checkbox" ng-model="DF.fav_genre_western" name="fav_genre"
-                                value="Western" style="direction: rtl"  > מערבון
-                </li> <br><br>
-                <li>
-                  <label class="text-right">מנה 3 סרטים האהובים עליך  במיוחד</label><span ng-show="error && (detailsForm.fav_mov1.$invalid || detailsForm.fav_mov2.$invalid||detailsForm.fav_mov3.$invalid)" style="color: #ffa07a">&emsp; עליכם לרשום 3 סרטים אהובים</span><br>
-                  <input type="text" ng-model="DF.fav_mov1"  name="fav_mov1" placeholder="סרט מועדף 1"  style="direction: rtl"  required
-                         size="50"><br>
-                  <input type="text" ng-model="DF.fav_mov2" name="fav_mov2" placeholder="סרט מועדף 2" style="direction: rtl"  required size="50"><br>
-                  <input type="text" ng-model="DF.fav_mov3" name="fav_mov3" placeholder="סרט מועדף 3" style="direction: rtl"  required size="50"><br>
+                  <span ng-repeat="(genre,enabled) in DF.Gen">
+                      <input  type="checkbox"  id="{{$index}}"
+                              name="genre" ng-model="DF.Gen[genre]"  style="direction:
+                              rtl">
+                      <label class="pointer" for="{{$index}}">{{Genres[genre]}}</label>&nbsp;
+                  </span>
+
+
+
+                  <!--<input id="Action" type="checkbox" ng-model="DF.fav_genre_action"  name="fav_genre" value="Action"-->
+                         <!--style="direction: rtl"  >-->
+       <!--<label class="pointer" for="Action">פעולה</label>-->
+                  <!--&emsp; <input type="checkbox" ng-model="DF.fav_genre_adventure" name="fav_genre" value="Adventure" style="direction: rtl"  > הרפתקאות-->
+                  <!--&emsp; <input type="checkbox" ng-model="DF.fav_genre_animation" name="fav_genre" value="Animation" style="direction: rtl"  > אנימציה-->
+                  <!--&emsp; <input type="checkbox" ng-model="DF.fav_genre_child" name="fav_genre"-->
+                                <!--value="Children's" style="direction: rtl"  > ילדים-->
+                  <!--&emsp; <input type="checkbox" ng-model="DF.fav_genre_comedy" name="fav_genre"-->
+                                <!--value="Comedy"-->
+                                <!--style="direction: rtl"  > קומדיה-->
+                  <!--<input type="checkbox" ng-model="DF.fav_genre_crime"  name="fav_genre" value="Crime"-->
+                         <!--style="direction: rtl"  > פשע-->
+                      <!--&emsp; <input type="checkbox" ng-model="DF.fav_genre_docum" name="fav_genre" value="Documentary" style="direction: rtl"  > דוקומנטרי-->
+                  <!--<br></b> <input type="checkbox" ng-model="DF.fav_genre_drama" name="fav_genre" value="Drama"-->
+                                  <!--style="direction: rtl"  > דרמה-->
+                  <!--&emsp; <input type="checkbox" ng-model="DF.fav_genre_fantasy" name="fav_genre" value="Fantasy"-->
+                                <!--style="direction: rtl"  > פנטסיה-->
+                  <!--&emsp; <input type="checkbox" ng-model="DF.fav_genre_horror" name="fav_genre" value="Horror"-->
+                                <!--style="direction: rtl"  > אימה-->
+                  <!--&emsp; <input type="checkbox" ng-model="DF.fav_genre_musical" name="fav_genre" value="Musical"-->
+                                <!--style="direction: rtl"  > מחזמר-->
+                  <!--&emsp; <input type="checkbox" ng-model="DF.fav_genre_mystery" name="fav_genre" value="Mystery"-->
+                                <!--style="direction: rtl"  > מיסתורין-->
+                   <!--<input type="checkbox" ng-model="DF.fav_genre_romance" name="fav_genre" value="Romance"-->
+                          <!--style="direction: rtl"  > רומנטי-->
+                  <!--&emsp; <input type="checkbox" ng-model="DF.fav_genre_scifi" name="fav_genre" value="Sci-Fi" style="direction: rtl"  > מדע-בדיוני-->
+                  <!--&emsp; <input type="checkbox" ng-model="DF.fav_genre_thriller" name="fav_genre"-->
+                                <!--value="Thriller" style="direction: rtl"  > מותחן-->
+                  <!--&emsp; <input type="checkbox" ng-model="DF.fav_genre_war" name="fav_genre" value="War"-->
+                                <!--style="direction: rtl"  > מלחמה-->
+                  <!--&emsp; <input type="checkbox" ng-model="DF.fav_genre_western" name="fav_genre"-->
+                                <!--value="Western" style="direction: rtl"  > מערבון-->
+                </li>
+                  <br> <br>
+
+                  <li >
+                  <label class="text-right">מנה 3 סרטים האהובים עליך  במיוחד</label>
+                  <span ng-show="error && (detailsForm.fav_mov1.$invalid || detailsForm.fav_mov2.$invalid||detailsForm.fav_mov3.$invalid)" style="color: #ffa07a">&emsp; עליכם לרשום 3 סרטים אהובים</span>
+                  <br>
+                  <input type="text" ng-model="DF.fav_mov1"  name="fav_mov1" placeholder="סרט מועדף 1"  style="direction: rtl ;color: black"  required size="50"><br>
+                  <input type="text" ng-model="DF.fav_mov2" name="fav_mov2" placeholder="סרט מועדף 2" style="direction: rtl ; color: black"  required size="50"><br>
+                  <input type="text" ng-model="DF.fav_mov3" name="fav_mov3" placeholder="סרט מועדף 3" style="direction: rtl; color: black"  required size="50"><br>
                   <br>
                 </li>
 

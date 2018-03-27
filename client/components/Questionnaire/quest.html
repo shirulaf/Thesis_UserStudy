@@ -5,7 +5,7 @@
         overflow: auto;" >
   <!--Questionnaire instructions-->
 
-  <div class="" style=" text-align: center; direction: rtl; font-size: 120%; background-color: #011624 ; color:#d9e7ee; padding: 5px"><b>
+  <div class="" style=" text-align: center; direction: rtl; font-size: 120%; background-color: #111114 ; color:#d9e7ee; padding: 5px"><b>
     <p style="border: groove; border-color: #d9e7ee">
       הערך את טיב ההמלצה עבור כל אחד מהסרטים, המופיעים במקרה לניתוח, בחלקו הימני של המסך.<br>
       התחשב בהערכתך בסרט בו צפה המשתמש בעבר וכן בסרט בו בחר המשתמש לצפות למרות ההמלצות.
@@ -17,24 +17,22 @@
   <div >
     <form  name="questForm" ng-model="questForm" style="direction: rtl; font-size: 120%" novalidate>
       <b>
-        <div ng-style="set_color($index)" style="padding: 5px" ng-repeat="mov in moviesNames">
+        <div ng-style="set_color($index)" style="padding: 10px" ng-repeat="mov in moviesNames">
 
           <p class="" style="font-weight: 800; direction: rtl; font-family: 'Book Antiqua'; font-size: 135%; ">{{$index+1}}. הסרט: {{mov}}</p>
-          <input type="checkbox" id={{$index}} name="checkbox-familiar_{{$index}}" ng-model="myCheck"  ng-click="checkedClick($event, this, $index, myCheck)" >
-            הסרט שונה מדי מהסרטים בהם אני צופה בדרך כלל ואינני מצליח לגבש דעה לגביו
-            <div ng-hide="myCheck">
-              <div class="row" style="margin-bottom: 5px;">
+
+            <div ng-hide="myCheck" class="row" >
+
               <div class="col-md-4" >
                 <a href="{{movieTMDsrc}}{{moviesLinks[$index]}}" target="_blank">
                 <img class="imgBox" title="לחץ כדי לעבור לאתר הסרט"  style="margin-top: 7px" ng-src={{posterSRC}}{{moviesPosters[$index]}} >
                 </a>
               </div>
 
-                <div class="col-md-8">
+                <div class="col-md-8" dir="rtl">
                   <ng-form name="ratingFieldForm_{{$index}}" ng-model="ratingFieldForm" novalidate>
-                  <span ng-show="ratingFieldForm_{{$index}}.mov_rating1.$invalid && ratingFieldForm_{{$index}}.mov_rating2.$invalid && ratingFieldForm_{{$index}}.mov_rating3.$invalid && ratingFieldForm_{{$index}}.mov_rating4.$invalid && ratingFieldForm_{{$index}}.mov_rating5.$invalid && error" style="color: #ffa07a">&emsp;אנא דרג את
-                    ההמלצה</span>
-                  <br>
+                  <span ng-show="ratingFieldForm_{{$index}}.mov_rating1.$invalid && ratingFieldForm_{{$index}}.mov_rating2.$invalid && ratingFieldForm_{{$index}}.mov_rating3.$invalid && ratingFieldForm_{{$index}}.mov_rating4.$invalid && ratingFieldForm_{{$index}}.mov_rating5.$invalid && error" style="color: #ffa07a">&emsp;אנא דרג את ההמלצה <br></span>
+
                   <input type="radio" name="mov_rating1" value="1" ng-model="mov_rating"  ng-click="saveClick($event,moviesNames[$index])" required> 1 (המלצה גרועה)
                   <br>
                   <input type="radio" name="mov_rating2" value="2"  ng-model="mov_rating"  ng-click="saveClick($event,moviesNames[$index])" required> 2
@@ -48,12 +46,11 @@
                   <br>
                   <br>
                 </div>
-              </div>
-              <div class="row">
+              <div class="row" style="padding: 10px">
                 <p ng-show=currentQuest<=2>
-                  <label>&emsp; הנימוק לבחירתך:
-                    <span ng-show="(error ||  explainFieldForm_{{$index}}.explain_mov.$touched )&& explainFieldForm_{{$index}}.explain_mov.$invalid " style="color: #ffa07a">&emsp;אנא נמק את
-                    בחירתך</span>
+                  <label >&emsp;     הנימוק לבחירתך:
+                    <span ng-show="(error ||  explainFieldForm_{{$index}}.explain_mov.$touched )&& explainFieldForm_{{$index}}.explain_mov.$invalid " style="color: #ffa07a;  " ><br> &emsp;אנא נמק את
+                    בחירתך, הנימוק חובה רק בשני המקרים לניתוח הראשונים (:</span>
                     <br>&emsp;
                     <ng-form name="explainFieldForm_{{$index}}" ng-model="explainFieldForm" novalidate>
                     <input  type="text" style=" color:black" size="60" name="explain_mov" placeholder="כתוב את נימוקך כאן"   ng-click="saveClick($event,moviesNames[$index])" ng-blur="saveClick($event, $index)"  ng-model="explain_mov" required>
@@ -61,9 +58,13 @@
                     </ng-form>
 
                   </label>
-
-                </p>
               </div>
+
+
+              </div>
+              <input   type="checkbox" id={{$index}} name="checkbox-familiar_{{$index}}" ng-model="myCheck"  ng-click="checkedClick($event, this, $index, myCheck)" >
+                  הסרט שונה מדי מהסרטים בהם אני צופה בדרך כלל ואינני מצליח לגבש דעה לגביו
+                </p>
             </div>
         </div>
       </b>
@@ -152,7 +153,7 @@
 
 
 <div class="col-md-6"  id="questRight" style="direction: rtl; font-size: large ;  height: 100%;
-     overflow-y: auto;   overflow-x: hidden;background-color: #012F38"  >
+     overflow-y: auto;   overflow-x: hidden;background-color: #6b6b6e"  >
 
 
 

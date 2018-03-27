@@ -1,0 +1,56 @@
+.disableInput {
+    opacity: 0.35;
+    background: #eee;
+    color: #444;
+}
+
+.input_box{
+    color: black;
+    font-size: medium;
+    height: 20px;
+    width: 130px;
+
+}
+
+.input_textarea {
+
+    color: black;
+    font-size: medium;
+    vertical-align: middle;
+
+
+
+
+
+}
+
+.modal {
+    text-align: center;
+    padding: 0!important;
+
+
+}
+
+.modal:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.modal-dialog {
+    top: 200px;
+    right: 100px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+
+.wrapper {
+    text-align: center;
+    margin: 10px;
+
+}
+

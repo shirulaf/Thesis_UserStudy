@@ -1,4 +1,4 @@
-app.controller('quest_controller' ,['localStorageModel','$scope','$location','$http','$window','UserService','moviesExists', function (localStorageModel,$scope,$location,$http,$window, UserService,moviesExists) {
+app.controller('quest_controller' ,['localStorageModel','$scope','$location','$http','$window','moviesExists', function (localStorageModel,$scope,$location,$http,$window, UserService,moviesExists) {
     var i=0;
     var movies;
 
@@ -17,9 +17,9 @@ app.controller('quest_controller' ,['localStorageModel','$scope','$location','$h
 
 
         if (index%2)
-            return { backgroundColor : "#5B0937" , color : "#e2cad7" }
+            return {  backgroundColor: "#272c40", color: "#e2ddb3" }
         else
-            return { backgroundColor: "#654e0b", color: "#e2ddb3"}
+            return { backgroundColor : "#5b0937" , color : "#e2ddb3"}
     }
 
     $scope.getPoster = function (index) {
@@ -127,7 +127,7 @@ app.controller('quest_controller' ,['localStorageModel','$scope','$location','$h
 
         }
         else
-            $location.path('/goodBye')
+            $location.path('/Final')
 
     }
 
@@ -136,7 +136,7 @@ app.controller('quest_controller' ,['localStorageModel','$scope','$location','$h
         var req=false
         if (check)
             req=true;
-        
+
             $scope.questForm['ratingFieldForm_' + index].mov_rating1.$setValidity('required', req);
             $scope.questForm['ratingFieldForm_' + index].mov_rating2.$setValidity('required', req);
             $scope.questForm['ratingFieldForm_' + index].mov_rating3.$setValidity('required', req);

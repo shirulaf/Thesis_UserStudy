@@ -48,7 +48,7 @@ app.post('/submitUserDetails', function (req, res) {
     console.log("submitUserDetails")
 
     var fileName= req.body.email;
-    var directory= 'C:/Users/user/downloads'
+    var directory= 'C:/Users/user/downloads/'
 
     var writeData=  JSON.stringify(req.body) + '\r\n';
 
@@ -141,7 +141,7 @@ function MyCSV(watched, watched_tmdb, watched_poster, chose, chose_tmdb, chose_p
 //-------------------------------------------------------------------
 //-------------------------------------------------------------------
 
-var server = app.listen(8010, function () {
+var server = app.listen(8000, function () {
     var host = server.address().address
     var port = server.address().port
     app.use('/', router);

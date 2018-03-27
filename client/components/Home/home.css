@@ -15,3 +15,24 @@ opacity: 0.3;
     background-size:cover;
 }
 
+input:hover{
+    cursor: pointer;
+}
+
+.pointer
+{
+    font-weight: normal;
+
+}
+
+.pointer:hover  {
+    cursor: pointer;
+    font-weight: 600;
+
+
+}
+
+.headers {
+    font-size: 105%;
+}
+

@@ -48,7 +48,7 @@
     <div class="col-md-1"></div>
     <div class="col-md-10" >
 
-        <form name="detailsForm" ng-submit="submitDetails(detailsForm.$valid, detailsForm)" style="font-size: large; background-color: #0c2840; padding: 30px" action="localhost:8000/" method="post" novalidate>
+        <form name="detailsForm"  style="font-size: large; background-color: #0c2840; padding: 30px" action="localhost:8000/" method="post" novalidate>
             <div class="text-right" style="direction: rtl ; ">
 
             </div><br>
@@ -183,7 +183,7 @@
                 </ol>
             </div>
             <br>
-            <button type="submit" class="btn btn-primary btn-lg "   style="font-size: large; font-weight: bold; box-shadow: 0 8px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 #d5daa3;">לסיום הניסוי </button>
+            <button ng-click="submitDetails(detailsForm.$valid, detailsForm)" class="btn btn-primary btn-lg "   style="font-size: large; font-weight: bold; box-shadow: 0 8px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 #d5daa3;">לסיום הניסוי </button>
         </form>
     </div>
 

@@ -26,7 +26,7 @@ app.config( ['$routeProvider', function($routeProvider) {
             controller : "quest_controller as questCtrl"
         })
         .when("/Final", {
-            templateUrl : "./components/FinalQuest/Bye.html",
+            templateUrl : "./components/FinalQuest/Final.html",
             controller : "final_controller as finCtrl"
         })
         .when("/Bye", {

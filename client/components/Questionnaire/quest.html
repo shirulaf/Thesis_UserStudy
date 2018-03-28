@@ -33,15 +33,24 @@
                   <ng-form name="ratingFieldForm_{{$index}}" ng-model="ratingFieldForm" novalidate>
                   <span ng-show="ratingFieldForm_{{$index}}.mov_rating1.$invalid && ratingFieldForm_{{$index}}.mov_rating2.$invalid && ratingFieldForm_{{$index}}.mov_rating3.$invalid && ratingFieldForm_{{$index}}.mov_rating4.$invalid && ratingFieldForm_{{$index}}.mov_rating5.$invalid && error" style="color: #ffa07a">&emsp;אנא דרג את ההמלצה <br></span>
 
-                  <input type="radio" name="mov_rating1" value="1" ng-model="mov_rating"  ng-click="saveClick($event,moviesNames[$index])" required> 1 (המלצה גרועה)
+                  <input type="radio" id="mov_rating1" name="mov_rating1" value="1" ng-model="mov_rating"  ng-click="saveClick($event,moviesNames[$index])" required>
+                  <label class="pointer" for="mov_rating1">1 (המלצה גרועה) </label> 
                   <br>
-                  <input type="radio" name="mov_rating2" value="2"  ng-model="mov_rating"  ng-click="saveClick($event,moviesNames[$index])" required> 2
+                  <input type="radio" id="mov_rating2" name="mov_rating2" value="2"  ng-model="mov_rating"  ng-click="saveClick($event,moviesNames[$index])" required> 
+                  <label class="pointer" for="mov_rating2">2 </label> 
+
                   <br>
-                  <input type="radio" name="mov_rating3" value="3"  ng-model="mov_rating"  ng-click="saveClick($event,moviesNames[$index])" required> 3
+                  <input type="radio" id="mov_rating3" name="mov_rating3" value="3"  ng-model="mov_rating"  ng-click="saveClick($event,moviesNames[$index])" required>
+                  <label class="pointer" for="mov_rating3">3 </label> 
+
                   <br>
-                  <input type="radio" name="mov_rating4" value="4"  ng-model="mov_rating"  ng-click="saveClick($event,moviesNames[$index])" required> 4
+                  <input type="radio" id="mov_rating4" name="mov_rating4" value="4"  ng-model="mov_rating"  ng-click="saveClick($event,moviesNames[$index])" required>
+                  <label class="pointer" for="mov_rating4">4 </label> 
+
+
                   <br>
-                  <input type="radio" name="mov_rating5" value="5"  ng-model="mov_rating"  ng-click="saveClick($event,moviesNames[$index])" required> 5 (המלצה מצויינת)
+                  <input type="radio" id="mov_rating5" name="mov_rating5" value="5"  ng-model="mov_rating"  ng-click="saveClick($event,moviesNames[$index])" required>
+                  <label class="pointer" for="mov_rating5">5 (המלצה מצויינת) </label>  
                   </ng-form>
                   <br>
                   <br>
@@ -63,7 +72,9 @@
 
               </div>
               <input   type="checkbox" id={{$index}} name="checkbox-familiar_{{$index}}" ng-model="myCheck"  ng-click="checkedClick($event, this, $index, myCheck)" >
-                  הסרט שונה מדי מהסרטים בהם אני צופה בדרך כלל ואינני מצליח לגבש דעה לגביו
+              <label class="pointer" for={{$index}}>  הסרט שונה מדי מהסרטים בהם אני צופה בדרך כלל ואינני מצליח לגבש דעה לגביו </label>  
+
+                
                 </p>
             </div>
         </div>

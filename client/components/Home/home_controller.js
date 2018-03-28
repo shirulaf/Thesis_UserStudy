@@ -119,7 +119,7 @@ app.controller('home_controller' ,['localStorageModel','$scope','$location','$ro
 
         $scope.detailsForm["creationTS"]=new Date().toUTCString();
 
-        $http.post("http://localhost:8000/submitUserDetails", $scope.DF)
+        $http.post("http://132.72.64.204:8000/submitUserDetails", $scope.DF)
             .then(function (response) {
                 console.log("got POST")
                 console.log(response.data)

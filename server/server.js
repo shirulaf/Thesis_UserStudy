@@ -48,7 +48,7 @@ app.post('/submitUserDetails', function (req, res) {
     console.log("submitUserDetails")
 
     var fileName= req.body.email;
-    var directory= 'C:/Users/user/downloads/'
+    var directory= 'C:/Users/shirfr/Documents/us_res/'
 
     var writeData=  JSON.stringify(req.body) + '\r\n';
 

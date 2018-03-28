@@ -118,3 +118,20 @@ button:hover {
     -webkit-box-shadow: 0 0 20px #000000;
     box-shadow: 0 0 20px #000000;
 }
+
+input:hover{
+    cursor: pointer;
+}
+
+.pointer
+{
+    font-weight: normal;
+
+}
+
+.pointer:hover  {
+    cursor: pointer;
+    font-weight: 600;
+
+
+}

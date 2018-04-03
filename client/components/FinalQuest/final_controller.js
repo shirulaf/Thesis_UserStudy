@@ -52,15 +52,15 @@ app.controller('final_controller' ,['localStorageModel','$scope','$location','$r
     }
 
     $scope.submitDetails= function(valid, detailsForm){
-        console.log($scope.answers)
 
         var d = new Date().toUTCString();
         var params = {'userID': localStorageModel.getLocalStorage('userID'), 'TimeStamp':d, 'QustionID': "FINAL" };
-
+            params['finalQuestAnswers']=JSON.stringify($scope.answers) 
+            params['recDomain']=$scope.DF.domain
 
 
         console.log(params);
-        $http.post(host + "8000/saveData",$scope.answers)
+        $http.post(host + "8000/saveData",params)
             .catch(function (error) {
                 console.log(error);
             });

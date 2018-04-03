@@ -118,6 +118,9 @@ app.controller('home_controller' ,['localStorageModel','$scope','$location','$ro
             if ($scope.DF.Gen[g]===false)
                 delete($scope.DF.Gen[g])
 
+                var d = new Date().getTime();
+                $scope.DF.userID+="_"+d;
+
         localStorageModel.addLocalStorage('userID',$scope.DF.userID);
 
         console.log("DF")

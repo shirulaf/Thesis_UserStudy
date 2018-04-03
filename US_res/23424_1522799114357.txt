@@ -1,0 +1,1 @@
+{"Gen":{"Children":true,"Sci-Fi":true},"userID":"23424_1522799114357","birthYear":1952,"gender":"X","Occupation":"UG","faculty":"הפקולטה למדעי הרוח והחברה","movies_plessure":"4","movies_watchplace":"home/computer","movies_freaq_1year":"5-10","movies_freaq_month":"5-10","fav_mov1":"1","fav_mov2":"2","fav_mov3":"3"}

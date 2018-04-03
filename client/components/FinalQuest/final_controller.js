@@ -8,6 +8,9 @@ app.controller('final_controller' ,['localStorageModel','$scope','$location','$r
     //TODO: add links for Recsys Examples
     var modalInstance;
 
+    var host= "http://79.176.138.52:"
+
+
     var $ctrl = this;
     $scope.open = function (domainIndex) {
         $ctrl.domainIndex=domainIndex;
@@ -52,18 +55,35 @@ app.controller('final_controller' ,['localStorageModel','$scope','$location','$r
         console.log($scope.answers)
 
         var d = new Date().toUTCString();
-        var params = {'userID': localStorageModel.getLocalStorage('userEmail'), 'TimeStamp':d, 'QustionID': "FINAL" };
-
+        var params = {'userID': localStorageModel.getLocalStorage('userID'), 'TimeStamp':d, 'QustionID': "FINAL" };
 
 
 
         console.log(params);
-        $http.post("http://localhost:8000/saveData",$scope.answers)
+        $http.post(host + "8000/saveData",$scope.answers)
             .catch(function (error) {
                 console.log(error);
             });
 
         $location.path('/Bye')
+
+
+    }
+
+    
+    $scope.saveClick = function ($event, val) {
+
+        var d = new Date().toUTCString();
+        var params = {'userID': localStorageModel.getLocalStorage('userID'), 'TimeStamp':d , 'ElementName' : $event.target.name  ,'event':$event.type};
+     
+        if (val)
+        params['val'] = val;
+
+        console.log(params);
+       $http.post(host + "8000/saveData",params)
+            .catch(function (error) {
+                console.log(error);
+            });
 
 
     }

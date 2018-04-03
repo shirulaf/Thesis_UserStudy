@@ -43,15 +43,15 @@
 
         <div class="col-md-1"></div>
         <div class="col-md-10" >
-          <form name="detailsForm" ng-submit="submitDetails(detailsForm.$valid, detailsForm)" style="font-size: large; background-color: #0c2840; padding: 30px" action="localhost:8000/form" method="post" novalidate>
+          <form name="detailsForm" ng-submit="submitDetails(detailsForm.$valid, detailsForm)" style="font-size: large; background-color: #0c2840; padding: 30px"  novalidate>
 <div class="text-right" style="direction: rtl ; ">
   <div style="color:#f1f227; font-size: x-large">
             <input type="checkbox" id="myCheck" name="NotStudent" ng-model="NotStudent"  ng-change="defeaultMail()">
   <b>סמן תיבה זו במידה <u>ואינך</u> מבצע את הניסוי במסגרת קורס</b></div><br>
             <div ng-hide="NotStudent" class="form-group text-right" style="direction: rtl"> <label class="text-right">שם המשתמש אוניברסיטאי - חובה לסטודנטים העונים במסגרת קורס</label>
 
-              <input type="text"  name="email" class="form-control text-right" style="font-size: medium" placeholder="לדוגמא אם כתובת המייל האוניברסיטאי שלך היא: plony@post.bgu.ac.il, עליך להזין: plony"  ng-model="DF.email"  required>
-              <span ng-show="(detailsForm.email.$touched || error) && detailsForm.email.$invalid  " style="color: #ffa07a">אנא הזן את שם המשתמש האוניברסיטאי שלך
+              <input type="text"  name="userID" class="form-control text-right" style="font-size: medium" placeholder="לדוגמא אם כתובת המייל האוניברסיטאי שלך היא: plony@post.bgu.ac.il, עליך להזין: plony"  ng-model="DF.userID"  required>
+              <span ng-show="(detailsForm.userID.$touched || error) && detailsForm.userID.$invalid  " style="color: #ffa07a">אנא הזן את שם המשתמש האוניברסיטאי שלך
                 </span>
 
             </div>
@@ -192,7 +192,7 @@
                     <br><br>
                   <label class="text-right">בכמה סרטים צפית בשנה האחרונה?            </label><span ng-show="error && detailsForm.movies_freaq_1year.$invalid " style="color: #ffa07a">&emsp; סמנו את האופציה המתאימה</span>
                   <br>
-                  <input type="radio" if="f_year_max5" ng-model="DF.movies_freaq_1year" name="movies_freaq_1year"
+                  <input type="radio" id="f_year_max5" ng-model="DF.movies_freaq_1year" name="movies_freaq_1year"
                          value="max5"
                          style="direction: rtl"  required>
                     <label class="pointer" for="f_year_max5">עד 5 סרטים</label>&emsp;

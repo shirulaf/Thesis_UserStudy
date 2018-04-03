@@ -2,6 +2,11 @@ app.controller('quest_controller' ,['localStorageModel','$scope','$location','$h
     var i=0;
     var movies;
 
+    var host= "http://79.176.138.52:"
+
+
+
+
     $scope.moviesPosters= [];
     $scope.moviesLinks= [];
     $scope.expList = ['exp1', 'exp2', 'exp3', 'אחר'];
@@ -42,10 +47,10 @@ app.controller('quest_controller' ,['localStorageModel','$scope','$location','$h
     function getMovies () {
         console.log("getMovies")
 
-        var params = {};
-        params.userName = localStorageModel.getLocalStorage('userEmail');
+        params = {};
+        params.userName = localStorageModel.getLocalStorage('userID');
         params.birthYear = localStorageModel.getLocalStorage('birthYear');
-        $http.post("http://localhost:8000/getMovies", params)
+        $http.post(host + "8000/getMovies", params)
             .then(function (response) {
                 console.log("got POST")
 
@@ -71,6 +76,10 @@ app.controller('quest_controller' ,['localStorageModel','$scope','$location','$h
 
     $scope.nextEval = function (isValid) {
 
+      
+
+
+
         if ($scope.currentQuest>2)
         {
             for (index=0 ; index< $scope.moviesNames.length ; index++)
@@ -90,10 +99,6 @@ app.controller('quest_controller' ,['localStorageModel','$scope','$location','$h
             $scope.error=false;
 
 
-
-
-
-
         var elmnt = document.getElementById("questLeft");
         elmnt.scrollTop = 0; // For Safari
         elmnt.scrollTop = 0; // For Chrome, Firefox, IE and Opera
@@ -103,8 +108,9 @@ app.controller('quest_controller' ,['localStorageModel','$scope','$location','$h
 
 
         var d = new Date().toUTCString();
-        var params = {'userID': localStorageModel.getLocalStorage('userEmail'), 'TimeStamp':d, 'QustionID': "TODO!!!", event: 'click',
-            value: 'next evaluation' }
+        params = {'userID': localStorageModel.getLocalStorage('userID'), 'TimeStamp':d, 'QustionID': "TODO!!!", event: 'click',
+            value: 'next evaluation', "currentQuest" :$scope.currentQuest 
+        }
 
         // for(expl in  $scope.explain)
         //  //   console.log('user_explanation_' +$scope.moviesNames[expl] +":"+$scope.explain[expl])
@@ -113,7 +119,7 @@ app.controller('quest_controller' ,['localStorageModel','$scope','$location','$h
 
 
         console.log(params);
-        $http.post("http://localhost:8000/saveData",params)
+        $http.post(host + "8000/saveData",params)
             .catch(function (error) {
                 console.log(error);
             });
@@ -145,7 +151,7 @@ app.controller('quest_controller' ,['localStorageModel','$scope','$location','$h
             $scope.questForm['explainFieldForm_' + index].explain_mov.$setValidity('required', req);
 
         $event.check=check
-        $scope.saveClick($event, $scope.moviesNames[elem.$id])
+        $scope.saveClick($event, $scope.moviesNames[index])
 
     }
 
@@ -154,7 +160,7 @@ app.controller('quest_controller' ,['localStorageModel','$scope','$location','$h
 
         console.log($event)
         var d = new Date().toUTCString();
-        var params = {'userID': localStorageModel.getLocalStorage('userEmail'), 'TimeStamp':d, 'QustionID': "TODO!!!" , 'ElementName' : `${$event.target.name} | ${movie_name}` ,'event':$event.type};
+        params = {'userID': localStorageModel.getLocalStorage('userID'), 'TimeStamp':d, 'QustionID': "TODO!!!" , 'ElementName' : `${$event.target.name} | ${movie_name}` ,'event':$event.type};
 
         if($event.target.type === 'checkbox') {
             params['value'] = $event.check;
@@ -165,7 +171,8 @@ app.controller('quest_controller' ,['localStorageModel','$scope','$location','$h
 
 
         console.log(params);
-       $http.post("http://localhost:8000/saveData",params)
+        if (params)
+       $http.post(host + "8000/saveData",params)
             .catch(function (error) {
                 console.log(error);
             });

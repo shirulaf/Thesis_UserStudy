@@ -1,9 +1,12 @@
 app.controller('home_controller' ,['localStorageModel','$scope','$location','$rootScope', '$document','$http','$window', function (localStorageModel,$scope, $location,$rootScope,$document,$http,$window) {
 
+    $window.localStorage.clear();
+
     $scope.detailsForm = {};
     console.log("Iinitiate movies status");
     localStorageModel.addLocalStorage('moviesExists', false);
 
+    var host= "http://79.176.138.52:"
 
     $scope.DF = {};
     $scope.birthYear = [];
@@ -62,7 +65,7 @@ app.controller('home_controller' ,['localStorageModel','$scope','$location','$ro
 
 
 
-    $scope.email = {
+    $scope.userID = {
         text: ''
     };
     $scope.error = false;
@@ -75,12 +78,12 @@ app.controller('home_controller' ,['localStorageModel','$scope','$location','$ro
     $scope.defeaultMail = function () {
         if ($scope.NotStudent) {
             random = new Date().getTime();
-            $scope.DF.email = random + ""
-            console.log($scope.DF.email)
+            $scope.DF.userID = random + ""
+            console.log($scope.DF.userID)
 
         }
         else
-            $scope.DF.email = ""
+            $scope.DF.userID = ""
 
     }
 
@@ -115,15 +118,18 @@ app.controller('home_controller' ,['localStorageModel','$scope','$location','$ro
             if ($scope.DF.Gen[g]===false)
                 delete($scope.DF.Gen[g])
 
-        localStorageModel.addLocalStorage('userEmail',$scope.DF.email);
+        localStorageModel.addLocalStorage('userID',$scope.DF.userID);
+
+        console.log("DF")
+        console.log($scope.DF)
 
         $scope.detailsForm["creationTS"]=new Date().toUTCString();
 
-        $http.post("http://132.72.64.204:8000/submitUserDetails", $scope.DF)
+        $http.post(host + "8000/submitUserDetails", $scope.DF)
             .then(function (response) {
                 console.log("got POST")
                 console.log(response.data)
-movies=response.data;
+                movies=response.data;
                 localStorageModel.updateLocalStorage('moviesExists', true);
                 localStorageModel.addLocalStorage('moviesData',movies);
             }).then(function () {

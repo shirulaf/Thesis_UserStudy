@@ -21,7 +21,7 @@
 
           <p class="" style="font-weight: 800; direction: rtl; font-family: 'Book Antiqua'; font-size: 135%; ">{{$index+1}}. הסרט: {{mov}}</p>
 
-            <div ng-hide="myCheck" class="row" >
+            <div  class="row" >
 
               <div class="col-md-4" >
                 <a href="{{movieTMDsrc}}{{moviesLinks[$index]}}" target="_blank">
@@ -30,26 +30,26 @@
               </div>
 
                 <div class="col-md-8" dir="rtl">
-                  <ng-form name="ratingFieldForm_{{$index}}" ng-model="ratingFieldForm" novalidate>
+                  <ng-form name="ratingFieldForm_{{$index}}" ng-model="ratingFieldForm" novalidate >
                   <span ng-show="ratingFieldForm_{{$index}}.mov_rating1.$invalid && ratingFieldForm_{{$index}}.mov_rating2.$invalid && ratingFieldForm_{{$index}}.mov_rating3.$invalid && ratingFieldForm_{{$index}}.mov_rating4.$invalid && ratingFieldForm_{{$index}}.mov_rating5.$invalid && error" style="color: #ffa07a">&emsp;אנא דרג את ההמלצה <br></span>
 
-                  <input type="radio" id="mov_rating1" name="mov_rating1" value="1" ng-model="mov_rating"  ng-click="saveClick($event,moviesNames[$index])" required>
+                  <input type="radio" id="mov_rating1" name="mov_rating1" value="1" ng-disabled="myCheck" ng-model="mov_rating"  ng-click="saveClick($event,moviesNames[$index])" required>
                   <label class="pointer" for="mov_rating1">1 (המלצה גרועה) </label> 
                   <br>
-                  <input type="radio" id="mov_rating2" name="mov_rating2" value="2"  ng-model="mov_rating"  ng-click="saveClick($event,moviesNames[$index])" required> 
+                  <input type="radio" id="mov_rating2" name="mov_rating2" value="2" ng-disabled="myCheck"  ng-model="mov_rating"  ng-click="saveClick($event,moviesNames[$index])" required> 
                   <label class="pointer" for="mov_rating2">2 </label> 
 
                   <br>
-                  <input type="radio" id="mov_rating3" name="mov_rating3" value="3"  ng-model="mov_rating"  ng-click="saveClick($event,moviesNames[$index])" required>
+                  <input type="radio" id="mov_rating3" name="mov_rating3" value="3" ng-disabled="myCheck" ng-model="mov_rating"  ng-click="saveClick($event,moviesNames[$index])" required>
                   <label class="pointer" for="mov_rating3">3 </label> 
 
                   <br>
-                  <input type="radio" id="mov_rating4" name="mov_rating4" value="4"  ng-model="mov_rating"  ng-click="saveClick($event,moviesNames[$index])" required>
+                  <input type="radio" id="mov_rating4" name="mov_rating4" value="4" ng-disabled="myCheck" ng-model="mov_rating"  ng-click="saveClick($event,moviesNames[$index])" required>
                   <label class="pointer" for="mov_rating4">4 </label> 
 
 
                   <br>
-                  <input type="radio" id="mov_rating5" name="mov_rating5" value="5"  ng-model="mov_rating"  ng-click="saveClick($event,moviesNames[$index])" required>
+                  <input type="radio" id="mov_rating5" name="mov_rating5" value="5" ng-disabled="myCheck" ng-model="mov_rating"  ng-click="saveClick($event,moviesNames[$index])" required>
                   <label class="pointer" for="mov_rating5">5 (המלצה מצויינת) </label>  
                   </ng-form>
                   <br>
@@ -62,7 +62,7 @@
                     בחירתך, הנימוק חובה רק בשני המקרים לניתוח הראשונים (:</span>
                     <br>&emsp;
                     <ng-form name="explainFieldForm_{{$index}}" ng-model="explainFieldForm" novalidate>
-                    <input  type="text" style=" color:black" size="60" name="explain_mov" placeholder="כתוב את נימוקך כאן"   ng-click="saveClick($event,moviesNames[$index])" ng-blur="saveClick($event, $index)"  ng-model="explain_mov" required>
+                    <input  type="text" style=" color:black" size="60" name="explain_mov" ng-disabled="myCheck" placeholder="כתוב את נימוקך כאן"   ng-click="saveClick($event,moviesNames[$index])" ng-blur="saveClick($event, $index)"  ng-model="explain_mov" required>
 
                     </ng-form>
 
@@ -80,73 +80,6 @@
         </div>
       </b>
 
-
-
-
-
-        <!--<li style="  padding-bottom: 30px; "> <b>
-          <p class="">הסרט {{rec_1}}</p> </b>
-          <input type="checkbox" id="myCheck" ng-model="myCheck.know1">
-          אני לא מכיר מספיק טוב את תוכן הסרט על מנת להעריך את ההמלצה לגביו
-          <div ng-hide="myCheck.know1">
-            <br>
-            <input type="radio" name="rating1" value="1"  ng-click="saveClick($event)"> 1 (המלצה גרועה)
-            <br>
-            <input type="radio" name="rating1" value="2"   ng-click="saveClick($event)"> 2
-            <br>
-            <input type="radio" name="rating1" value="3"   ng-click="saveClick($event)"> 3
-            <br>
-            <input type="radio" name="rating1" value="4"   ng-click="saveClick($event)"> 4
-            <br>
-            <input type="radio" name="rating1" value="5"   ng-click="saveClick($event)"> 5 (המלצה מצויינת)
-            <br>
-            <br> ההסבר לבחירתך:
-            <br>
-            <input type="text" size="60" name="explain1" placeholder="נימוק"  ng-click="saveClick($event)">
-          </div>
-        </li>
-        <li style="    padding-bottom: 30px; ">
-          <p class=""><b>הסרט {{rec_2}}</b></p>
-          <input type="checkbox" id="myCheck" ng-model="myCheck.know2">
-          אני לא מכיר מספיק טוב את תוכן הסרט על מנת להעריך את ההמלצה לגביו
-          <div ng-hide="myCheck.know2">
-            <br>
-            <input type="radio" name="rating2" value="1"  ng-click="saveClick($event)"> 1 (המלצה גרועה)
-            <br>
-            <input type="radio" name="rating2" value="2"  ng-click="saveClick($event)"> 2
-            <br>
-            <input type="radio" name="rating2" value="3"  ng-click="saveClick($event)"> 3
-            <br>
-            <input type="radio" name="rating2" value="4"  ng-click="saveClick($event)"> 4
-            <br>
-            <input type="radio" name="rating2" value="5"  ng-click="saveClick($event)"> 5 (המלצה מצויינת)
-            <br>
-            <br> ההסבר לבחירתך:
-            <br>
-            <input type="text" size="60" name="explain2" placeholder="נימוק"  ng-click="saveClick($event)">
-          </div>
-        </li>
-        <li style="    padding-bottom: 30px; ">
-          <p class=""><b>הסרט {{rec_3}}</b></p>
-          <input type="checkbox" id="myCheck" ng-model="myCheck.know3">
-          אני לא מכיר מספיק טוב את תוכן הסרט על מנת להעריך את ההמלצה לגביו
-          <div ng-hide="myCheck.know3">
-            <br>
-            <input type="radio" name="rating3" value="1"  ng-click="saveClick($event)"> 1 (המלצה גרועה)
-            <br>
-            <input type="radio" name="rating3" value="2"  ng-click="saveClick($event)"> 2
-            <br>
-            <input type="radio" name="rating3" value="3"  ng-click="saveClick($event)"> 3
-            <br>
-            <input type="radio" name="rating3" value="4"  ng-click="saveClick($event)"> 4
-            <br>
-            <input type="radio" name="rating3" value="5"  ng-click="saveClick($event)"> 5 (המלצה מצויינת)
-            <br>
-            <br> ההסבר לבחירתך:
-            <br>
-            <input type="text" size="60" name="explain3" placeholder="נימוק"  ng-click="saveClick($event)">
-          </div>
-        </li>-->
 
 
     <div style="text-align: center; color: white; font-size: medium"><b> שאלון :         {{currentQuest}}/{{QuestAmount}}

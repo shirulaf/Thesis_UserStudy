@@ -13,6 +13,8 @@ var router = express.Router();
 
 var fs = require('fs');
 var MyData = [];
+var directory= 'C:/app/US_res/'
+
 
 obj.from.path('../data.csv').to.array(function (data) {
     //console.log(data);
@@ -37,18 +39,13 @@ app.use(express.static('server_components'));
 
 //	console.log (req.body);
 
-app.post('/form', function (req, res) {
-
-    console.log(req.body);
-
-});
-
 
 app.post('/submitUserDetails', function (req, res) {
     console.log("submitUserDetails")
 
-    var fileName= req.body.email;
-    var directory= 'C:/Users/shirfr/Documents/us_res/'
+    console.log(req.body)
+
+    var fileName= req.body.userID;
 
     var writeData=  JSON.stringify(req.body) + '\r\n';
 
@@ -74,8 +71,8 @@ app.post('/submitUserDetails', function (req, res) {
 
 
 app.post('/saveData', function (req, res) {
-    console.log("post")
-    console.log(req.body)
+    console.log("saveData")
+    //console.log(req.body)
     var fileName=req.body.userID;
 
     var data = "";
@@ -84,15 +81,17 @@ app.post('/saveData', function (req, res) {
         data += det +":" +req.body[det] +"," ;
     data+="\r\n";
 
-    console.log(data)
+    //console.log(data)
 
     try {
-        fs.appendFile(fileName + '.txt', JSON.stringify(data), function (err) {
+        fs.appendFile(directory+fileName + '.txt',data, function (err) {
             if (err) throw err;
-            console.log('Updated!');
+            res.sendStatus(200);
+            //console.log('Updated!');
         })
     }
     catch(error) {
+        res.sendStatus(401)
         console.log(error);
     };
 });
@@ -123,18 +122,6 @@ function MyCSV(watched, watched_tmdb, watched_poster, chose, chose_tmdb, chose_p
 
 
 };
-
-
-
-
-/*fs.appendFile('mynewfile1.txt', JSON.stringify(req.body) , function (err) {
- if (err) throw err;
- console.log('Updated!');
- });
- res.send(200);*/
-
-
-
 
 
 

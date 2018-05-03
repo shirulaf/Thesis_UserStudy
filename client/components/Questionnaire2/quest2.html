@@ -6,7 +6,7 @@
     <b>
       <p style="border: groove; border-color: #d9e7ee">
         הערך את טיב ההמלצה עבור כל אחד מהסרטים, המופיעים במקרה לניתוח, בחלקו הימני של המסך.
-        <br> התחשב בהערכתך בסרט בו צפה המשתמש בעבר וכן בסרט בו בחר המשתמש לצפות למרות ההמלצות.
+        <br> בו בחר המשתמש לצפות למרות ההמלצות.
       </p>
       <p>
         <h3>מה דעתך על איכות ההמלצה עבור כל אחד מהסרטים הבאים: </h3>
@@ -59,33 +59,32 @@
                 <label class="pointer" for="mov_rating_{{$index}}_5">5 (המלצה מצויינת) </label>
                 <br>
                 <br>
-                <div ng-show="currentQuest>2">
-                <div style="font-size: 20px; margin: 2px"> מה הוביל אותך לדירוג ההמלצה?
-                </div>
-                <span ng-show="(error  )&& ratingFieldForm_{{$index}}.mov_guide_{{$index}}_watched.$invalid && ratingFieldForm_{{$index}}.mov_guide_{{$index}}_chose.$invalid && ratingFieldForm_{{$index}}.mov_guide_{{$index}}_both.$invalid"
+                <!-- <div style="font-size: 20px; margin: 2px"> מה הוביל אותך לדירוג ההמלצה?
+                </div> -->
+                <!-- <span ng-show="(error  )&& ratingFieldForm_{{$index}}.mov_guide_{{$index}}_watched.$invalid && ratingFieldForm_{{$index}}.mov_guide_{{$index}}_chose.$invalid && ratingFieldForm_{{$index}}.mov_guide_{{$index}}_both.$invalid"
                   style="color: #ffa07a;  ">
                   &emsp;אנא ציין מה הוביל אותך לדירוג ההמלצה
                   <br>
                 </span>
                 <input type="radio" id="mov_guide_{{$index}}_watched" name="mov_guide_{{$index}}_watched" value="watched" ng-disabled="myCheck"
-                  ng-model="mov_guide" ng-click="saveClick($event,moviesNames[$index],moviesLinks[$index])" required>
+                  ng-model="mov_guide" ng-click="saveClick($event,moviesNames[$index])" required>
                 <label class="pointer" for="mov_guide_{{$index}}_watched">הסרט בו המשתמש
                   <b>צפה בעבר</b>
                 </label>
                 <br>
                 <input type="radio" id="mov_guide_{{$index}}_chose" name="mov_guide_{{$index}}_chose" value="chose" ng-disabled="myCheck"
-                  ng-model="mov_guide" ng-click="saveClick($event,moviesNames[$index],moviesLinks[$index])" required>
+                  ng-model="mov_guide" ng-click="saveClick($event,moviesNames[$index])" required>
                 <label class="pointer" for="mov_guide_{{$index}}_chose">הסרט בו המשתמש
                   <b>בחר לצפות</b>
                 </label>
                 <br>
                 <input type="radio" id="mov_guide_{{$index}}_both" name="mov_guide_{{$index}}_both" value="both" ng-disabled="myCheck" ng-model="mov_guide"
-                  ng-click="saveClick($event,moviesNames[$index],moviesLinks[$index])" required>
+                  ng-click="saveClick($event,moviesNames[$index])" required>
                 <label class="pointer" for="mov_guide_{{$index}}_both">הסרט בו המשתמש צפה בעבר
                   <b>וגם</b> הסרט בו בחר לצפות</label>
                 <br>
-                <br>
-              </div>
+
+                <br> -->
               </div>
             </ng-form>
             <ng-form name="explainFieldForm_{{$index}}" ng-show=currentQuest<=2 ng-model="explainFieldForm" novalidate>
@@ -95,7 +94,7 @@
                   </div>
                   <span ng-show="(error ||  explainFieldForm_{{$index}}.explain_mov.$touched )&& explainFieldForm_{{$index}}.explain_mov.$invalid "
                     style="color: #ffa07a;  ">
-                    &emsp;&emsp;אנא נמק את בחירתך
+                    &emsp;&emsp;אנא נמק את בחירתך, הנימוק חובה רק בשני המקרים לניתוח הראשונים (:
                     <br>
                   </span>
                   &emsp;
@@ -150,9 +149,9 @@
 
 
   <!--Current movies presented to the user-->
-  <div style="font-size: 105%; color: white; font-weight: bold; margin: 10px; ">
+  <div style="font-size: 105%; color: white; font-weight: bold; margin: 10px; margin-top: 10% ">
 
-    <u> משתמש צפה בעבר ואהב את הסרט:</u>
+    <!-- <u> משתמש צפה בעבר ואהב את הסרט:</u>
     <div style="text-align: center; vertical-align: middle;">
       <br>
       <a class="thumb" href="{{movieTMDsrc}}{{watched_tmdb}}" target="_blank">
@@ -163,7 +162,7 @@
           <img ng-src={{posterSRC}}{{watched_poster}} style="z-index: 100;" width="70%" alt="">
         </span>
       </a>
-    </div>
+    </div> -->
 
 
     <br>

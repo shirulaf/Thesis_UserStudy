@@ -94,7 +94,7 @@
                 <ol>
 
                     <li>
-                        <label class="text-right">מה לדעתך יעיד עבור המלצה שניתנה לך האם היא טובה או לא?      </label><span ng-show="error && detailsForm.movies_plessure.$invalid " style="color: #ffa07a">&emsp; סמנו את האופציה המתאימה</span>
+                        <label class="text-right">עבור כל המלצה שהמערכת מציעה לך, כיצד תחליט אם ההצעה טובה?      </label>
                         <br>
                         <textarea ng-blur="saveClick($event, answers.Q1)" ng-click="saveClick($event)" class="input_textarea" name="Q1" ng-model="answers.Q1" rows="3" cols="100"
                                   required></textarea>
@@ -102,7 +102,7 @@
                     </li>
                     <br>
                     <li>
-                        <label class="text-right">בהנחה שניתנו לך מספר המלצות, מה השיקולים שלך <U>לבחור</U> בהמלצה?     </label>
+                        <label class="text-right">בהנחה שהמערכת הציעה לך מספר המלצות טובות, מה השיקולים שלך <U>לבחור</U> בהמלצה?     </label>
                         <span ng-show="error && detailsForm.movies_plessure.$invalid " style="color: #ffa07a">&emsp; סמנו את האופציה המתאימה</span>
                         <br>
                         <textarea class="input_textarea" ng-blur="saveClick($event, answers.Q2)" ng-click="saveClick($event)" name="Q2" ng-model="answers.Q2" rows="3" cols="100"
@@ -111,7 +111,7 @@
                     </li>
                     <br>
                     <li>
-                        <label class="text-right">בהנחה שניתנו לך מספר המלצות, מה השיקולים שלך <U>לפסול</U> המלצה?     </label>
+                        <label class="text-right">בהנחה שהמערכת הציעה לך מספר המלצות, מה השיקולים שלך <U>לפסול</U> המלצה?     </label>
                         <span ng-show="error && detailsForm.movies_plessure.$invalid " style="color: #ffa07a">&emsp; סמנו את האופציה המתאימה</span>
                         <br>
                         <textarea class="input_textarea" ng-blur="saveClick($event, answers.Q3)" ng-click="saveClick($event)" name="Q3" ng-model="answers.Q3" rows="3" cols="100"

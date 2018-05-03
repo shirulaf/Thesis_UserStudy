@@ -13,20 +13,34 @@ var router = express.Router();
 
 var fs = require('fs');
 var MyData = [];
-var directory = 'C:/app/US_res/'
+var directory = 'C:/userStudyLogs/'
+var groupsData = [];
+var movies = {}
+
+
 
 
 obj.from.path('../data.csv').to.array(function (data) {
     //console.log(data);
-    for (var index = 0; index < data.length; index++) {
+    for (var index = 0; index < 86; index++) {
 
-        MyData.push(new MyCSV(data[index][0], data[index][1], data[index][2], data[index][3], data[index][4], data[index][5], data[index][6], data[index][7], data[index][8], data[index][9], data[index][10], data[index][11], data[index][12], data[index][13], data[index][14], data[index][15], data[index][16], data[index][17], data[index][18]));
+        MyData.push(new MyCSV(data[index][0], data[index][1], data[index][2], data[index][3], data[index][4], data[index][5], data[index][6], data[index][7], data[index][8], data[index][9], data[index][10], data[index][11], data[index][12], data[index][13], data[index][14], data[index][15], data[index][16], data[index][17], data[index][18], data[index][19], data[index][20]));
+        key = String(MyData[index]["questID"])
+        movies[key] = (MyData[index])
+
     }
-
     // console.log(MyData)
 });
 
+obj = csv();
+obj.from.path('../randomMovies.csv').to.array(function (data2) {
+    //console.log(data);
+    for (var index = 0; index < data2.length; index++) {
 
+        groupsData.push(new MyCSV2(data2[index][0], data2[index][1], data2[index][2], data2[index][3], data2[index][4], data2[index][5], data2[index][6], data2[index][7], data2[index][8], data2[index][9], data2[index][10], data2[index][11], data2[index][12]));
+    }
+
+});
 
 app.use(express.static('server_components'));
 
@@ -43,12 +57,14 @@ app.use(express.static('server_components'));
 app.post('/submitUserDetails', function (req, res) {
 
 
-    console.log("submitUserDetails")
+    //  console.log("submitUserDetails")
 
 
     var fileName = req.body.userID;
 
     var writeData = JSON.stringify(req.body) + '\r\n';
+
+
 
     //creates user file and writes his details
     fs.appendFile(directory + fileName + '.txt', writeData, function (err) {
@@ -58,9 +74,17 @@ app.post('/submitUserDetails', function (req, res) {
                 throw (err)
 
             else {
-                console.log('Updated!');
+                //  console.log('Updated!');
 
+                let gr = Math.floor((Math.random() * 199));
 
+                MyData = []
+                let movID;
+                for (let mov in groupsData[gr]) {
+                    if (mov == "groupID") continue;
+                    movID = groupsData[gr][mov];
+                    MyData.push(movies[movID]);
+                }
 
 
                 //console.log("my data res:" + JSON.stringify(MyData));
@@ -96,11 +120,10 @@ app.post('/saveData', function (req, res) {
     //console.log(data)
 
     fs.appendFile(directory + fileName + '.txt', data, function (err) {
-        try 
-        {
+        try {
             if (err) throw err;
             res.sendStatus(200);
-            console.log("saveData")
+            // console.log("saveData")
 
         }
         catch (error) {
@@ -111,7 +134,9 @@ app.post('/saveData', function (req, res) {
 });
 
 
-function MyCSV(watched, watched_tmdb, watched_poster, chose, chose_tmdb, chose_poster, rec_1, rec_1_tmdb, rec_1_poster, rec_2, rec_2_tmdb, rec_2_poster, rec_3, rec_3_tmdb, rec_3_poster, rec_4, rec_4_tmdb, rec_4_poster) {
+function MyCSV(groupID, questID, watched, watched_tmdb, watched_poster, chose, chose_tmdb, chose_poster, rec_1, rec_1_tmdb, rec_1_poster, rec_2, rec_2_tmdb, rec_2_poster, rec_3, rec_3_tmdb, rec_3_poster, rec_4, rec_4_tmdb, rec_4_poster) {
+    this.groupID = groupID;
+    this.questID = questID;
     this.watched = watched;
     this.chose = chose;
     this.rec_1 = rec_1;
@@ -132,13 +157,27 @@ function MyCSV(watched, watched_tmdb, watched_poster, chose, chose_tmdb, chose_p
     this.rec_4_poster = rec_4_poster;
 
 
+};
+
+
+function MyCSV2(groupID, questID1, questID2, questID3, questID4, questID5, questID6, questID7, questID8, questID9, questID10, questID11, questID12) {
+    this.groupID = groupID;
+    this.questID1 = questID1;
+    this.questID2 = questID2;
+    this.questID3 = questID3;
+    this.questID4 = questID4;
+    this.questID5 = questID5;
+    this.questID6 = questID6;
+    this.questID7 = questID7;
+    this.questID8 = questID8;
+    this.questID9 = questID9;
+    this.questID10 = questID10;
+    this.questID11 = questID11;
+    this.questID12 = questID12;
 
 
 
 };
-
-
-
 //-------------------------------------------------------------------
 //-------------------------------------------------------------------
 

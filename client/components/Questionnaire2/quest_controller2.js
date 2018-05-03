@@ -1,12 +1,13 @@
-app.controller('quest_controller', ['localStorageModel', '$scope', '$location', '$http', '$window', 'moviesExists', function (localStorageModel, $scope, $location, $http, $window, UserService, moviesExists) {
+app.controller('quest_controller2', ['localStorageModel', '$scope', '$location', '$http', '$window', 'moviesExists', function (localStorageModel, $scope, $location, $http, $window, UserService, moviesExists) {
     var i = 0;
     var movies;
-    var userHistory=[]
     var dataToSave = []
+    var userHistory = []
 
     var host = "http://132.72.23.161:"
 
     var directory = 'C:/def/'
+
 
 
     $scope.moviesPosters = [];
@@ -86,13 +87,6 @@ app.controller('quest_controller', ['localStorageModel', '$scope', '$location', 
                 $scope.questForm['explainFieldForm_' + index].explain_mov.$setValidity('required', true);
 
         }
-        else {
-            for (index = 0; index < $scope.moviesNames.length; index++) {
-                $scope.questForm['ratingFieldForm_' + index]["mov_guide_" + index + "_watched"].$setValidity('required', true);
-                $scope.questForm['ratingFieldForm_' + index]["mov_guide_" + index + "_chose"].$setValidity('required', true);
-                $scope.questForm['ratingFieldForm_' + index]["mov_guide_" + index + "_both"].$setValidity('required', true);
-            }
-        }
 
         isValid = ($scope.questForm.$valid)
 
@@ -123,8 +117,7 @@ app.controller('quest_controller', ['localStorageModel', '$scope', '$location', 
             value: 'next evaluation', "currentQuest": $scope.currentQuest, 'data': dataToSave
         }
 
-
-userHistory.push(JSON.stringify(params,localStorageModel.getLocalStorage('userID')))
+        userHistory.push(JSON.stringify(params, localStorageModel.getLocalStorage('userID')))
 
         // console.log(params);
         $http.post(host + "8000/saveData", params)
@@ -137,17 +130,16 @@ userHistory.push(JSON.stringify(params,localStorageModel.getLocalStorage('userID
 
         i++;
         if (i < movies.length) {
-
             //setMoviesElements($scope,movies,i);
             updateMoviesInfo(i);
 
         }
-        else
-                {
-                    saveTextAsFile(userHistory);
+        else {
+            saveTextAsFile(userHistory);
 
-                $location.path('/Final')
-            }
+            $location.path('/Final')
+        }
+
 
     }
 
@@ -163,13 +155,14 @@ userHistory.push(JSON.stringify(params,localStorageModel.getLocalStorage('userID
         $scope.questForm['ratingFieldForm_' + index]["mov_rating_" + index + "_4"].$setValidity('required', req);
         $scope.questForm['ratingFieldForm_' + index]["mov_rating_" + index + "_5"].$setValidity('required', req);
         $scope.questForm['explainFieldForm_' + index]["explain_mov"].$setValidity('required', req);
-        $scope.questForm['ratingFieldForm_' + index]["mov_guide_" + index + "_watched"].$setValidity('required', req);
-        $scope.questForm['ratingFieldForm_' + index]["mov_guide_" + index + "_chose"].$setValidity('required', req);
-        $scope.questForm['ratingFieldForm_' + index]["mov_guide_" + index + "_both"].$setValidity('required', req);
+        // $scope.questForm['ratingFieldForm_' + index]["mov_guide_"+ index + "_watched"].$setValidity('required', req);
+        // $scope.questForm['ratingFieldForm_' + index]["mov_guide_"+ index + "_chose"].$setValidity('required', req);
+        // $scope.questForm['ratingFieldForm_' + index]["mov_guide_"+ index + "_both"].$setValidity('required', req);
 
 
         $event.check = check
         $scope.saveClick($event, $scope.moviesNames[index], $scope.moviesLinks[index])
+
 
     }
 
@@ -274,31 +267,33 @@ userHistory.push(JSON.stringify(params,localStorageModel.getLocalStorage('userID
 
 
     }
-function saveTextAsFile(params)
-{
-    fileName=localStorageModel.getLocalStorage('userID')+"quest";
-    var textToSave = params;
-    var textToSaveAsBlob = new Blob([textToSave], {type:"text/plain"});
-    var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
-    var fileNameToSaveAs =fileName
- 
-    var downloadLink = document.createElement("a");
-    downloadLink.download = fileNameToSaveAs;
-    downloadLink.innerHTML = "Download File";
-    downloadLink.href = textToSaveAsURL;
-    downloadLink.onclick = destroyClickedElement;
-    downloadLink.style.display = "none";
-    document.body.appendChild(downloadLink);
- 
-    downloadLink.click();
-}
-function destroyClickedElement(event)
-{
-    document.body.removeChild(event.target);
-}
 
 
 
+    function saveTextAsFile(params)
+    {
+        fileName=localStorageModel.getLocalStorage('userID')+"quest";
+        var textToSave = params;
+        var textToSaveAsBlob = new Blob([textToSave], {type:"text/plain"});
+        var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
+        var fileNameToSaveAs =fileName
+     
+        var downloadLink = document.createElement("a");
+        downloadLink.download = fileNameToSaveAs;
+        downloadLink.innerHTML = "Download File";
+        downloadLink.href = textToSaveAsURL;
+        downloadLink.onclick = destroyClickedElement;
+        downloadLink.style.display = "none";
+        document.body.appendChild(downloadLink);
+     
+        downloadLink.click();
+    }
+    function destroyClickedElement(event)
+    {
+        document.body.removeChild(event.target);
+    }
+    
+    
 
 }]);
 
@@ -325,8 +320,6 @@ function setMoviesElements($scope, movies, i, mix1, mix2, mix3) {
     for (expl in $scope.explain)
         $scope.explain[expl] = "";
 }
-
-
 
 
 

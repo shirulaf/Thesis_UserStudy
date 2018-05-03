@@ -1,0 +1,208 @@
+<div class="col-md-6" id="questRight" style="direction: ltr; font-size: large ;  height: 100%;
+overflow-y: auto;   overflow-x: hidden;background-color: #6b6b6e">
+
+
+
+
+
+  <!--Current movies presented to the user-->
+  <div style="font-size: 105%; color: white; font-weight: bold; margin: 10px; ">
+
+    <u>  A user has watched and liked the movie:</u>
+    <div style="text-align: center; vertical-align: middle;">
+      <br>
+      <a class="thumb" href="{{movieTMDsrc}}{{watched_tmdb}}" target="_blank">
+        <img class="poster" ng-src={{posterSRC}}{{watched_poster}}>
+        <span class="test">
+          {{watched}}
+          <br>
+          <img ng-src={{posterSRC}}{{watched_poster}} style="z-index: 100;" width="70%" alt="">
+        </span>
+      </a>
+    </div>
+
+
+    <br> <br>
+
+    <u>The user has received recommendations to watch the following movies:</u>
+    <div id="thumbs" style="font-size: 80%;">
+      <p ng-repeat="mov in moviesNames">
+        <a class="thumb" href="{{movieTMDsrc}}{{moviesLinks[$index]}}" target="_blank">
+          <img class="poster" style="font-size: 50px; z-index: -1; " ng-src="{{posterSRC}}{{moviesPosters[$index]}}">
+
+          <span class="test" style="z-index: 1;">
+            {{mov}}
+            <br>
+            <img ng-src="{{posterSRC}}{{moviesPosters[$index]}}" width="70%" alt="">
+          </span>
+        </a>
+        <span class="stretch"></span>
+      </p>
+
+
+    </div>
+
+    <p class="">
+      <br> <br>
+      <u>The user choose to watch another movie, which was not recommended:</u>
+      <br>
+      <div style="text-align: center; margin-bottom: 30px; vertical-align: middle;font-size: 80%;">
+        <a class="thumb" href="{{movieTMDsrc}}{{chose_tmdb}}" target="_blank">
+          <img ng-src="{{posterSRC}}{{chose_poster}}" class="poster">
+          <span class="test" style="z-index: 1; top:-200px; left: -200px;width: 200% ">
+            {{chose}}
+            <br>
+            <img ng-src="{{posterSRC}}{{chose_poster}}" width="60%" alt="">
+          </span>
+        </a>
+      </div>
+    </p>
+  </div>
+
+
+</div>
+
+<div class="col-md-6" id="questLeft" style="background-color: black;  height: 100%;
+                    overflow: auto;">
+  <!--Questionnaire instructions-->
+
+  <div class="" style=" text-align: center; direction: ltr; font-size: 120%; background-color: #111114 ; color:#d9e7ee; padding: 5px">
+    <b>
+      <p style="border: groove; border-color: #d9e7ee">
+        Please evaluate the quality of each recommended movie which was shown in the test case  <br>on the left side of the screen. 
+        <br> When evaluating the recommended movies, please take into consideration both the movie that the user has watched and liked, as well as the movie that the user has chosen to watch next. 
+      </p>
+      <p>
+        <h3>What is your opinion on the recommended movies below? </h3>
+      </p>
+    </b>
+  </div>
+  <div>
+    <form name="questForm" ng-model="questForm" style="direction: ltr; font-size: 120%" novalidate>
+      <b>
+        <div ng-style="set_color($index)" style="padding: 10px" ng-repeat="mov in moviesNames">
+
+          <p class="" style="font-weight: 800; direction: ltr; font-family: 'Book Antiqua'; font-size: 135%; ">{{$index+1}}. {{mov}}</p>
+
+          <div class="row">
+
+            
+            <ng-form name="ratingFieldForm_{{$index}}" ng-model="ratingFieldForm" novalidate>
+              <div class="col-md-8" dir="ltr">
+                <span ng-show="ratingFieldForm_{{$index}}.mov_rating_{{$index}}_1.$invalid && ratingFieldForm_{{$index}}.mov_rating_{{$index}}_2.$invalid && ratingFieldForm_{{$index}}.mov_rating_{{$index}}_3.$invalid && ratingFieldForm_{{$index}}.mov_rating_{{$index}}_4.$invalid && ratingFieldForm_{{$index}}.mov_rating_{{$index}}_5.$invalid && error"
+                  style="color: #ffa07a">&emsp;אנא דרג את ההמלצה
+                  <br>
+                </span>
+
+                <input type="radio" id="mov_rating_{{$index}}_1" name="mov_rating_{{$index}}_1" value="1" ng-disabled="myCheck" ng-model="mov_rating"
+                  ng-click="saveClick($event,moviesNames[$index],moviesLinks[$index])" required>
+                <label class="pointer" for="mov_rating_{{$index}}_1">1 (Bad recommendation) </label>
+                <br>
+                <input type="radio" id="mov_rating_{{$index}}_2" name="mov_rating_{{$index}}_2" value="2" ng-disabled="myCheck" ng-model="mov_rating"
+                  ng-click="saveClick($event,moviesNames[$index],moviesLinks[$index])" required>
+                <label class="pointer" for="mov_rating_{{$index}}_2">2 </label>
+
+                <br>
+                <input type="radio" id="mov_rating_{{$index}}_3" name="mov_rating_{{$index}}_3" value="3" ng-disabled="myCheck" ng-model="mov_rating"
+                  ng-click="saveClick($event,moviesNames[$index],moviesLinks[$index])" required>
+                <label class="pointer" for="mov_rating_{{$index}}_3">3 </label>
+
+                <br>
+                <input type="radio" id="mov_rating_{{$index}}_4" name="mov_rating_{{$index}}_4" value="4" ng-disabled="myCheck" ng-model="mov_rating"
+                  ng-click="saveClick($event,moviesNames[$index],moviesLinks[$index])" required>
+                <label class="pointer" for="mov_rating_{{$index}}_4">4 </label>
+
+
+                <br>
+                <input type="radio" id="mov_rating_{{$index}}_5" name="mov_rating_{{$index}}_5" value="5" ng-disabled="myCheck" ng-model="mov_rating"
+                  ng-click="saveClick($event,moviesNames[$index],moviesLinks[$index])" required>
+                <label class="pointer" for="mov_rating_{{$index}}_5">5 (Excellent recommendation) </label>
+                <br>
+                <br>
+                <div ng-show="currentQuest>2">
+                  <div style="font-size: 20px; margin: 2px"> What has led you to that rating?
+                  </div>
+                  <span ng-show="(error  )&& ratingFieldForm_{{$index}}.mov_guide_{{$index}}_watched.$invalid && ratingFieldForm_{{$index}}.mov_guide_{{$index}}_chose.$invalid && ratingFieldForm_{{$index}}.mov_guide_{{$index}}_both.$invalid"
+                    style="color: #ffa07a;  ">
+                    &emsp;אנא ציין מה הוביל אותך לדירוג ההמלצה
+                    <br>
+                  </span>
+                  <input type="radio" id="mov_guide_{{$index}}_watched" name="mov_guide_{{$index}}_watched" value="watched" ng-disabled="myCheck"
+                    ng-model="mov_guide" ng-click="saveClick($event,moviesNames[$index],moviesLinks[$index])" required>
+                  <label class="pointer" for="mov_guide_{{$index}}_watched">The movie the user
+                    <b>watched in the past</b>
+                  </label>
+                  <br>
+                  <input type="radio" id="mov_guide_{{$index}}_chose" name="mov_guide_{{$index}}_chose" value="chose" ng-disabled="myCheck"
+                    ng-model="mov_guide" ng-click="saveClick($event,moviesNames[$index],moviesLinks[$index])" required>
+                  <label class="pointer" for="mov_guide_{{$index}}_chose">The movie the user
+                    <b>chose to watch</b>
+                  </label>
+                  <br>
+                  <input type="radio" id="mov_guide_{{$index}}_both" name="mov_guide_{{$index}}_both" value="both" ng-disabled="myCheck" ng-model="mov_guide"
+                    ng-click="saveClick($event,moviesNames[$index],moviesLinks[$index])" required>
+                  <label class="pointer" for="mov_guide_{{$index}}_both">The movie the user
+                    <b>watched in the past</b> and
+                    <b> chose to watch</b></label>
+                    <br>
+                    <br>
+                </div>
+              </div>
+            </ng-form>
+            <div class="col-md-4">
+              <a href="{{movieTMDsrc}}{{moviesLinks[$index]}}" target="_blank">
+                <img class="imgBox" title="לחץ כדי לעבור לאתר הסרט" style="margin-top: 7px" ng-src={{posterSRC}}{{moviesPosters[$index]}}>
+              </a>
+            </div>
+            <ng-form name="explainFieldForm_{{$index}}" ng-show=currentQuest<=2 ng-model="explainFieldForm" novalidate>
+              <div class="row" style="padding: 10px">
+                <p>
+                  <div style="font-size: 17px;"> &emsp;The reason for your choice:
+                  </div>
+                  <span ng-show="(error ||  explainFieldForm_{{$index}}.explain_mov.$touched )&& explainFieldForm_{{$index}}.explain_mov.$invalid "
+                    style="color: #ffa07a;  ">
+                    &emsp;&emsp;אנא נמק את בחירתך
+                    <br>
+                  </span>
+                  &emsp;
+                  <input type="text" style=" color:black" size="60" name="explain_mov" ng-disabled="myCheck" placeholder="Write your explanation here"
+                    ng-click="saveClick($event,moviesNames[$index],moviesLinks[$index])" ng-blur="saveClick($event, moviesNames[$index],moviesLinks[$index])"
+                    ng-model="explain_mov" required>
+                </p>
+              </div>
+
+
+            </ng-form>
+
+
+
+
+          </div>&emsp;
+          <input type="checkbox" id={{$index}} name="checkbox-familiar_{{$index}}" ng-model="myCheck" ng-click="checkedClick($event, this, $index, myCheck)">
+          <label class="pointer" for={{$index}}> This movie is too different than the movies that I typically watch, and I cannot form an opinion about it</label>
+
+
+          </p>
+        </div>
+  </div>
+  </b>
+
+
+
+  <div style="text-align: center; color: white; font-size: medium">
+    <b> שאלון : {{currentQuest}}/{{QuestAmount}}
+    </b> &emsp;
+    <button type="submit" style="color: white" ng-hide="Last" ng-click="nextEval()" novalidate>
+      <b>עבור להערכה הבאה</b>
+    </button>
+    <button type="submit" style="color: white" ng-show="Last" ng-click="nextEval() " novalidate>
+      <b>לסיום הניסוי</b>
+    </button>
+
+
+
+    <br>
+  </div>
+  </form>
+</div>
+</div>

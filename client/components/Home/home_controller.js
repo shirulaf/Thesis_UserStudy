@@ -6,11 +6,11 @@ app.controller('home_controller' ,['localStorageModel','$scope','$location','$ro
     console.log("Iinitiate movies status");
     localStorageModel.addLocalStorage('moviesExists', false);
 
-    var host= "http://79.176.138.52:"
+    var host= "http://132.72.23.161:"
 
     $scope.DF = {};
     $scope.birthYear = [];
-    for (var i = 1950; i < 2000; i++)
+    for (var i = 1950; i < 2002; i++)
         $scope.birthYear.push(i);
 
     $scope.faculties = ['הפקולטה למדעי הבריאות',
@@ -137,7 +137,7 @@ app.controller('home_controller' ,['localStorageModel','$scope','$location','$ro
                 localStorageModel.addLocalStorage('moviesData',movies);
             }).then(function () {
 
-            $location.path('/quest')
+            $location.path('/quest.en')
 
             })
             .catch(function (error) {

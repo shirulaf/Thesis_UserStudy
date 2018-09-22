@@ -1,0 +1,1 @@
+{"Gen":{"Children":true},"userID":"1537653885352_1537653901575","gender":"X","Occupation":"wage","movies_plessure":"5","movies_watchplace":"home/computer","movies_freaq_1year":"min10","movies_freaq_month":"5-10","fav_mov1":"1","fav_mov2":"2","fav_mov3":"3","birthYear":1952}

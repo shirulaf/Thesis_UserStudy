@@ -1,14 +1,11 @@
 
-let app = angular.module('myApp', ['ngRoute', 'LocalStorageModule','ui.bootstrap' ]);
+let app = angular.module('Recsys_UserStudy_Questionnaire', ['ngRoute', 'LocalStorageModule','ui.bootstrap' ]);
 
-app.value('moviesExists',false);
+// app.value('moviesExists',false);
 //-------------------------------------------------------------------------------------------------------------------
 app.config(function (localStorageServiceProvider) {
-    localStorageServiceProvider.setPrefix('node_angular_App');
+    localStorageServiceProvider.setPrefix('Recsys_UserStudy_Questionnaire');
 });
-//-------------------------------------------------------------------------------------------------------------------
-
-
 
 //-------------------------------------------------------------------------------------------------------------------
 app.config(['$locationProvider', function($locationProvider) {
@@ -25,11 +22,8 @@ app.config( ['$routeProvider', function($routeProvider) {
             templateUrl : "./components/Questionnaire/quest.html",
             controller : "quest_controller as questCtrl"
         })
-        .when("/quest2", {
-            templateUrl : "./components/Questionnaire2/quest2.html",
-            controller : "quest_controller2 as questCtrl2"
-        })
-        .when("/quest.en", {
+        
+        .when("/quest", {
             templateUrl : "./components/Questionnaire/quest.en.html",
             controller : "quest_controller as questCtrl"
         })
@@ -42,8 +36,6 @@ app.config( ['$routeProvider', function($routeProvider) {
        
 
         })
-
-
 
         .otherwise({redirect: '/'
         });

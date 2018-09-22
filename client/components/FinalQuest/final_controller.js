@@ -1,4 +1,4 @@
-app.controller('final_controller', ['localStorageModel', '$scope', '$location', '$rootScope', '$document', '$http', '$window', '$uibModal', function (localStorageModel, $scope, $location, $rootScope, $document, $http, $window, $uibModal) {
+app.controller('final_controller', ['localStorageModel', '$scope', '$location', '$http', '$uibModal', 'appData_service', function (localStorageModel, $scope, $location, $http, $uibModal,appData_service) {
 
     $scope.answers = {};
     //TODO: add required condition for input "other" - line 85
@@ -6,7 +6,7 @@ app.controller('final_controller', ['localStorageModel', '$scope', '$location', 
     var modalInstance;
     var dataToSave = []
 
-    var host = "http://132.72.23.161:"
+    var host = appData_service.getHost()
 
 
     var $ctrl = this;
@@ -59,7 +59,7 @@ app.controller('final_controller', ['localStorageModel', '$scope', '$location', 
 
         saveTextAsFile(JSON.stringify(params))
 
-        $http.post(host + "8000/saveData", params)
+        $http.post(host + "/saveData", params)
             .catch(function (error) {
                 console.log(error);
             });

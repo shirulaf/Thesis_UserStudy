@@ -1,5 +1,4 @@
-angular.module("myApp")
-    .service('localStorageModel', ['localStorageService', function(localStorageService) {
+app.service('localStorageModel', ['localStorageService', function(localStorageService) {
 
         var self=this;
 
@@ -26,6 +25,10 @@ angular.module("myApp")
             localStorageService.remove(key);
             localStorageService.set(key,value);
         }
+
+        self.clearAll = function()  {
+            return localStorageService.clearAll();
+           }
 
 
 

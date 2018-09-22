@@ -1,17 +1,16 @@
-app.controller('quest_controller', ['localStorageModel', '$scope', '$location', '$http', '$window', 'moviesExists', function (localStorageModel, $scope, $location, $http, $window, UserService, moviesExists) {
+app.controller('quest_controller', ['localStorageModel', '$scope', '$location', '$http', 'appData_service', function (localStorageModel, $scope, $location, $http, appData_service) {
     var i = 0;
     var movies;
-    var userHistory=[]
+    var userHistory = []
     var dataToSave = []
 
-    var host = "http://132.72.23.161:"
+    var host = appData_service.getHost()
 
     var directory = 'C:/def/'
 
 
     $scope.moviesPosters = [];
     $scope.moviesLinks = [];
-    $scope.expList = ['exp1', 'exp2', 'exp3', 'אחר'];
     $scope.error = false;
 
     $scope.posterSRC = "https://image.tmdb.org/t/p/w600_and_h900_bestv2/";
@@ -19,7 +18,8 @@ app.controller('quest_controller', ['localStorageModel', '$scope', '$location', 
     // console.log("localMovies : "+localStorageModel.getLocalStorage('moviesExists'))
     $scope.explain = [];
 
-    var color = false;
+
+    //set question interface background color
     $scope.set_color = function (index) {
 
 
@@ -29,50 +29,51 @@ app.controller('quest_controller', ['localStorageModel', '$scope', '$location', 
             return { backgroundColor: "#5b0937", color: "#e2ddb3" }
     }
 
-    $scope.getPoster = function (index) {
-        // console.log(index)
+    // $scope.getPoster = function (index) {
+    //     // console.log(index)
+    // }
+
+
+
+
+    if (!localStorageModel.getLocalStorage('moviesExists')) {
+        console.log("getMovies();")
     }
-
-
-
-
-    if (!localStorageModel.getLocalStorage('moviesExists'))
-        getMovies();
     else {
         movies = localStorageModel.getLocalStorage('moviesData')
         $scope.movies = movies[i];
         updateMoviesInfo(i);
-
-
     }
 
-    function getMovies() {
-        // console.log("getMovies")
-
-        params = {};
-        params.userName = localStorageModel.getLocalStorage('userID');
-        params.birthYear = localStorageModel.getLocalStorage('birthYear');
-        $http.post(host + "8000/getMovies", params)
-            .then(function (response) {
-                // console.log("got POST")
-
-                // console.log(response.data)
-
-                movies = response.data;
-                setMoviesElements($scope, movies, i);
 
 
-            }).then(function () {
+    // function getMovies() {
+    //     // console.log("getMovies")
 
-                localStorageModel.updateLocalStorage('moviesExists', true);
-                localStorageModel.addLocalStorage('moviesData', movies);
-                // console.log("Movies: " +  localStorageModel.getLocalStorage(moviesExists))
-            }).catch(function (error) {
-                // console.log(error)
-                $window.alert("We encountered in some errors, please try again ")
-            });
+    //     params = {};
+    //     params.userName = localStorageModel.getLocalStorage('userID');
+    //     // params.birthYear = localStorageModel.getLocalStorage('birthYear');
+    //     $http.post(host + "8000/getMovies", params)
+    //         .then(function (response) {
+    //             // console.log("got POST")
 
-    };
+    //             // console.log(response.data)
+
+    //             movies = response.data;
+    //             setMoviesElements($scope, movies, i);
+
+
+    //         }).then(function () {
+
+    //             localStorageModel.updateLocalStorage('moviesExists', true);
+    //             localStorageModel.addLocalStorage('moviesData', movies);
+    //             // console.log("Movies: " +  localStorageModel.getLocalStorage(moviesExists))
+    //         }).catch(function (error) {
+    //             // console.log(error)
+    //             $window.alert("We encountered in some errors, please try again ")
+    //         });
+
+    // };
 
 
 
@@ -124,10 +125,11 @@ app.controller('quest_controller', ['localStorageModel', '$scope', '$location', 
         }
 
 
-userHistory.push(JSON.stringify(params,localStorageModel.getLocalStorage('userID')))
+        //save user answers for backup
+        userHistory.push(JSON.stringify(params, localStorageModel.getLocalStorage('userID')))
 
         // console.log(params);
-        $http.post(host + "8000/saveData", params)
+        $http.post(host + "/saveData", params)
             .catch(function (error) {
                 console.log(error);
             });
@@ -136,21 +138,23 @@ userHistory.push(JSON.stringify(params,localStorageModel.getLocalStorage('userID
 
 
         i++;
+
         if (i < movies.length) {
 
             //setMoviesElements($scope,movies,i);
             updateMoviesInfo(i);
 
         }
-        else
-                {
-                    saveTextAsFile(userHistory);
-
-                $location.path('/Final')
-            }
+        else {
+            saveTextAsFile(userHistory);
+            $location.path('/Final')
+        }
 
     }
 
+
+
+    //set validity check for  movie according to user action
     $scope.checkedClick = function ($event, elem, index, check) {
         var req = false
         if (check)
@@ -212,7 +216,7 @@ userHistory.push(JSON.stringify(params,localStorageModel.getLocalStorage('userID
 
         $scope.moviesNames = [];
 
-
+        //mix movies appearance order
 
         let mix1, mix2, mix3;
 
@@ -274,28 +278,26 @@ userHistory.push(JSON.stringify(params,localStorageModel.getLocalStorage('userID
 
 
     }
-function saveTextAsFile(params)
-{
-    fileName=localStorageModel.getLocalStorage('userID')+"quest";
-    var textToSave = params;
-    var textToSaveAsBlob = new Blob([textToSave], {type:"text/plain"});
-    var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
-    var fileNameToSaveAs =fileName
- 
-    var downloadLink = document.createElement("a");
-    downloadLink.download = fileNameToSaveAs;
-    downloadLink.innerHTML = "Download File";
-    downloadLink.href = textToSaveAsURL;
-    downloadLink.onclick = destroyClickedElement;
-    downloadLink.style.display = "none";
-    document.body.appendChild(downloadLink);
- 
-    downloadLink.click();
-}
-function destroyClickedElement(event)
-{
-    document.body.removeChild(event.target);
-}
+    function saveTextAsFile(params) {
+        fileName = localStorageModel.getLocalStorage('userID') + "quest";
+        var textToSave = params;
+        var textToSaveAsBlob = new Blob([textToSave], { type: "text/plain" });
+        var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
+        var fileNameToSaveAs = fileName
+
+        var downloadLink = document.createElement("a");
+        downloadLink.download = fileNameToSaveAs;
+        downloadLink.innerHTML = "Download File";
+        downloadLink.href = textToSaveAsURL;
+        downloadLink.onclick = destroyClickedElement;
+        downloadLink.style.display = "none";
+        document.body.appendChild(downloadLink);
+
+        downloadLink.click();
+    }
+    function destroyClickedElement(event) {
+        document.body.removeChild(event.target);
+    }
 
 
 
@@ -331,4 +333,3 @@ function setMoviesElements($scope, movies, i, mix1, mix2, mix3) {
 
 
 
-angular.module("myApp")

@@ -13,7 +13,8 @@ var router = express.Router();
 
 var fs = require('fs');
 var MyData = [];
-var directory = 'C:/userStudyLogs/'
+// var directory = 'C:/userStudyLogs/'
+var directory = ''
 var groupsData = [];
 var movies = {}
 
@@ -44,24 +45,10 @@ obj.from.path('../randomMovies.csv').to.array(function (data2) {
 
 app.use(express.static('server_components'));
 
-/*app.use(function (req, res, next) {
- console.log("use")
- next();
- })*/
-
-//-----------------------------------------------------
-
-//	console.log (req.body);
-
 
 app.post('/submitUserDetails', function (req, res) {
 
-
-    //  console.log("submitUserDetails")
-
-
     var fileName = req.body.userID;
-
     var writeData = JSON.stringify(req.body) + '\r\n';
 
 
@@ -181,7 +168,7 @@ function MyCSV2(groupID, questID1, questID2, questID3, questID4, questID5, quest
 //-------------------------------------------------------------------
 //-------------------------------------------------------------------
 
-var server = app.listen(8000, function () {
+var server = app.listen(8080, function () {
     var host = server.address().address
     var port = server.address().port
     app.use('/', router);

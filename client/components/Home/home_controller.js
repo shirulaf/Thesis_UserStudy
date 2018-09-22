@@ -1,12 +1,13 @@
-app.controller('home_controller' ,['localStorageModel','$scope','$location','$rootScope', '$document','$http','$window', function (localStorageModel,$scope, $location,$rootScope,$document,$http,$window) {
+app.controller('home_controller', ['localStorageModel', '$scope', '$location','$http', '$window','appData_service', function (localStorageModel, $scope, $location, $http, $window, appData_service) {
 
-    $window.localStorage.clear();
+localStorageModel.clearAll()
 
     $scope.detailsForm = {};
     console.log("Iinitiate movies status");
+    //if somthing went wrong with participant browser, the data about the test movies is kept
     localStorageModel.addLocalStorage('moviesExists', false);
 
-    var host= "http://132.72.23.161:"
+    var host = appData_service.getHost()
 
     $scope.DF = {};
     $scope.birthYear = [];
@@ -19,7 +20,7 @@ app.controller('home_controller' ,['localStorageModel','$scope','$location','$ro
         'הפקולטה למדעי הרוח והחברה',
         'הפקולטה לניהול ע"ש גילפורד גלייזר'];
 
-    $scope.Genres= {
+    $scope.Genres = {
         'Adventure': 'הרפתקאות',
         'Action': 'פעולה',
         'Animation': 'אנימציה',
@@ -42,26 +43,27 @@ app.controller('home_controller' ,['localStorageModel','$scope','$location','$ro
 
 
 
-    $scope.DF.Gen=
+    $scope.DF.Gen =
         {
-        'Adventure'  : false,
-        'Action'     : false,
-        'Animation'  : false,
-        'Children'   : false,
-        'Comedy'     : false,
-        'Crime'      : false,
-        'Documentary': false,
-        'Drama'      : false,
-        'Adventure'  : false,
-        'Fantasy'    : false,
-        'Horror'     : false,
-        'Musical'    : false,
-        'Mystery'    : false,
-        'Romance'    : false,
-        'Sci-Fi'     : false,
-        'Thriller'   : false,
-        'War'        : false,
-        'Western'    : false}
+            'Adventure': false,
+            'Action': false,
+            'Animation': false,
+            'Children': false,
+            'Comedy': false,
+            'Crime': false,
+            'Documentary': false,
+            'Drama': false,
+            'Adventure': false,
+            'Fantasy': false,
+            'Horror': false,
+            'Musical': false,
+            'Mystery': false,
+            'Romance': false,
+            'Sci-Fi': false,
+            'Thriller': false,
+            'War': false,
+            'Western': false
+        }
 
 
 
@@ -71,9 +73,9 @@ app.controller('home_controller' ,['localStorageModel','$scope','$location','$ro
     $scope.error = false;
 
 
-    $scope.hi = function (sd) {
-        console.log(sd)
-    }
+    // $scope.hi = function (sd) {
+    //     console.log(sd)
+    // }
 
     $scope.defeaultMail = function () {
         if ($scope.NotStudent) {
@@ -87,70 +89,67 @@ app.controller('home_controller' ,['localStorageModel','$scope','$location','$ro
 
     }
 
+    //Set wether a faculty detail is requires from the participants
     $scope.setRequiresForOccup = function () {
-        let req=true;
-        if ($scope.DF.Occupation==='UG' || $scope.DF.Occupation==='Master')
-            req=false
+        let req = true;
+        if ($scope.DF.Occupation === 'UG' || $scope.DF.Occupation === 'Master')
+            req = false
 
-            $scope.detailsForm.Faculty.$setValidity('required', req);
-        console.log( $scope.detailsForm.Faculty)
+        $scope.detailsForm.Faculty.$setValidity('required', req);
 
-        console.log("set req " +req)
     }
 
 
 
+    $scope.submitDetails = function (isValid, detailsForm) {
 
-    $scope.submitDetails= function(isValid, detailsForm){
-
-        console.log(detailsForm);
+        // console.log(detailsForm);
 
 
-        if (!isValid)
-        {
-        $scope.error=true;
-        window.alert("אנא השלם את כל השדות החסרים")
-        return;
+        if (!isValid) {
+            $scope.error = true;
+            window.alert("אנא השלם את כל השדות החסרים")
+            return;
         }
 
-        //clean genres
+        //remove unselected genres
         for (g in $scope.DF.Gen)
-            if ($scope.DF.Gen[g]===false)
-                delete($scope.DF.Gen[g])
+            if ($scope.DF.Gen[g] === false)
+                delete ($scope.DF.Gen[g])
 
-                var d = new Date().getTime();
-                $scope.DF.userID+="_"+d;
+        var d = new Date().getTime();
+        $scope.DF.userID += "_" + d;
 
-        localStorageModel.addLocalStorage('userID',$scope.DF.userID);
+        localStorageModel.addLocalStorage('userID', $scope.DF.userID);
 
-        console.log("DF")
-        console.log($scope.DF)
+        // console.log("DF")
+        // console.log($scope.DF)
 
-        $scope.detailsForm["creationTS"]=new Date().toUTCString();
+        $scope.detailsForm["creationTS"] = new Date().toUTCString();
 
-        $http.post(host + "8000/submitUserDetails", $scope.DF)
+        $http.post(host + "/submitUserDetails", $scope.DF)
             .then(function (response) {
-                console.log("got POST")
-                console.log(response.data)
-                movies=response.data;
+                // console.log("got POST")
+                // console.log(response.data)
+                movies = response.data;
                 localStorageModel.updateLocalStorage('moviesExists', true);
-                localStorageModel.addLocalStorage('moviesData',movies);
+                localStorageModel.addLocalStorage('moviesData', movies);
             }).then(function () {
 
-            $location.path('/quest.en')
+                $location.path('/quest')
 
             })
             .catch(function (error) {
-            console.log(error)
-            $window.alert("We encountered in some errors, please try again ")
-        });
+                console.log(error)
+                $window.alert("We encountered in some errors, please try again ")
+            });
 
     }
 
 
 
 }]);
-angular.module("myApp")
+
 
 
 

@@ -16,15 +16,15 @@
   <div>
     <form name="questForm" ng-model="questForm" style="direction: rtl; font-size: 120%" novalidate>
       <b>
-        <div ng-style="set_color($index)" style="padding: 10px" ng-repeat="mov in moviesNames">
+        <div ng-style="set_color($index)" style="padding: 10px" ng-repeat="mov in recItems">
 
           <p class="" style="font-weight: 800; direction: rtl; font-family: 'Book Antiqua'; font-size: 135%; ">{{$index+1}}. הסרט: {{mov}}</p>
 
           <div class="row">
 
             <div class="col-md-4">
-              <a href="{{movieTMDsrc}}{{moviesLinks[$index]}}" target="_blank">
-                <img class="imgBox" title="לחץ כדי לעבור לאתר הסרט" style="margin-top: 7px" ng-src={{posterSRC}}{{moviesPosters[$index]}}>
+              <a href="{{movieTMDsrc}}{{itemsName[$index]}}" target="_blank">
+                <img class="imgBox" title="לחץ כדי לעבור לאתר הסרט" style="margin-top: 7px" ng-src={{posterSRC}}{{itemsLink[$index]}}>
               </a>
             </div>
             <ng-form name="ratingFieldForm_{{$index}}" ng-model="ratingFieldForm" novalidate>
@@ -35,27 +35,27 @@
                 </span>
 
                 <input type="radio" id="mov_rating_{{$index}}_1" name="mov_rating_{{$index}}_1" value="1" ng-disabled="myCheck" ng-model="mov_rating"
-                  ng-click="saveClick($event,moviesNames[$index],moviesLinks[$index])" required>
+                  ng-click="saveClick($event,recItems[$index],itemsName[$index])" required>
                 <label class="pointer" for="mov_rating_{{$index}}_1">1 (המלצה גרועה) </label>
                 <br>
                 <input type="radio" id="mov_rating_{{$index}}_2" name="mov_rating_{{$index}}_2" value="2" ng-disabled="myCheck" ng-model="mov_rating"
-                  ng-click="saveClick($event,moviesNames[$index],moviesLinks[$index])" required>
+                  ng-click="saveClick($event,recItems[$index],itemsName[$index])" required>
                 <label class="pointer" for="mov_rating_{{$index}}_2">2 </label>
 
                 <br>
                 <input type="radio" id="mov_rating_{{$index}}_3" name="mov_rating_{{$index}}_3" value="3" ng-disabled="myCheck" ng-model="mov_rating"
-                  ng-click="saveClick($event,moviesNames[$index],moviesLinks[$index])" required>
+                  ng-click="saveClick($event,recItems[$index],itemsName[$index])" required>
                 <label class="pointer" for="mov_rating_{{$index}}_3">3 </label>
 
                 <br>
                 <input type="radio" id="mov_rating_{{$index}}_4" name="mov_rating_{{$index}}_4" value="4" ng-disabled="myCheck" ng-model="mov_rating"
-                  ng-click="saveClick($event,moviesNames[$index],moviesLinks[$index])" required>
+                  ng-click="saveClick($event,recItems[$index],itemsName[$index])" required>
                 <label class="pointer" for="mov_rating_{{$index}}_4">4 </label>
 
 
                 <br>
                 <input type="radio" id="mov_rating_{{$index}}_5" name="mov_rating_{{$index}}_5" value="5" ng-disabled="myCheck" ng-model="mov_rating"
-                  ng-click="saveClick($event,moviesNames[$index],moviesLinks[$index])" required>
+                  ng-click="saveClick($event,recItems[$index],itemsName[$index])" required>
                 <label class="pointer" for="mov_rating_{{$index}}_5">5 (המלצה מצויינת) </label>
                 <br>
                 <br>
@@ -67,19 +67,19 @@
                   <br>
                 </span>
                 <input type="radio" id="mov_guide_{{$index}}_watched" name="mov_guide_{{$index}}_watched" value="watched" ng-disabled="myCheck"
-                  ng-model="mov_guide" ng-click="saveClick($event,moviesNames[$index])" required>
+                  ng-model="mov_guide" ng-click="saveClick($event,recItems[$index])" required>
                 <label class="pointer" for="mov_guide_{{$index}}_watched">הסרט בו המשתמש
                   <b>צפה בעבר</b>
                 </label>
                 <br>
                 <input type="radio" id="mov_guide_{{$index}}_chose" name="mov_guide_{{$index}}_chose" value="chose" ng-disabled="myCheck"
-                  ng-model="mov_guide" ng-click="saveClick($event,moviesNames[$index])" required>
+                  ng-model="mov_guide" ng-click="saveClick($event,recItems[$index])" required>
                 <label class="pointer" for="mov_guide_{{$index}}_chose">הסרט בו המשתמש
                   <b>בחר לצפות</b>
                 </label>
                 <br>
                 <input type="radio" id="mov_guide_{{$index}}_both" name="mov_guide_{{$index}}_both" value="both" ng-disabled="myCheck" ng-model="mov_guide"
-                  ng-click="saveClick($event,moviesNames[$index])" required>
+                  ng-click="saveClick($event,recItems[$index])" required>
                 <label class="pointer" for="mov_guide_{{$index}}_both">הסרט בו המשתמש צפה בעבר
                   <b>וגם</b> הסרט בו בחר לצפות</label>
                 <br>
@@ -94,12 +94,12 @@
                   </div>
                   <span ng-show="(error ||  explainFieldForm_{{$index}}.explain_mov.$touched )&& explainFieldForm_{{$index}}.explain_mov.$invalid "
                     style="color: #ffa07a;  ">
-                    &emsp;&emsp;אנא נמק את בחירתך, הנימוק חובה רק בשני המקרים לניתוח הראשונים (:
+                    &emsp;&emsp;אנא נמק את בחירתך 
                     <br>
                   </span>
                   &emsp;
                   <input type="text" style=" color:black" size="60" name="explain_mov" ng-disabled="myCheck" placeholder="כתוב את נימוקך כאן"
-                    ng-click="saveClick($event,moviesNames[$index],moviesLinks[$index])" ng-blur="saveClick($event, moviesNames[$index],moviesLinks[$index])" ng-model="explain_mov"
+                    ng-click="saveClick($event,recItems[$index],itemsName[$index])" ng-blur="saveClick($event, recItems[$index],itemsName[$index])" ng-model="explain_mov"
                     required>
                 </p>
               </div>
@@ -169,14 +169,14 @@
 
     <u> משתמש במערכת קיבל המלצה על הסרטים הבאים:</u>
     <div id="thumbs" style="font-size: 80%;">
-      <p ng-repeat="mov in moviesNames">
-        <a class="thumb" href="{{movieTMDsrc}}{{moviesLinks[$index]}}" target="_blank">
-          <img class="poster" style="font-size: 50px; z-index: -1; " ng-src="{{posterSRC}}{{moviesPosters[$index]}}">
+      <p ng-repeat="mov in recItems">
+        <a class="thumb" href="{{movieTMDsrc}}{{itemsName[$index]}}" target="_blank">
+          <img class="poster" style="font-size: 50px; z-index: -1; " ng-src="{{posterSRC}}{{itemsLink[$index]}}">
 
           <span class="test" style="z-index: 1;">
             {{mov}}
             <br>
-            <img ng-src="{{posterSRC}}{{moviesPosters[$index]}}" width="70%" alt="">
+            <img ng-src="{{posterSRC}}{{itemsLink[$index]}}" width="70%" alt="">
           </span>
         </a>
         <span class="stretch"></span>
@@ -220,14 +220,14 @@
     <u> המשתמש קיבל המלצה על הסרטים הבאים:</u>
 
     <div id="thumbs" style="font-size: 80%;">
-      <p ng-repeat="mov in moviesNames">
-        <a class="thumb" href="{{movieTMDsrc}}{{moviesLinks[$index]}}" target="_blank">
-          <img class="poster" style="font-size: 50px; z-index: -1; " ng-src="{{posterSRC}}{{moviesPosters[$index]}}">
+      <p ng-repeat="mov in recItems">
+        <a class="thumb" href="{{movieTMDsrc}}{{itemsName[$index]}}" target="_blank">
+          <img class="poster" style="font-size: 50px; z-index: -1; " ng-src="{{posterSRC}}{{itemsLink[$index]}}">
 
           <span class="test" style="z-index: 1;">
             {{mov}}
             <br>
-            <img ng-src="{{posterSRC}}{{moviesPosters[$index]}}" width="70%" alt="">
+            <img ng-src="{{posterSRC}}{{itemsLink[$index]}}" width="70%" alt="">
           </span>
         </a>
         <span class="stretch"></span>

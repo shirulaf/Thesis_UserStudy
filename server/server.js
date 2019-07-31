@@ -14,33 +14,20 @@ var router = express.Router();
 var fs = require('fs');
 var MyData = [];
 var directory = 'C:/userStudyLogs/'
-var groupsData = [];
-var movies = {}
 
 
 
+let rawdata = fs.readFileSync('Lidl_items_final_data.json');
+parseData = JSON.parse(rawdata)
+let lidl_items = [];
+for (let item in parseData)
+    lidl_items.push(parseData[item])
 
-obj.from.path('../data.csv').to.array(function (data) {
-    //console.log(data);
-    for (var index = 0; index < 86; index++) {
 
-        MyData.push(new MyCSV(data[index][0], data[index][1], data[index][2], data[index][3], data[index][4], data[index][5], data[index][6], data[index][7], data[index][8], data[index][9], data[index][10], data[index][11], data[index][12], data[index][13], data[index][14], data[index][15], data[index][16], data[index][17], data[index][18], data[index][19], data[index][20]));
-        key = String(MyData[index]["questID"])
-        movies[key] = (MyData[index])
+console.log(lidl_items)
 
-    }
-    // console.log(MyData)
-});
 
-obj = csv();
-obj.from.path('../randomMovies.csv').to.array(function (data2) {
-    //console.log(data);
-    for (var index = 0; index < data2.length; index++) {
 
-        groupsData.push(new MyCSV2(data2[index][0], data2[index][1], data2[index][2], data2[index][3], data2[index][4], data2[index][5], data2[index][6], data2[index][7], data2[index][8], data2[index][9], data2[index][10], data2[index][11], data2[index][12]));
-    }
-
-});
 
 app.use(express.static('server_components'));
 
@@ -53,6 +40,10 @@ app.use(express.static('server_components'));
 
 //	console.log (req.body);
 
+app.get('/us', function(req, res){
+
+    res.send(lidl_items)
+})
 
 app.post('/submitUserDetails', function (req, res) {
 
@@ -89,7 +80,7 @@ app.post('/submitUserDetails', function (req, res) {
 
                 //console.log("my data res:" + JSON.stringify(MyData));
                 res.writeHead(200, { 'Content-Type': 'text/plain' });
-                res.write(JSON.stringify(MyData));
+                res.write(JSON.stringify(lidl_items));
                 //console.log("my data res:" + MyData);
                 res.send();
             }

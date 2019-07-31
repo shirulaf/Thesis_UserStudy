@@ -6,7 +6,9 @@ app.controller('home_controller' ,['localStorageModel','$scope','$location','$ro
     console.log("Iinitiate movies status");
     localStorageModel.addLocalStorage('moviesExists', false);
 
-    var host= "http://132.72.23.161:"
+    // var host= "http://132.72.23.161:"
+    var host= "http://127.0.0.1:"
+    
 
     $scope.DF = {};
     $scope.birthYear = [];
@@ -18,50 +20,6 @@ app.controller('home_controller' ,['localStorageModel','$scope','$location','$ro
         'הפקולטה למדעי הטבע',
         'הפקולטה למדעי הרוח והחברה',
         'הפקולטה לניהול ע"ש גילפורד גלייזר'];
-
-    $scope.Genres= {
-        'Adventure': 'הרפתקאות',
-        'Action': 'פעולה',
-        'Animation': 'אנימציה',
-        'Children': 'ילדים',
-        'Comedy': 'קומדיה',
-        'Crime': 'פשע',
-        'Documentary': 'דוקומנטרי',
-        'Drama': 'דרמה',
-        'Adventure': 'הרפתקאות',
-        'Fantasy': 'פנטסיה',
-        'Horror': 'אימה',
-        'Musical': 'מחזמר',
-        'Mystery': 'מיסתורין',
-        'Romance': 'רומנטי',
-        'Sci-Fi': 'מדע-בדיוני',
-        'Thriller': 'מותחן',
-        'War': 'מלחמה',
-        'Western': 'מערבון',
-    }
-
-
-
-    $scope.DF.Gen=
-        {
-        'Adventure'  : false,
-        'Action'     : false,
-        'Animation'  : false,
-        'Children'   : false,
-        'Comedy'     : false,
-        'Crime'      : false,
-        'Documentary': false,
-        'Drama'      : false,
-        'Adventure'  : false,
-        'Fantasy'    : false,
-        'Horror'     : false,
-        'Musical'    : false,
-        'Mystery'    : false,
-        'Romance'    : false,
-        'Sci-Fi'     : false,
-        'Thriller'   : false,
-        'War'        : false,
-        'Western'    : false}
 
 
 
@@ -137,7 +95,7 @@ app.controller('home_controller' ,['localStorageModel','$scope','$location','$ro
                 localStorageModel.addLocalStorage('moviesData',movies);
             }).then(function () {
 
-            $location.path('/quest.en')
+            $location.path('/quest')
 
             })
             .catch(function (error) {

@@ -4,18 +4,21 @@ app.controller('quest_controller', ['localStorageModel', '$scope', '$location', 
     var userHistory=[]
     var dataToSave = []
 
-    var host = "http://132.72.23.161:"
+    // var host = "http://132.72.23.161:"
+    var host= "http://127.0.0.1:"
+
+
 
     var directory = 'C:/def/'
 
 
-    $scope.moviesPosters = [];
-    $scope.moviesLinks = [];
+    $scope.itemsLink = [];
+    $scope.itemsName = [];
     $scope.expList = ['exp1', 'exp2', 'exp3', 'אחר'];
     $scope.error = false;
 
-    $scope.posterSRC = "https://image.tmdb.org/t/p/w600_and_h900_bestv2/";
-    $scope.movieTMDsrc = "https://www.themoviedb.org/movie/";
+    // $scope.posterSRC = "https://image.tmdb.org/t/p/w600_and_h900_bestv2/";
+    // $scope.movieTMDsrc = "https://www.themoviedb.org/movie/";
     // console.log("localMovies : "+localStorageModel.getLocalStorage('moviesExists'))
     $scope.explain = [];
 
@@ -24,27 +27,29 @@ app.controller('quest_controller', ['localStorageModel', '$scope', '$location', 
 
 
         if (index % 2)
-            return { backgroundColor: "#272c40", color: "#e2ddb3" }
+            return { backgroundColor: "#e4e4e4", color: "black" }
         else
-            return { backgroundColor: "#5b0937", color: "#e2ddb3" }
+            return { backgroundColor: "#f8f8f8", color: "black" }
     }
 
     $scope.getPoster = function (index) {
         // console.log(index)
     }
 
-
-
+   
 
     if (!localStorageModel.getLocalStorage('moviesExists'))
-        getMovies();
-    else {
+        // 
+        $http.get(host + '8000/us')
+        .then(function(response){
+            debugger
+            localStorageModel.addLocalStorage('moviesData', response.data);
+        })
+
         movies = localStorageModel.getLocalStorage('moviesData')
         $scope.movies = movies[i];
         updateMoviesInfo(i);
 
-
-    }
 
     function getMovies() {
         // console.log("getMovies")
@@ -82,12 +87,12 @@ app.controller('quest_controller', ['localStorageModel', '$scope', '$location', 
 
 
         if ($scope.currentQuest > 2) {
-            for (index = 0; index < $scope.moviesNames.length; index++)
+            for (index = 0; index < $scope.recItems.length; index++)
                 $scope.questForm['explainFieldForm_' + index].explain_mov.$setValidity('required', true);
 
         }
         else {
-            for (index = 0; index < $scope.moviesNames.length; index++) {
+            for (index = 0; index < $scope.recItems.length; index++) {
                 $scope.questForm['ratingFieldForm_' + index]["mov_guide_" + index + "_watched"].$setValidity('required', true);
                 $scope.questForm['ratingFieldForm_' + index]["mov_guide_" + index + "_chose"].$setValidity('required', true);
                 $scope.questForm['ratingFieldForm_' + index]["mov_guide_" + index + "_both"].$setValidity('required', true);
@@ -169,7 +174,7 @@ userHistory.push(JSON.stringify(params,localStorageModel.getLocalStorage('userID
 
 
         $event.check = check
-        $scope.saveClick($event, $scope.moviesNames[index], $scope.moviesLinks[index])
+        $scope.saveClick($event, $scope.recItems[index], $scope.itemsName[index])
 
     }
 
@@ -210,18 +215,19 @@ userHistory.push(JSON.stringify(params,localStorageModel.getLocalStorage('userID
 
     function updateMoviesInfo(i) {
 
-        $scope.moviesNames = [];
+        $scope.recItems = [];
 
 
 
+        //Add randomness between recommended items
         let mix1, mix2, mix3;
 
-        mix1 = Math.floor((Math.random() * 3) + 1);
-        mix2 = Math.floor((Math.random() * 3) + 1);
+        mix1 = Math.floor((Math.random() * 3) );
+        mix2 = Math.floor((Math.random() * 3) );
         while (mix2 == mix1)
-            mix2 = Math.floor((Math.random() * 3) + 1);
+            mix2 = Math.floor((Math.random() * 3) );
 
-        for (let i = 1; i < 4; i++)
+        for (let i = 0; i < 3; i++)
             if (mix1 == i || mix2 == i)
                 continue
             else {
@@ -230,16 +236,13 @@ userHistory.push(JSON.stringify(params,localStorageModel.getLocalStorage('userID
             }
 
 
+        debugger
+        $scope.recItems.push(movies[i]["rec"][mix1]);
+        $scope.recItems.push(movies[i]["rec"][mix2]);
+        $scope.recItems.push(movies[i]["rec"][mix3]);
 
-        $scope.moviesNames.push(movies[i]["rec_" + mix1]);
-        $scope.moviesNames.push(movies[i]["rec_" + mix2]);
-        $scope.moviesNames.push(movies[i]["rec_" + mix3]);
-        // if (movies[i].rec_4)
-        //     $scope.moviesNames.push(movies[i].rec_4);
-        // if (movies[i].rec_5)
-        //     $scope.moviesNames.push(movies[i].rec_5);
 
-        setMoviesElements($scope, movies, i, mix1, mix2, mix3);
+        this.setMoviesElements($scope, movies, i, mix1, mix2, mix3);
         $scope.QuestAmount = movies.length;
         $scope.currentQuest = i + 1;
         if (i == movies.length - 1)
@@ -250,26 +253,17 @@ userHistory.push(JSON.stringify(params,localStorageModel.getLocalStorage('userID
         // console.log($scope.Last)
 
 
-        $scope.moviesPosters = [];
-        $scope.moviesLinks = [];
+        $scope.itemsLink = [];
+        $scope.itemsName = [];
 
-        $scope.moviesPosters.push(movies[i]["rec_" + mix1 + "_poster"]);
-        $scope.moviesPosters.push(movies[i]["rec_" + mix2 + "_poster"]);
-        $scope.moviesPosters.push(movies[i]["rec_" + mix3 + "_poster"]);
+        $scope.itemsLink.push(movies[i]["rec"][mix1]["link"]);
+        $scope.itemsLink.push(movies[i]["rec"][mix2]["link"]);
+        $scope.itemsLink.push(movies[i]["rec"][mix3]["link"]);
 
 
-        $scope.moviesLinks.push(movies[i]["rec_" + mix1 + "_tmdb"]);
-        $scope.moviesLinks.push(movies[i]["rec_" + mix2 + "_tmdb"]);
-        $scope.moviesLinks.push(movies[i]["rec_" + mix3 + "_tmdb"]);
-
-        // if (movies[i].rec_4) {
-        //     $scope.moviesLinks.push(movies[i].rec_4_tmdb);
-        //     $scope.moviesPosters.push(movies[i].rec_4_poster);
-        // }
-        // if (movies[i].rec_5) {
-        //     $scope.moviesLinks.push(movies[i].rec_5_tmdb);
-        //     $scope.moviesPosters.push(movies[i].rec_5_poster);
-        // }
+        $scope.itemsName.push(movies[i]["rec"][mix1]["name"]);
+        $scope.itemsName.push(movies[i]["rec"][mix2]["name"]);
+        $scope.itemsName.push(movies[i]["rec"][mix3]["name"]);
 
 
 
@@ -303,22 +297,23 @@ function destroyClickedElement(event)
 }]);
 
 function setMoviesElements($scope, movies, i, mix1, mix2, mix3) {
-    $scope.watched = movies[i].watched;
-    $scope.watched_tmdb = movies[i].watched_tmdb;
-    $scope.watched_poster = movies[i].watched_poster;
-    $scope.chose = movies[i].chose;
-    $scope.chose_tmdb = movies[i].chose_tmdb;
-    $scope.chose_poster = movies[i].chose_poster;
+    debugger
+    $scope.watched = movies[i].consumed.name;
+    // $scope.watched_tmdb = movies[i].watched_tmdb;
+    $scope.watched_poster = movies[i].consumed.link;
+    $scope.chose = movies[i].chose.name;
+    // $scope.chose_tmdb = movies[i].chose_tmdb;
+    $scope.chose_poster = movies[i].chose.link;
 
-    $scope.rec_1 = movies[i]["rec_" + mix1];
-    $scope.rec_2 = movies[i]["rec_" + mix2];
-    $scope.rec_3 = movies[i]["rec_" + mix3];
-    $scope.rec_1_tmdb = movies[i]["rec_" + mix1 + "_tmdb"]
-    $scope.rec_2_tmdb = movies[i]["rec_" + mix2 + "_tmdb"]
-    $scope.rec_3_tmdb = movies[i]["rec_" + mix3 + "_tmdb"]
-    $scope.rec_1_poster = movies[i]["rec_" + mix1 + "_poster"];
-    $scope.rec_2_poster = movies[i]["rec_" + mix2 + "_poster"];
-    $scope.rec_3_poster = movies[i]["rec_" + mix3 + "_poster"];
+    $scope.rec_1 = movies[i]["rec"][mix1]
+    $scope.rec_2 = movies[i]["rec"][mix2]
+    $scope.rec_3 = movies[i]["rec"][mix3]
+    // $scope.rec_1_tmdb = movies[i]["rec"][mix1]["]
+    // $scope.rec_2_tmdb = movies[i]["rec"][mix2]["]
+    // $scope.rec_3_tmdb = movies[i]["rec"][mix3]["]
+    $scope.rec_1_poster = movies[i]["rec"][mix1]["link"];
+    $scope.rec_2_poster = movies[i]["rec"][mix2]["link"];
+    $scope.rec_3_poster = movies[i]["rec"][mix3]["link"];
 
 
 

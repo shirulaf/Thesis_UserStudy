@@ -1,137 +1,119 @@
 #thumbs {
-    width:100%;
-    margin-top:20px;
-    margin-left: auto;
-    margin-right: auto;
-    z-index:-1;
-     text-align: center;
-    -ms-text-justify: distribute-all-lines;
-    text-justify: distribute-all-lines;
+  width: 100%;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: -1;
+  text-align: center;
+  -ms-text-justify: distribute-all-lines;
+  text-justify: distribute-all-lines;
 }
 
 #thumbs p {
-    margin-left: 20px;
-    margin-right: 20px;
-    vertical-align: top;
-    display: inline-block;
-    *display: inline;
-    zoom: 1;
-
-
+  margin-left: 20px;
+  margin-right: 20px;
+  vertical-align: top;
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
 }
 
-
 .stretch {
-    width: 100%;
-    display: inline-block;
-    font-size: 0;
-    line-height: 0
+  width: 100%;
+  display: inline-block;
+  font-size: 0;
+  line-height: 0;
 }
 
 .poster {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 white;
-    text-align: center;
-    height: 200px;
-    width: auto;
-    z-index: -1;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 white;
+  text-align: center;
+  height: 130px;
+  width: auto;
+  z-index: -1;
 }
 
 button {
-     background-color: #6a0606;
-     padding: 10px;
-     font-size: medium;
-
-
- }
+  background-color: #6a0606;
+  padding: 10px;
+  font-size: medium;
+}
 button:hover {
-
-    -moz-box-shadow: 0 0 20px #feffa6;
-    -webkit-box-shadow: 0 0 20px #feffa6;
-    box-shadow: 0 0 20px #feffa6;
-
+  -moz-box-shadow: 0 0 20px #feffa6;
+  -webkit-box-shadow: 0 0 20px #feffa6;
+  box-shadow: 0 0 20px #feffa6;
 }
 
-
-
-.thumb{
-    position: relative;
+.thumb {
+  position: relative;
 }
 
 .thumb img {
-    border:1px solid #000;
-    vertical-align:text-bottom;
+  border: 1px solid #000;
+  vertical-align: text-bottom;
 }
 .thumb:hover {
-    border:0; /* IE6 needs this to show large image */
-    z-index:50;
+  border: 0; /* IE6 needs this to show large image */
+  z-index: 50;
 }
 .thumb span {
-    position: absolute;
-    background-color: lightyellow;
-    padding: 5px;
-    left: 0px;
-    border: 1px solid gray;
-    visibility: hidden;
-    color: #4a89a5;    text-decoration: none;
-    z-index:1;
-
+  position: absolute;
+  background-color: lightyellow;
+  padding: 5px;
+  left: 0px;
+  border: 1px solid gray;
+  visibility: hidden;
+  color: #4a89a5;
+  text-decoration: none;
+  z-index: 1;
 }
 
-.thumb span img{ /*CSS for enlarged image*/
-    border-width: 0;
-    padding: 2px;
-    z-index:1;
+.thumb span img {
+  /*CSS for enlarged image*/
+  border-width: 0;
+  padding: 2px;
+  z-index: 1;
+  height: 200px;
+  width: auto;
 }
 
 .thumb:hover span {
-    position: absolute;
-    z-index:1;
-    visibility: visible;
-    width: 200%;
-    top: -30px;
-    left: -70px; /*position where enlarged image should offset horizontally */
-
+  position: absolute;
+  z-index: 1;
+  visibility: visible;
+  width: 200%;
+  top: -30px;
+  left: -70px; /*position where enlarged image should offset horizontally */
 }
-
 
 .thumb:hover span.test:hover {
   color: #0d1175;
-    font-size: larger;
-    z-index:1;
-
-
+  font-size: larger;
+  z-index: 1;
 }
 
-.imgBox
-{
-    height: 160px;
-    width: auto;
-    z-index: -1;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7), 0 6px 20px 0 white;
-
-
+.imgBox {
+  height: 150px;
+  width: auto;
+  z-index: -1;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7), 0 6px 20px 0 white;
 }
 
-.imgBox:hover
-{
-    -moz-box-shadow: 0 0 20px #000000;
-    -webkit-box-shadow: 0 0 20px #000000;
-    box-shadow: 0 0 20px #000000;
+.imgBox:hover {
+  -moz-box-shadow: 0 0 20px #000000;
+  -webkit-box-shadow: 0 0 20px #000000;
+  box-shadow: 0 0 20px #000000;
 }
 
-input:hover{
-    cursor: pointer;
+input:hover {
+  cursor: pointer;
 }
 
-.pointer
-{
-    font-weight: normal;
-
+.pointer {
+  font-weight: normal;
 }
 
-.pointer:hover  {
-    cursor: pointer;
-    font-weight: 600;
-
-
+.pointer:hover {
+  cursor: pointer;
+  font-weight: 600;
 }

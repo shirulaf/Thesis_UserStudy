@@ -1,0 +1,157 @@
+<div class="row" style="text-align: center ; cursor: pointer;">
+  <b> Route between cases</b> |<span
+    ng-click="route($index)"
+    ng-repeat="i in allItems"
+    <span
+    ><a
+      ng-style="{'font-weight': currentItemId == $index ? 'bolder' : 'normal'}"
+    >
+      {{ $index }} |
+    </a></span
+  >
+</div>
+
+<div class="col-md-6">
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav navbar-right" style="text-align: center">
+        <li
+          ng-click="changeLeftViewLink(items.chose)"
+          ng-class="{active : activeClass.leftView.chose}"
+          style="cursor: pointer; "
+        >
+          <a>
+            בחר למרות המלצות<br />
+            {{ items.chose.name }}
+          </a>
+        </li>
+        <li
+          ng-click="changeLeftViewLink(items.consumed)"
+          ng-class="{active : activeClass.leftView.consumed}"
+          style="cursor: pointer;"
+        >
+          <a>ביקר בעבר ואהב <br />{{ items.consumed.name }}</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div style="text-align: center ; margin-bottom: 15px">
+    <button
+      ng-click="changeLeftViewDisplay('photos')"
+      class="btn btn-default"
+      ng-class="{active : activeClass.leftView.photos}"
+      title="הצג תמונות"
+    >
+      <i class="material-icons md-48">photo_camera</i>
+    </button>
+    <button
+      ng-click="changeLeftViewDisplay('link')"
+      class="btn btn-default "
+      ng-class="{active : activeClass.leftView.link}"
+      title="הצג אתר"
+    >
+      <i class="material-icons md-48">
+        language
+      </i>
+    </button>
+  </div>
+  <div style="text-align: center">
+    <iframe
+      ng-if="leftView.displayLink && !leftView.current.newPage"
+      ng-src="{{ trustSrc(leftView.current.link) }}"
+      width="100%"
+      height="75%"
+    >
+    </iframe>
+    <button
+      class="btn btn-danger"
+      ng-show="leftView.displayLink && leftView.current.newPage "
+      ng-click="openSiteNewPage(leftView.current.link)"
+      style="max-width: 100%;"
+    >
+      <h4>
+        לא יכול להיות מוצג בדף זה <b>{{ leftView.current.name }}</b> האתר של
+        <br />
+        אנא לחץ על כפתור זה על מנת לפתוח את האתר בעמוד חדש
+      </h3>
+    </button>
+    <iframe
+      ng-if="!leftView.displayLink"
+      ng-src="{{ trustSrc(leftView.current.photos) }}"
+      width="100%"
+      height="75%"
+    >
+    </iframe>
+  </div>
+</div>
+<div class="col-md-6">
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav navbar-right">
+        <li
+          ng-repeat="(rec, values) in items.rec"
+          ng-click="changeRightViewLink(values, $index )"
+          ng-class="{active : activeClass.rightView['rec'+((items.rec.length -$index ))]}"
+          style="cursor: pointer;"
+        >
+          <a style="text-align: center">
+            המלצה {{ items.rec.length - $index }} <br />
+            {{ values.name }}
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div style="text-align: center ; margin-bottom: 15px">
+    <button
+      ng-click="changeRightViewDisplay('photos')"
+      class="btn btn-default"
+      ng-class="{active : activeClass.rightView.photos}"
+      title="הצג תמונות"
+    >
+      <i class="material-icons md-48">photo_camera</i>
+    </button>
+    <button
+      ng-click="changeRightViewDisplay('link')"
+      class="btn btn-default "
+      ng-class="{active : activeClass.rightView.link}"
+      title="הצג אתר"
+    >
+      <i class="material-icons md-48">
+        language
+      </i>
+    </button>
+  </div>
+
+  <div style="text-align: center">
+    <iframe
+      ng-if="rightView.displayLink && !rightView.current.newPage"
+      ng-src="{{ trustSrc(rightView.current.link) }}"
+      width="100%"
+      height="75%"
+    >
+    </iframe>
+    <button
+      class="btn btn-danger"
+      ng-if="rightView.displayLink && rightView.current.newPage "
+      ng-click="openSiteNewPage(rightView.current.link)"
+      style="max-width: 100%;"
+      
+    >
+    <div style=" word-wrap : break-word; ">
+      <h4>
+        לא יכול להיות מוצג בדף זה <b>{{ rightView.current.name }}</b> האתר של
+        <br />
+        אנא לחץ על כפתור זה על מנת לפתוח את האתר בעמוד חדש
+      </h4>
+    </div>
+    </button>
+    <iframe
+      ng-if="!rightView.displayLink"
+      ng-src="{{ trustSrc(rightView.current.photos) }}"
+      width="100%"
+      height="75%"
+    >
+    </iframe>
+  </div>
+</div>

@@ -1,5 +1,6 @@
-app.controller("quest_controller", [
+app.controller("questPOI_controller.js", [
   "localStorageModel",
+  "sitesService",
   "$scope",
   "$location",
   "$http",
@@ -7,6 +8,7 @@ app.controller("quest_controller", [
   "moviesExists",
   function(
     localStorageModel,
+    sitesService,
     $scope,
     $location,
     $http,
@@ -28,6 +30,7 @@ app.controller("quest_controller", [
     $scope.itemsName = [];
     $scope.expList = ["exp1", "exp2", "exp3", "אחר"];
     $scope.error = false;
+    var elementsOrder;
 
     // $scope.posterSRC = "https://image.tmdb.org/t/p/w600_and_h900_bestv2/";
     // $scope.movieTMDsrc = "https://www.themoviedb.org/movie/";
@@ -44,20 +47,33 @@ app.controller("quest_controller", [
       // console.log(index)
     };
 
-    if (!localStorageModel.getLocalStorage("lidlExists"))
+    $scope.openSitesCompare = function() {
+      window.open(
+        $location.$$absUrl.replace(
+          $location.$$path,
+          `/sitesNav/${i}/${elementsOrder[0]}/${elementsOrder[1]}/${
+            elementsOrder[2]
+          }`
+        ),
+        "_blank"
+      );
+    };
+
+    if (!localStorageModel.getLocalStorage("yelpExists"))
       //
-      $http.get(host + "8000/lidl").then(function(response) {
+      $http.get(host + "8000/yelp").then(function(response) {
         //debugger
-        localStorageModel.addLocalStorage("lidlData", response.data);
-        movies = localStorageModel.getLocalStorage("lidlData");
+        localStorageModel.addLocalStorage("yelpData", response.data);
+        movies = localStorageModel.getLocalStorage("yelpData");
         $scope.movies = movies[i];
         updateMoviesInfo(i);
       });
-    else {
-      movies = localStorageModel.getLocalStorage("lidlData");
+    else{
+      movies = localStorageModel.getLocalStorage("yelpData");
       $scope.movies = movies[i];
       updateMoviesInfo(i);
     }
+
 
     function getMovies() {
       // console.log("getMovies")
@@ -231,24 +247,32 @@ app.controller("quest_controller", [
 
       //Add randomness between recommended items
       let mix1, mix2, mix3;
+      let len = movies[i]["rec"].length;
 
-      mix1 = Math.floor(Math.random() * 3);
-      mix2 = Math.floor(Math.random() * 3);
-      while (mix2 == mix1) mix2 = Math.floor(Math.random() * 3);
+      mix1 = Math.floor(Math.random() * len);
+      mix2 = Math.floor(Math.random() * len);
+      while (mix2 == mix1) mix2 = Math.floor(Math.random() * len);
 
-      for (let i = 0; i < 3; i++)
-        if (mix1 == i || mix2 == i) continue;
-        else {
-          mix3 = i;
-          break;
-        }
+      if (len == 3)
+        for (let i = 0; i < 3; i++)
+          if (mix1 == i || mix2 == i) continue;
+          else {
+            mix3 = i;
+            break;
+          }
 
-      //debugger
       $scope.recItems.push(movies[i]["rec"][mix1]);
       $scope.recItems.push(movies[i]["rec"][mix2]);
-      $scope.recItems.push(movies[i]["rec"][mix3]);
+      if (movies[i].length > 2) {
+        $scope.recItems.push(movies[i]["rec"][mix3]);
+        $scope.itemsLink.push(movies[i]["rec"][mix3]["link"]);
+        $scope.itemsName.push(movies[i]["rec"][mix3]["name"]);
+      }
 
+      sitesService.setSites(movies[i]);
       this.setMoviesElements($scope, movies, i, mix1, mix2, mix3);
+      elementsOrder = [mix1, mix2, mix3];
+
       $scope.QuestAmount = movies.length;
       $scope.currentQuest = i + 1;
       if (i == movies.length - 1) $scope.Last = true;
@@ -261,11 +285,9 @@ app.controller("quest_controller", [
 
       $scope.itemsLink.push(movies[i]["rec"][mix1]["link"]);
       $scope.itemsLink.push(movies[i]["rec"][mix2]["link"]);
-      $scope.itemsLink.push(movies[i]["rec"][mix3]["link"]);
 
       $scope.itemsName.push(movies[i]["rec"][mix1]["name"]);
       $scope.itemsName.push(movies[i]["rec"][mix2]["name"]);
-      $scope.itemsName.push(movies[i]["rec"][mix3]["name"]);
     }
     function saveTextAsFile(params) {
       fileName = localStorageModel.getLocalStorage("userID") + "quest";
@@ -290,8 +312,9 @@ app.controller("quest_controller", [
   }
 ]);
 
-function setMoviesElements($scope, movies, i, mix1, mix2, mix3) {
+function setMoviesElements($scope, movies, i, mix1, mix2, mix3 = "") {
   //debugger
+
   $scope.watched = movies[i].consumed.name;
   // $scope.watched_tmdb = movies[i].watched_tmdb;
   $scope.watched_poster = movies[i].consumed.link;
@@ -301,14 +324,16 @@ function setMoviesElements($scope, movies, i, mix1, mix2, mix3) {
 
   $scope.rec_1 = movies[i]["rec"][mix1];
   $scope.rec_2 = movies[i]["rec"][mix2];
-  $scope.rec_3 = movies[i]["rec"][mix3];
   // $scope.rec_1_tmdb = movies[i]["rec"][mix1]["]
   // $scope.rec_2_tmdb = movies[i]["rec"][mix2]["]
   // $scope.rec_3_tmdb = movies[i]["rec"][mix3]["]
   $scope.rec_1_poster = movies[i]["rec"][mix1]["link"];
   $scope.rec_2_poster = movies[i]["rec"][mix2]["link"];
-  $scope.rec_3_poster = movies[i]["rec"][mix3]["link"];
 
+  if (mix3 != "") {
+    $scope.rec_3 = movies[i]["rec"][mix3];
+    $scope.rec_3_poster = movies[i]["rec"][mix3]["link"];
+  }
   for (expl in $scope.explain) $scope.explain[expl] = "";
 }
 

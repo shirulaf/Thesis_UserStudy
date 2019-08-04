@@ -180,13 +180,13 @@
 
                   <input type="radio" id="purchase_ratio_med" ng-model="DF.purchase_ratio"
                                name="purchase_ratio_med" value="med" style="direction: rtl"  required>
-                  <label class="pointer" for="purchase_ratio_med">  בכל פעם שעולה לי צורך למוצר (אחת לחודש בממוצע) </label><br>
+                  <label class="pointer" for="purchase_ratio_med">  מידי פעם (אחת לחודש בממוצע) </label><br>
                   <input type="radio" id="purchase_ratio_high" ng-model="DF.purchase_ratio"
                                name="purchase_ratio_high" value="high" style="direction: rtl"  required>
                   <label class="pointer" for="purchase_ratio_high"> מזמין בכל הזדמנות (מספר פעמים בחודש) </label><br><br>
 
               <li >
-              <label class="text-right">מנה 3 קטגוריות של מוצרים אותם אתה נוטה לרכוש באינטרנט</label>
+              <label class="text-right">   - קניות בסופר /גאדג'טים בגדים ת חופשות מנה 3 קטגוריות של מוצרים אותם רכשת באינטרנט</label>
               <span ng-show="error && (detailsForm.fav_prod_categ_1.$invalid || detailsForm.fav_prod_categ_2.$invalid||detailsForm.fav_prod_categ_3.$invalid)" style="color: #ffa07a">&emsp; עליכם לרשום 3 קטגוריות מועדפות</span>
               <br>
               <input type="text" ng-model="DF.fav_prod_categ_1"  name="fav_prod_categ_1" placeholder="קטגוריה 1"  style="direction: rtl ;color: black"  required size="50"><br>
@@ -201,7 +201,7 @@
             <ol>
 
               <li>
-                <label class="text-right">באיזו תדירות הנך משתמש באפליקציות למציאת מקומות עניין/בילוי?          </label><span ng-show="error && detailsForm.poi_pref.$invalid " style="color: #ffa07a">&emsp; סמנו את האופציה המתאימה</span>
+                <label class="text-right">באיזו תדירות הנך משתמש באפליקציות למציאת מקומות עניין/בילוי בארץ או בחו"ל?          </label><span ng-show="error && detailsForm.poi_pref.$invalid " style="color: #ffa07a">&emsp; סמנו את האופציה המתאימה</span>
                 <br>
                 <input type="radio" id="poi_pref_1" ng-model="DF.poi_pref" name="poi_pref" value="1"
                        style="direction: rtl"  required>
@@ -225,7 +225,7 @@
           
 
             <li >
-            <label class="text-right">מנה עד 3 אפליקציות להמלצת מקומות עניין/בילוי שאתה מכיר</label>
+            <label class="text-right">מנה עד 3 אפליקציות להמלצת מקומות עניין/בילוי שאתה מכיר להויסף דוגמאות!!!!! </label>
             <span ng-show="error && (detailsForm.poi_examp_1.$invalid )" style="color: #ffa07a">&emsp; עליכם לרשום לפחות קטגוריה מועדפת 1</span>
             <br>
             <input type="text" ng-model="DF.poi_examp_1"  name="poi_examp_1" placeholder="אפליקציה 1"  style="direction: rtl ;color: black"  required size="50"><br>

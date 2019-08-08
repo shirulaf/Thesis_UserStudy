@@ -7,7 +7,7 @@ app.controller('home_controller' ,['localStorageModel','$scope','$location','$ro
     localStorageModel.addLocalStorage('moviesExists', false);
 
     // var host= "http://132.72.23.161:"
-    var host= "http://127.0.0.1:"
+    var host= "http://132.72.64.204:"
     
 
     $scope.DF = {};

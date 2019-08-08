@@ -56,6 +56,7 @@
     </button>
   </div>
   <div style="text-align: center">
+
     <iframe
       ng-if="leftView.displayLink && !leftView.current.newPage"
       ng-src="{{ trustSrc(leftView.current.link) }}"
@@ -63,18 +64,23 @@
       height="75%"
     >
     </iframe>
+    <div       ng-show="leftView.displayLink && leftView.current.newPage ">
+
     <button
-      class="btn btn-danger"
-      ng-show="leftView.displayLink && leftView.current.newPage "
-      ng-click="openSiteNewPage(leftView.current.link)"
-      style="max-width: 100%;"
+    class="btn btn-danger"
+    ng-click="openSiteNewPage(leftView.current.link)"
+    style="max-width: 100%;"
     >
-      <h4>
-        לא יכול להיות מוצג בדף זה <b>{{ leftView.current.name }}</b> האתר של
-        <br />
-        אנא לחץ על כפתור זה על מנת לפתוח את האתר בעמוד חדש
-      </h3>
-    </button>
+    <h4>
+      לא יכול להיות מוצג בדף זה <b>{{ leftView.current.name }}</b> האתר של
+      <br />
+      באפשרותך ללחוץ על כפתור זה על מנת לפתוח את האתר בעמוד חדש
+    </h3>
+  </button>
+  <img ng-src="components/QuestionnairePOI_v2/images/hashKitchen.PNG">
+</div>
+
+
     <iframe
       ng-if="!leftView.displayLink"
       ng-src="{{ trustSrc(leftView.current.photos) }}"
@@ -102,6 +108,16 @@
       </ul>
     </div>
   </nav>
+  <div class="alert alert-warning">
+  <h3>אנא דרג את המלצה זו על פי המקום שהמשתמש ביקר בו בעבר ועל פי המקום שבחר לבקר בו</h3>
+  <div style="font-size: 25px ; text-align: center">
+      5 <input type="radio">
+      4 <input type="radio">
+      3 <input type="radio">
+      2 <input type="radio">
+      1 <input type="radio">
+    </div> 
+  </div>
   <div style="text-align: center ; margin-bottom: 15px">
     <button
       ng-click="changeRightViewDisplay('photos')"
@@ -131,21 +147,28 @@
       height="75%"
     >
     </iframe>
-    <button
+    <div ng-if="rightView.displayLink && rightView.current.newPage ">
+
+      
+      
+      <div class="row">
+      <button
       class="btn btn-danger"
       ng-if="rightView.displayLink && rightView.current.newPage "
       ng-click="openSiteNewPage(rightView.current.link)"
       style="max-width: 100%;"
       
-    >
-    <div style=" word-wrap : break-word; ">
-      <h4>
-        לא יכול להיות מוצג בדף זה <b>{{ rightView.current.name }}</b> האתר של
-        <br />
-        אנא לחץ על כפתור זה על מנת לפתוח את האתר בעמוד חדש
-      </h4>
+      >
+          <h4>
+            לא יכול להיות מוצג בדף זה <b>{{ rightView.current.name }}</b> האתר של
+            <br />
+            באפשרותך ללחוץ על כפתור זה על מנת לפתוח את האתר בעמוד חדש
+          </h4>
+        </button>
+      </div>
+      <img ng-src="components/QuestionnairePOI_v2/images/hashKitchen.PNG" width='90%' style="margin-right: 20px">
     </div>
-    </button>
+      
     <iframe
       ng-if="!rightView.displayLink"
       ng-src="{{ trustSrc(rightView.current.photos) }}"

@@ -22,7 +22,7 @@ app.controller("questPOI_controller.js", [
     var dataToSave = [];
 
     // var host = "http://132.72.23.161:"
-    var host = "http://127.0.0.1:";
+    var host = "http://132.72.64.204:";
 
     var directory = "C:/def/";
 

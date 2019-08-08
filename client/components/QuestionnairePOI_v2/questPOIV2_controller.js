@@ -1,4 +1,4 @@
-app.controller("quest_controller", [
+app.controller("questPOIV2_controller", [
   "localStorageModel",
   "$scope",
   "$location",
@@ -44,47 +44,22 @@ app.controller("quest_controller", [
       // console.log(index)
     };
 
-    if (!localStorageModel.getLocalStorage("lidlExists"))
+    if (!localStorageModel.getLocalStorage("yelpExists"))
       //
-      $http.get(host + "8000/lidl").then(function(response) {
+      $http.get(host + "8000/yelp").then(function(response) {
         //debugger
-        localStorageModel.addLocalStorage("lidlData", response.data);
-        movies = localStorageModel.getLocalStorage("lidlData");
+        localStorageModel.addLocalStorage("yelpData", response.data);
+        movies = localStorageModel.getLocalStorage("yelpData");
         $scope.movies = movies[i];
         updateMoviesInfo(i);
       });
     else {
-      movies = localStorageModel.getLocalStorage("lidlData");
+      movies = localStorageModel.getLocalStorage("yelpData");
       $scope.movies = movies[i];
       updateMoviesInfo(i);
     }
 
-    function getMovies() {
-      // console.log("getMovies")
-
-      params = {};
-      params.userName = localStorageModel.getLocalStorage("userID");
-      params.birthYear = localStorageModel.getLocalStorage("birthYear");
-      $http
-        .post(host + "8000/getMovies", params)
-        .then(function(response) {
-          // console.log("got POST")
-
-          // console.log(response.data)
-
-          movies = response.data;
-          setMoviesElements($scope, movies, i);
-        })
-        .then(function() {
-          localStorageModel.updateLocalStorage("moviesExists", true);
-          localStorageModel.addLocalStorage("moviesData", movies);
-          // console.log("Movies: " +  localStorageModel.getLocalStorage(moviesExists))
-        })
-        .catch(function(error) {
-          // console.log(error)
-          $window.alert("We encountered in some errors, please try again ");
-        });
-    }
+   
 
     $scope.nextEval = function() {
       let isValid;
@@ -232,11 +207,13 @@ app.controller("quest_controller", [
       //Add randomness between recommended items
       let mix1, mix2, mix3;
 
-      mix1 = Math.floor(Math.random() * 3);
-      mix2 = Math.floor(Math.random() * 3);
-      while (mix2 == mix1) mix2 = Math.floor(Math.random() * 3);
+      size =movies[i]["rec"].length 
 
-      for (let i = 0; i < 3; i++)
+      mix1 = Math.floor(Math.random() * size);
+      mix2 = Math.floor(Math.random() * size);
+      while (mix2 == mix1) mix2 = Math.floor(Math.random() * size);
+
+      for (let i = 0; i < size; i++)
         if (mix1 == i || mix2 == i) continue;
         else {
           mix3 = i;
@@ -244,8 +221,16 @@ app.controller("quest_controller", [
         }
 
       //debugger
+
+      for (let index = 0; index < movies[i]["rec"].length; index++) {
+        movies[i]["rec"][index]["poster"] = getSitesImages( movies[i]["rec"][index]["name"])
+        
+      }
+
       $scope.recItems.push(movies[i]["rec"][mix1]);
       $scope.recItems.push(movies[i]["rec"][mix2]);
+
+      if (size==3)
       $scope.recItems.push(movies[i]["rec"][mix3]);
 
       this.setMoviesElements($scope, movies, i, mix1, mix2, mix3);
@@ -261,11 +246,17 @@ app.controller("quest_controller", [
 
       $scope.itemsLink.push(movies[i]["rec"][mix1]["link"]);
       $scope.itemsLink.push(movies[i]["rec"][mix2]["link"]);
-      $scope.itemsLink.push(movies[i]["rec"][mix3]["link"]);
 
       $scope.itemsName.push(movies[i]["rec"][mix1]["name"]);
       $scope.itemsName.push(movies[i]["rec"][mix2]["name"]);
+
+      if (size==3){
+      $scope.itemsLink.push(movies[i]["rec"][mix3]["link"]);
       $scope.itemsName.push(movies[i]["rec"][mix3]["name"]);
+      }
+
+
+
     }
     function saveTextAsFile(params) {
       fileName = localStorageModel.getLocalStorage("userID") + "quest";
@@ -290,25 +281,42 @@ app.controller("quest_controller", [
   }
 ]);
 
+function getSitesImages(name)
+{
+  mapping= {
+
+    "SumoMaya" : "components/QuestionnairePOI_v2/images/SumoMaya.PNG",
+    'Hash Kitchen': 'components/QuestionnairePOI_v2/images/hashKitchen.PNG',
+    "RnR Gastropub": 'components/QuestionnairePOI_v2/images/RNR.PNG',
+    "Citizen Public House": 'components/QuestionnairePOI_v2/images/citizen.PNG'
+  }
+
+  return mapping[name]
+}
+
 function setMoviesElements($scope, movies, i, mix1, mix2, mix3) {
   //debugger
   $scope.watched = movies[i].consumed.name;
-  // $scope.watched_tmdb = movies[i].watched_tmdb;
-  $scope.watched_poster = movies[i].consumed.link;
+  $scope.watched_tmdb = movies[i].consumed.link;
+  $scope.watched_poster = getSitesImages(movies[i].consumed.name);
   $scope.chose = movies[i].chose.name;
-  // $scope.chose_tmdb = movies[i].chose_tmdb;
-  $scope.chose_poster = movies[i].chose.link;
+  $scope.chose_tmdb = movies[i].chose.link;
+  $scope.chose_poster = getSitesImages(movies[i].chose.name);
 
   $scope.rec_1 = movies[i]["rec"][mix1];
   $scope.rec_2 = movies[i]["rec"][mix2];
-  $scope.rec_3 = movies[i]["rec"][mix3];
   // $scope.rec_1_tmdb = movies[i]["rec"][mix1]["]
   // $scope.rec_2_tmdb = movies[i]["rec"][mix2]["]
   // $scope.rec_3_tmdb = movies[i]["rec"][mix3]["]
-  $scope.rec_1_poster = movies[i]["rec"][mix1]["link"];
-  $scope.rec_2_poster = movies[i]["rec"][mix2]["link"];
-  $scope.rec_3_poster = movies[i]["rec"][mix3]["link"];
+  
+  
+  
+ 
+  if (movies[i]["rec"].length==3){
 
+     $scope.rec_3 = movies[i]["rec"][mix3];
+  }
+  
   for (expl in $scope.explain) $scope.explain[expl] = "";
 }
 

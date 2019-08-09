@@ -19,8 +19,8 @@ app.controller("quest_controller", [
     var userHistory = [];
     var dataToSave = [];
 
-    // var host = "http://132.72.23.161:"
-    var host = "http://132.72.64.204:";
+    // var host = "http://127.0.0.1:"
+    var host = "http://127.0.0.1:";
 
     var directory = "C:/def/";
 
@@ -248,7 +248,7 @@ app.controller("quest_controller", [
       $scope.recItems.push(movies[i]["rec"][mix2]);
       $scope.recItems.push(movies[i]["rec"][mix3]);
 
-      this.setMoviesElements($scope, movies, i, mix1, mix2, mix3);
+      setMoviesElements($scope, movies, i, mix1, mix2, mix3);
       $scope.QuestAmount = movies.length;
       $scope.currentQuest = i + 1;
       if (i == movies.length - 1) $scope.Last = true;
@@ -287,29 +287,29 @@ app.controller("quest_controller", [
     function destroyClickedElement(event) {
       document.body.removeChild(event.target);
     }
+
+    function setMoviesElements($scope, movies, i, mix1, mix2, mix3) {
+      //debugger
+      $scope.watched = movies[i].consumed.name;
+      // $scope.watched_tmdb = movies[i].watched_tmdb;
+      $scope.watched_poster = movies[i].consumed.link;
+      $scope.chose = movies[i].chose.name;
+      // $scope.chose_tmdb = movies[i].chose_tmdb;
+      $scope.chose_poster = movies[i].chose.link;
+
+      $scope.rec_1 = movies[i]["rec"][mix1];
+      $scope.rec_2 = movies[i]["rec"][mix2];
+      $scope.rec_3 = movies[i]["rec"][mix3];
+      // $scope.rec_1_tmdb = movies[i]["rec"][mix1]["]
+      // $scope.rec_2_tmdb = movies[i]["rec"][mix2]["]
+      // $scope.rec_3_tmdb = movies[i]["rec"][mix3]["]
+      $scope.rec_1_poster = movies[i]["rec"][mix1]["link"];
+      $scope.rec_2_poster = movies[i]["rec"][mix2]["link"];
+      $scope.rec_3_poster = movies[i]["rec"][mix3]["link"];
+
+      for (expl in $scope.explain) $scope.explain[expl] = "";
+    }
   }
 ]);
-
-function setMoviesElements($scope, movies, i, mix1, mix2, mix3) {
-  //debugger
-  $scope.watched = movies[i].consumed.name;
-  // $scope.watched_tmdb = movies[i].watched_tmdb;
-  $scope.watched_poster = movies[i].consumed.link;
-  $scope.chose = movies[i].chose.name;
-  // $scope.chose_tmdb = movies[i].chose_tmdb;
-  $scope.chose_poster = movies[i].chose.link;
-
-  $scope.rec_1 = movies[i]["rec"][mix1];
-  $scope.rec_2 = movies[i]["rec"][mix2];
-  $scope.rec_3 = movies[i]["rec"][mix3];
-  // $scope.rec_1_tmdb = movies[i]["rec"][mix1]["]
-  // $scope.rec_2_tmdb = movies[i]["rec"][mix2]["]
-  // $scope.rec_3_tmdb = movies[i]["rec"][mix3]["]
-  $scope.rec_1_poster = movies[i]["rec"][mix1]["link"];
-  $scope.rec_2_poster = movies[i]["rec"][mix2]["link"];
-  $scope.rec_3_poster = movies[i]["rec"][mix3]["link"];
-
-  for (expl in $scope.explain) $scope.explain[expl] = "";
-}
 
 angular.module("myApp");

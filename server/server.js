@@ -13,20 +13,32 @@ var fs = require("fs");
 var MyData = [];
 var directory = "C:/userStudyLogs/";
 
+getRandomArray = function(arrayToRandom) {
+  outputArray = [];
+  index_array = [];
+  console.log(arrayToRandom);
+  while (arrayToRandom.length > 0) {
+    index = Math.floor(Math.random() * arrayToRandom.length);
+    index_array.push(index);
+    outputArray.push(arrayToRandom.splice(index, 1)[0]);
+  }
+  console.log(outputArray);
+  return outputArray;
+};
+
 let rawdata = fs.readFileSync("Yelp_items_final_data.json");
 parseData = JSON.parse(rawdata);
 let yelp_items = [];
 for (let item in parseData) yelp_items.push(parseData[item]);
 
-console.log(yelp_items);
-
+console.log("yelp data uploded");
 
 rawdata = fs.readFileSync("Lidl_items_final_data.json");
 parseData = JSON.parse(rawdata);
 let lidl_items = [];
 for (let item in parseData) lidl_items.push(parseData[item]);
 
-console.log(lidl_items);
+console.log("lidl data uploded");
 app.use(express.static("server_components"));
 
 /*app.use(function (req, res, next) {
@@ -39,11 +51,14 @@ app.use(express.static("server_components"));
 //	console.log (req.body);
 
 app.get("/lidl", function(req, res) {
-  res.send(lidl_items);
+  randomize_lidl = getRandomArray([...lidl_items]);
+  res.send(randomize_lidl);
 });
 app.get("/yelp", function(req, res) {
-  res.send(yelp_items);
+  randomize_yelp = getRandomArray([...yelp_items]);
+  res.send(randomize_yelp);
 });
+
 app.post("/submitUserDetails", function(req, res) {
   //  console.log("submitUserDetails")
 
@@ -69,10 +84,7 @@ app.post("/submitUserDetails", function(req, res) {
         }
 
         //console.log("my data res:" + JSON.stringify(MyData));
-        res.writeHead(200, { "Content-Type": "text/plain" });
-        res.write(JSON.stringify(lidl_items));
-        //console.log("my data res:" + MyData);
-        res.send();
+        res.sendStatus(200);
       }
     } catch (error) {
       console.log("catch");

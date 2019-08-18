@@ -1,4 +1,4 @@
-#thumbs {
+.ques2t #thumbs {
   width:300PX;
   margin-top: 20px;
   margin-left: auto;
@@ -9,7 +9,7 @@
   text-justify: distribute-all-lines;
 }
 
-#thumbs p {
+.ques2t #thumbs p {
   margin-left: 20px;
   margin-right: 20px;
   vertical-align: top;
@@ -18,102 +18,102 @@
   zoom: 1;
 }
 
-.stretch {
+.ques2t .stretch {
   width: 100%;
   display: inline-block;
   font-size: 0;
   line-height: 0;
 }
 
-.poster {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 white;
+.ques2t .poster {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0,2), 0 6px 20px 0 white;
   text-align: center;
   height: 130px;
   width: auto;
-  z-index: -1;
+  z-index: 5;
 }
 
-button {
+.ques2t button {
   background-color: #6a0606;
   padding: 10px;
   font-size: medium;
 }
-button:hover {
+.ques2t button:hover {
   -moz-box-shadow: 0 0 20px #feffa6;
   -webkit-box-shadow: 0 0 20px #feffa6;
   box-shadow: 0 0 20px #feffa6;
 }
 
-.thumb {
+.ques2t .thumb {
   position: relative;
 }
 
-.thumb img {
+.ques2t .thumb img {
   border: 1px solid #000;
   vertical-align: text-bottom;
 }
-.thumb:hover {
+.ques2t .thumb:hover {
   border: 0; /* IE6 needs this to show large image */
   z-index: 50;
 }
-.thumb span {
+.ques2t .thumb span {
   position: absolute;
   background-color: lightyellow;
   padding: 5px;
-  left: 0px;
+  left: -250px;
   border: 1px solid gray;
   visibility: hidden;
   color: #4a89a5;
   text-decoration: none;
-  z-index: 1;
+  z-index: 50;
 }
 
-.thumb span img {
+.ques2t .thumb span img {
   /*CSS for enlarged image*/
   border-width: 0;
   padding: 2px;
-  z-index: 1;
+  z-index: 5;
   height: 300px;
   width: auto;
 }
 
-.thumb:hover span {
+.ques2t .thumb:hover span {
   position: absolute;
-  z-index: 1;
+  z-index: 5;
   visibility: visible;
   width: 400%;
-  top: -30px;
-  left: -30px; /*position where enlarged image should offset horizontally */
+  top: -130px;
+  left: -250px; /*position where enlarged image should offset horizontally */
 }
 
-.thumb:hover span.test:hover {
+.ques2t .thumb:hover span.ques2t .test:hover {
   color: #0d1175;
   font-size: larger;
-  z-index: 1;
+  z-index: 5;
 }
 
-.imgBox {
+.ques2t .imgBox {
   height: 150px;
   width: auto;
-  z-index: -1;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7), 0 6px 20px 0 white;
+  z-index: 5;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0, 7), 0 6px 20px 0 white;
 }
 
-.imgBox:hover {
+.ques2t .imgBox:hover {
   -moz-box-shadow: 0 0 20px #000000;
   -webkit-box-shadow: 0 0 20px #000000;
   box-shadow: 0 0 20px #000000;
 }
 
-input:hover {
+.ques2t input:hover {
   cursor: pointer;
 }
 
-.pointer {
+.ques2t .pointer {
   font-weight: normal;
 }
 
-.pointer:hover {
+.ques2t .pointer:hover {
   cursor: pointer;
   font-weight: 600;
 }

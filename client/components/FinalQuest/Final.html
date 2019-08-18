@@ -102,8 +102,8 @@
                     </li>
                     <br>
                     <li>
-                        <label class="text-right">בהנחה שהמערכת הציעה לך מספר המלצות טובות, מה השיקולים שלך <U>לבחור</U> בהמלצה?     </label>
-                        <span ng-show="error && detailsForm.movies_plessure.$invalid " style="color: #ffa07a">&emsp; סמנו את האופציה המתאימה</span>
+                        <label class="text-right">בהנחה שהמערכת הציעה לך מספר המלצות טובות, מה השיקולים שלך באיזו המלצה  <U>לבחור</U>?     </label>
+                        בשאלה זו התמקד בשיקולים לבחירת המלצה
                         <br>
                         <textarea class="input_textarea" ng-blur="saveClick($event, answers.Q2)" ng-click="saveClick($event)" name="Q2" ng-model="answers.Q2" rows="3" cols="100"
                                   required></textarea>
@@ -111,8 +111,8 @@
                     </li>
                     <br>
                     <li>
-                        <label class="text-right">בהנחה שהמערכת הציעה לך מספר המלצות, מה השיקולים שלך <U>לפסול</U> המלצה?     </label>
-                        <span ng-show="error && detailsForm.movies_plessure.$invalid " style="color: #ffa07a">&emsp; סמנו את האופציה המתאימה</span>
+                        <label class="text-right">בהנחה שהמערכת הציעה לך מספר המלצות, מה השיקולים שלך <U>לפסול</U> המלצה?     </label><br>
+                       בשאלה זו התמקד בשיקולים לדחיית המלצה
                         <br>
                         <textarea class="input_textarea" ng-blur="saveClick($event, answers.Q3)" ng-click="saveClick($event)" name="Q3" ng-model="answers.Q3" rows="3" cols="100"
                                   required></textarea>
@@ -123,7 +123,7 @@
                         <div>
                             <h3 class="text-right"
                                 ><b>נניח כי ניתנו לך מספר המלצות, אך לא בחרת בהן,<br> במקומן בחרת בפריט אחר שלא קיים בסט ההמלצות שניתנו לך,<br> האם כל אחת מן ההמלצות שלא בחרת בהן בסט איננה רלוונטית עבורך?</b></h3>
-                            <span ng-show="error && detailsForm.movies_plessure.$invalid " style="color: #ffa07a">&emsp; סמנו את האופציה המתאימה</span>
+                           בשאלה זו התמקד ביחסך להמלצות שלא נבחרו
 
                             <textarea class="input_textarea" ng-blur="saveClick($event, answers.Q4)" ng-click="saveClick($event)" name="Q4" ng-model="answers.Q4" rows="3" cols="100" required></textarea>
                         </div>
@@ -132,9 +132,8 @@
                         <li>
                         <div>
                             <h3 class="text-right"
-                                ><b>מה יכולים להיות השיקולים שלך לא לבחור בפריט מתוך סט ההמלצות, <br> אלא לבחור בפריט אחר שלא הוצג לך?</b></h3>
-                            <span ng-show="error && detailsForm.movies_plessure.$invalid " style="color: #ffa07a">&emsp; סמנו את האופציה המתאימה</span>
-
+                                ><b>מה יכולים להיות השיקולים שלך <u>לא לבחור באף פריט</u> מתוך סט ההמלצות, <br> אלא לבחור בפריט אחר שלא הוצג לך?</b></h3>
+                           בשאלה זו התמקד בפריט שנבחר למרות ההמלצות
                             <textarea class="input_textarea" ng-blur="saveClick($event, answers.Q5)" ng-click="saveClick($event)" name="Q5" ng-model="answers.Q5" rows="3" cols="100" required></textarea>
                         </div>
                     </li>
@@ -145,8 +144,7 @@
                             <h3 class="text-right"><b>
                                 האם היית רוצה שהמערכת  <u>תמליץ לך שוב במועד אחר  </u> על המלצות שהוצגו לך, אך לא בחרת בהן?
                             </b></h3>
-                            <span ng-show="error && detailsForm.movies_plessure.$invalid " style="color: #ffa07a">&emsp; סמנו את האופציה המתאימה</span>
-
+כלומר, המערכת לא תסיר המלצות שנדחו מהמערכת, וייתכן כי יומלצו שוב בעתיד
                             <textarea class="input_textarea" ng-blur="saveClick($event, answers.Q6)" ng-click="saveClick($event)" name="Q6" ng-model="answers.Q6" rows="3" cols="100" required></textarea>
                         </div>
                     </li>
@@ -155,8 +153,7 @@
                     <li>
                         <div>
                             <h3 class="text-right"><b>
-                                האם היית רוצה שהמערכת  <u>תאפשר לך לחזור להמלצות</u> עבר שהוצגו לך, אך לא בחרת בהן, במועד מאוחר יותר?                            </b></h3>
-                            <span ng-show="error && detailsForm.movies_plessure.$invalid " style="color: #ffa07a">&emsp; סמנו את האופציה המתאימה</span>
+                                האם היית רוצה שהמערכת  <u>תשמור לך היסטוריית המלצות שנדחו,</u> כך שתוכל לעיין מאוחר יותר בהמלצות שלא בחרת בהן ?</b></h3>
 
                             <textarea class="input_textarea" ng-blur="saveClick($event, answers.Q7)" ng-click="saveClick($event)" name="Q7" ng-model="answers.Q7" rows="3" cols="100" required></textarea>
                         </div>
@@ -165,7 +162,7 @@
                              <li>
                         <div>
                             <h3 class="text-right"><b>האם ייתכן כי תשובותיך ישתנו עבור תחום המלצה אחר? במידה וכן, מהו התחום? </b></h3>
-                            <span ng-show="error && detailsForm.movies_plessure.$invalid " style="color: #ffa07a">&emsp; סמנו את האופציה המתאימה</span>
+                           
 
                             <textarea class="input_textarea" ng-blur="saveClick($event, answers.Q8)" ng-click="saveClick($event)" name="Q8"  ng-model="answers.Q8" rows="3" cols="100" required></textarea>
                         </div>

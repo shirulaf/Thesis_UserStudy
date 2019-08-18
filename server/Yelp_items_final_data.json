@@ -106,7 +106,7 @@
       },
       {
         "photos": "http://www.tripadvisor.co.il/Attraction_Review-g45963-d143006-Reviews-M_M_S_World_Las_Vegas-Las_Vegas_Nevada.html#photos;aggregationId=&albumid=101&filter=7",
-        "link": "http://www.mymms.com/category/store-locations/las-vegas.do",
+        "link": "https://www.mms.com/en-us/mms-store-las-vegas",
         "id": "q18xbq3Cbyp_BJyfMQxFxg",
         "name": "M&M's World",
         "newPage": false
@@ -241,7 +241,7 @@
       },
       {
         "photos": "https://www.tripadvisor.co.il/Restaurant_Review-g45963-d7314361-Reviews-Yard_House-Las_Vegas_Nevada.html#photos;aggregationId=101&albumid=101&filter=7",
-        "link": "http://www.yardhouse.com/menu-listing/eat",
+        "link": "http://www.yardhouse.com/home",
         "id": "y8d90Pt16Nip-B5UXWBP-w",
         "name": "Yard House",
         "newPage": false

@@ -37,7 +37,8 @@ app.config([
       })
       .when("/questPOIV2", {
         templateUrl: "./components/QuestionnairePOI_v2/questPOIV2.html",
-        controller: "questPOIV2_controller as questCtrl3"      })
+        controller: "questPOIV2_controller as questCtrl3"
+      })
       .when("/quest.en", {
         templateUrl: "./components/Questionnaire/quest.en.html",
         controller: "quest_controller as questCtrl"

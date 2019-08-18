@@ -2,344 +2,321 @@
   "1001837": {
     "rec": [
       {
-        "link": "https://www.lidl.de/media/product/0/2/0/6/9/7/5/freshona-weinsauerkraut.jpg", 
-        "id": "100183701", 
-        "name": "name"
-      }, 
+        "link": "https://www.lidl.de/media/product/0/2/0/6/9/7/5/freshona-weinsauerkraut.jpg",
+        "id": "100183701",
+        "name": "weinsauerkraut / כרוב כבוש"
+      },
       {
-        "link": "https://www.lidl.de/media/product/0/2/1/3/8/8/5/freshona-mais--3.jpg", 
-        "id": "100189399", 
-        "name": "name"
-      }, 
+        "link": "https://www.lidl.de/media/product/0/2/1/3/8/8/5/freshona-mais--3.jpg",
+        "id": "100189399",
+        "name": "Gemüsemais /  תירס מתוק"
+      },
       {
-        "link": "https://www.lidl.de/media/product/0/2/0/5/9/3/4/crusti-croc-salzbrezeln--1.jpg", 
-        "id": "100182798", 
-        "name": "name"
+        "link": "https://www.lidl.de/media/product/0/2/0/5/9/3/4/crusti-croc-salzbrezeln--1.jpg",
+        "id": "100182798",
+        "name": "salzbrezeln / בייגלה מלח"
       }
-    ], 
+    ],
     "consumed": {
-      "link": "https://www.lidl.de/media/product/0/2/0/9/7/7/5/freshona-erbsen-mit-moehren.jpg", 
-      "id": "10018412", 
-      "name": "name"
-    }, 
+      "link": "https://www.lidl.de/media/product/0/2/0/9/7/7/5/freshona-erbsen-mit-moehren.jpg",
+      "id": "10018412",
+      "name": "erbsen mit möhren / אפונה עם גזר"
+    },
     "chose": {
-      "link": "https://www.lidl.de/media/product/0/2/0/6/9/7/4/freshona-delikatess-rotkohl--2.jpg", 
-      "id": "1001837", 
-      "name": "name"
+      "link": "https://www.lidl.de/media/product/0/2/0/6/9/7/4/freshona-delikatess-rotkohl--2.jpg",
+      "id": "1001837",
+      "name": "delikatess rotkohl / מעדן כרוב אדום"
     }
-  }, 
+  },
   "100184116": {
     "rec": [
       {
-        "link": "https://www.lidl.de/media/product/0/2/1/3/9/8/2/belbake-pudding-vanillegeschmack--1.jpg", 
-        "id": "100189535", 
-        "name": "name"
-      }, 
+        "link": "https://www.lidl.de/media/product/0/2/1/3/9/8/2/belbake-pudding-vanillegeschmack--1.jpg",
+        "id": "100189535",
+        "name": "pudding vanillegeschmack / פודינג בטעם וניל"
+      },
       {
-        "link": "https://www.lidl.de/media/product/0/2/0/9/7/6/8/freshona-pfirsichhaelften--2.jpg", 
-        "id": "100184111", 
-        "name": "name"
-      }, 
+        "link": "https://www.lidl.de/media/product/0/2/0/9/7/6/8/freshona-pfirsichhaelften--2.jpg",
+        "id": "100184111",
+        "name": "pfirsichhälften leicht gezuckert / חצאי אפרסק מסוכרים קלות"
+      },
       {
-        "link": "https://www.lidl.de/media/product/0/2/0/9/7/6/9/freshona-fruchtcocktail--2.jpg", 
-        "id": "100184112", 
-        "name": "name"
+        "link": "https://www.lidl.de/media/product/0/2/0/9/7/6/9/freshona-fruchtcocktail--2.jpg",
+        "id": "100184112",
+        "name": "fruchtcocktail / קוקטייל פירות"
       }
-    ], 
+    ],
     "consumed": {
-      "link": "https://www.lidl.de/media/product/0/2/0/9/7/7/2/harvin-mandarin-orangen.jpg", 
-      "id": "100184115", 
-      "name": "name"
-    }, 
+      "link": "https://www.lidl.de/media/product/0/2/0/9/7/7/2/harvin-mandarin-orangen.jpg",
+      "id": "100184115",
+      "name": "mandarin-orangen leicht gezuckert / מנדרינה כתומה מסוכרת קלות "
+    },
     "chose": {
-      "link": "https://www.lidl.de/media/product/0/1/7/2/0/9/6/freshona-sauerkirschen.jpg", 
-      "id": "100184116", 
-      "name": "name"
+      "link": "https://www.lidl.de/media/product/0/1/7/2/0/9/6/freshona-sauerkirschen.jpg",
+      "id": "100184116",
+      "name": "sauerkirschen entsteint gezuckert / דובדבנים חמוצים מגולענים מסוכרים"
     }
-  }, 
+  },
   "100187257": {
     "rec": [
       {
-        "link": "https://www.lidl.de/media/product/0/2/1/1/2/6/7/solevita-apfel-nektar--3.jpg", 
-        "id": "100187268", 
-        "name": "name"
-      }, 
+        "link": "https://www.lidl.de/media/product/0/2/1/1/2/6/7/solevita-apfel-nektar--3.jpg",
+        "id": "100187268",
+        "name": "apfel nektar / נקטר תפוחים"
+      },
       {
-        "link": "https://www.lidl.de/media/product/0/1/9/2/3/8/6/crusti-croc-erdnussflips--2.jpg", 
-        "id": "100182791", 
-        "name": "name"
-      }, 
+        "link": "https://www.lidl.de/media/product/0/1/9/2/3/8/6/crusti-croc-erdnussflips--2.jpg",
+        "id": "100182791",
+        "name": "Erdnussflips / במבה"
+      },
       {
-        "link": "https://www.lidl.de/media/product/0/2/0/5/9/6/7/solevita-multivitaminsaft--1.jpg", 
-        "id": "100182834", 
-        "name": "name"
+        "link": "https://www.lidl.de/media/product/0/2/0/5/9/6/7/solevita-multivitaminsaft--1.jpg",
+        "id": "100182834",
+        "name": "multivitaminsaft / מיץ מולטיויטמין"
       }
-    ], 
+    ],
     "consumed": {
-      "link": "https://www.lidl.de/media/product/0/2/1/1/2/6/1/solevita-apfel-bananen-nektar.jpg", 
-      "id": "10018725", 
-      "name": "name"
-    }, 
+      "link": "https://www.lidl.de/media/product/0/2/1/1/2/6/1/solevita-apfel-bananen-nektar.jpg",
+      "id": "10018725",
+      "name": "apfel-bananen nektar / מיץ תפוח-בננה"
+    },
     "chose": {
-      "link": "https://www.lidl.de/media/product/0/2/1/1/2/6/6/solevita-orangen-nektar--3.jpg", 
-      "id": "100187257", 
-      "name": "name"
+      "link": "https://www.lidl.de/media/product/0/2/1/1/2/6/6/solevita-orangen-nektar--3.jpg",
+      "id": "100187257",
+      "name": "orange nektar / מיץ תפוזים"
     }
-  }, 
+  },
   "100191872": {
     "rec": [
       {
-        "link": "https://www.lidl.de/media/product/0/2/1/6/9/2/5/maitre-jean-pierre-croissant-mit-milchcreme-fuellung.jpg", 
-        "id": "100191873", 
-        "name": "name"
-      }, 
+        "link": "https://www.lidl.de/media/product/0/2/1/6/9/2/5/maitre-jean-pierre-croissant-mit-milchcreme-fuellung.jpg",
+        "id": "100191873",
+        "name": "croissant mit milchcreme fuellung / קרואסון עם מילוי קרם חלב"
+      },
       {
-        "link": "https://www.lidl.de/media/product/0/2/1/1/2/6/6/solevita-orangen-nektar--3.jpg", 
-        "id": "100187257", 
-        "name": "name"
-      }, 
+        "link": "https://www.lidl.de/media/product/0/2/1/1/2/6/6/solevita-orangen-nektar--3.jpg",
+        "id": "100187257",
+        "name": "orangen nektar / מיץ תפוזים"
+      },
       {
-        "link": "https://www.lidl.de/media/product/0/0/4/6/9/4/5/confiserie-firenze-muffins-hell-mit-schokostueckchen--1.jpg", 
-        "id": "100191882", 
-        "name": "name"
+        "link": "https://www.lidl.de/media/product/0/0/4/6/9/4/5/confiserie-firenze-muffins-hell-mit-schokostueckchen--1.jpg",
+        "id": "100191882",
+        "name": "muffins hell mit schokostueckchen / מאפינס שוקולד צ'יפס"
       }
-    ], 
+    ],
     "consumed": {
-      "link": "https://www.lidl.de/media/product/0/2/1/6/9/2/4/maitre-jean-pierre-croissant-mit-nuss-nougat-fuellung.jpg", 
-      "id": "10019188", 
+      "link": "https://www.lidl.de/media/product/0/2/1/6/9/2/4/maitre-jean-pierre-croissant-mit-nuss-nougat-fuellung.jpg",
+      "id": "10019188",
       "name": "name"
-    }, 
+    },
     "chose": {
-      "link": "https://www.lidl.de/media/product/0/2/1/6/9/2/4/maitre-jean-pierre-croissant-mit-nuss-nougat-fuellung.jpg", 
-      "id": "100191872", 
-      "name": "name"
+      "link": "https://www.lidl.de/media/product/0/2/1/6/9/2/4/maitre-jean-pierre-croissant-mit-nuss-nougat-fuellung.jpg",
+      "id": "100191872",
+      "name": "croissant mit nuss nougat fuellung / קרואסון במילוי אגוז נוגט"
     }
-  }, 
+  },
   "100189501": {
     "rec": [
       {
-        "link": "https://www.lidl.de/media/product/0/1/7/2/1/0/6/belbake-backpulver--3.jpg", 
-        "id": "100189624", 
-        "name": "name"
-      }, 
+        "link": "https://www.lidl.de/media/product/0/1/7/2/1/0/6/belbake-backpulver--3.jpg",
+        "id": "100189624",
+        "name": "backpulver / אבקת אפיה"
+      },
       {
-        "link": "https://www.lidl.de/media/product/0/1/9/2/3/8/6/crusti-croc-erdnussflips--2.jpg", 
-        "id": "100182791", 
-        "name": "name"
-      }, 
+        "link": "https://www.lidl.de/media/product/0/1/9/2/3/8/6/crusti-croc-erdnussflips--2.jpg",
+        "id": "100182791",
+        "name": "erdnussflips / במבה"
+      },
       {
-        "link": "https://www.lidl.de/media/product/0/2/1/3/9/5/1/cologran-fluessigsuessstoff.jpg", 
-        "id": "100189493", 
-        "name": "name"
+        "link": "https://www.lidl.de/media/product/0/2/1/3/9/5/1/cologran-fluessigsuessstoff.jpg",
+        "id": "100189493",
+        "name": "flüssigsüßstoff / ממתיק נוזלי"
       }
-    ], 
+    ],
     "consumed": {
-      "link": "https://www.lidl.de/media/product/0/0/3/0/0/9/9/belbake-vanillin-zucker--2.jpg", 
-      "id": "10018949", 
-      "name": "name"
-    }, 
+      "link": "https://www.lidl.de/media/product/0/0/3/0/0/9/9/belbake-vanillin-zucker--2.jpg",
+      "id": "10018949",
+      "name": "vanillin zucker / סוכר וניל"
+    },
     "chose": {
-      "link": "https://www.lidl.de/media/product/0/2/1/3/9/6/3/belbake-hefe--1.jpg", 
-      "id": "100189501", 
-      "name": "name"
+      "link": "https://www.lidl.de/media/product/0/2/1/3/9/6/3/belbake-hefe--1.jpg",
+      "id": "100189501",
+      "name": "hefe / שמרים"
     }
-  }, 
+  },
   "100191794": {
     "rec": [
       {
-        "link": "https://www.lidl.de/media/product/0/2/1/6/8/9/1/solevita-fruchtsaftgetraenk-apfel-kirsch-10-x-0-2l--2.jpg", 
-        "id": "100191795", 
-        "name": "name"
-      }, 
+        "link": "https://www.lidl.de/media/product/0/2/1/6/8/9/1/solevita-fruchtsaftgetraenk-apfel-kirsch-10-x-0-2l--2.jpg",
+        "id": "100191795",
+        "name": "fruchtsaftgetraenk apfel kirsch / מיץ פירות דובדבן-תפוחים"
+      },
       {
-        "link": "https://www.lidl.de/media/product/0/2/0/5/9/7/0/belbake-zucker.jpg", 
-        "id": "100182837", 
-        "name": "name"
-      }, 
+        "link": "https://www.lidl.de/media/product/0/2/0/5/9/7/0/belbake-zucker.jpg",
+        "id": "100182837",
+        "name": "zucker / סוכר"
+      },
       {
-        "link": "https://www.lidl.de/media/product/0/2/1/3/9/2/3/solevita-multivitamin.jpg", 
-        "id": "100189448", 
-        "name": "name"
+        "link": "https://www.lidl.de/media/product/0/2/1/3/9/2/3/solevita-multivitamin.jpg",
+        "id": "100189448",
+        "name": "multivitamin / מיץ מולטיויטמין"
       }
-    ], 
+    ],
     "consumed": {
-      "link": "https://www.lidl.de/media/product/0/2/1/3/9/2/1/solevita-orange.jpg", 
-      "id": "100189446", 
-      "name": "name"
-    }, 
+      "link": "https://www.lidl.de/media/product/0/2/1/3/9/2/1/solevita-orange.jpg",
+      "id": "100189446",
+      "name": "fruchtsaftgetraenk orange / מיץ תפוזים"
+    },
     "chose": {
-      "link": "https://www.lidl.de/media/product/0/2/1/6/8/9/0/solevita-fruchtsaftgetraenk-orange-10-x-0-2l--2.jpg", 
-      "id": "100191794", 
-      "name": "name"
+      "link": "https://www.lidl.de/media/product/0/2/1/6/8/9/0/solevita-fruchtsaftgetraenk-orange-10-x-0-2l--2.jpg",
+      "id": "100191794",
+      "name": "fruchtsaftgetraenk orange / מיץ תפוזים"
     }
-  }, 
-  "100202872": {
-    "rec": [
-      {
-        "link": "https://www.lidl.de/media/product/0/2/2/9/8/1/2/playtive-junior-flughafen-parkhaus-hafen-schienen.jpg", 
-        "id": "100203025", 
-        "name": "name"
-      }, 
-      {
-        "link": "https://www.lidl.de/media/product/0/2/2/9/7/3/1/playtive-junior-holz-spielzeug.jpg", 
-        "id": "100202614", 
-        "name": "name"
-      }
-    ], 
-    "consumed": {
-      "link": "https://www.lidl.de/media/product/0/2/3/1/3/6/3/playtive-junior-einsatzwagen--3.jpg", 
-      "id": "100203086", 
-      "name": "name"
-    }, 
-    "chose": {
-      "link": "https://www.lidl.de/media/product/0/2/2/9/7/6/2/playtive-junior-fahrzeugset.jpg", 
-      "id": "100202872", 
-      "name": "name"
-    }
-  }, 
+  },
+
   "100183679": {
     "rec": [
       {
-        "link": "https://www.lidl.de/media/product/0/2/0/6/9/5/4/coquette-huehner-reistopf--1.jpg", 
-        "id": "100183683", 
-        "name": "name"
-      }, 
+        "link": "https://www.lidl.de/media/product/0/2/0/6/9/5/4/coquette-huehner-reistopf--1.jpg",
+        "id": "100183683",
+        "name": "huehner reistopf / סיר אורז ועוף"
+      },
       {
-        "link": "https://www.lidl.de/media/product/0/0/2/0/0/4/1/harvest-basket-kartoffelpueree--2.jpg", 
-        "id": "100182878", 
-        "name": "name"
-      }, 
+        "link": "https://www.lidl.de/media/product/0/0/2/0/0/4/1/harvest-basket-kartoffelpueree--2.jpg",
+        "id": "100182878",
+        "name": "kartoffelpueree / פירה תפוחי אדמה"
+      },
       {
-        "link": "https://www.lidl.de/media/product/0/2/0/6/9/7/3/freshona-gehackte-tomaten--4.jpg", 
-        "id": "100183699", 
-        "name": "name"
+        "link": "https://www.lidl.de/media/product/0/2/0/6/9/7/3/freshona-gehackte-tomaten--4.jpg",
+        "id": "100183699",
+        "name": "namgehackte tomatene / עגבניות קצוצות"
       }
-    ], 
+    ],
     "consumed": {
-      "link": "https://www.lidl.de/media/product/0/2/0/9/7/6/4/coquette-bauerntopf.jpg", 
-      "id": "100184107", 
-      "name": "name"
-    }, 
+      "link": "https://www.lidl.de/media/product/0/2/0/9/7/6/4/coquette-bauerntopf.jpg",
+      "id": "100184107",
+      "name": "bauerntopf mit nudeln min ifrikadellen und gemüse / סיר איכרים עם עם אטריות מיני קציצות וירקות"
+    },
     "chose": {
-      "link": "https://www.lidl.de/media/product/0/0/6/1/5/1/4/coquette-kartoffeltopf--2.jpg", 
-      "id": "100183679", 
-      "name": "name"
+      "link": "https://www.lidl.de/media/product/0/0/6/1/5/1/4/coquette-kartoffeltopf--2.jpg",
+      "id": "100183679",
+      "name": "kartoffeltopf / תבשיל תפוחי אדמה"
     }
-  }, 
+  },
   "100165408": {
     "rec": [
       {
-        "link": "https://www.lidl.de/media/product/0/1/8/3/5/5/5/w5-klarspueler--1.jpg", 
-        "id": "100165412", 
-        "name": "name"
-      }, 
+        "link": "https://www.lidl.de/media/product/0/1/8/3/5/5/5/w5-klarspueler--1.jpg",
+        "id": "100165412",
+        "name": " Klarspüler / מסיע שטיפה למדיח כלים"
+      },
       {
-        "link": "https://www.lidl.de/media/product/0/1/8/3/5/7/7/aromata-alu-folie-30-m.jpg", 
-        "id": "100165437", 
-        "name": "name"
-      }, 
+        "link": "https://www.lidl.de/media/product/0/1/8/3/5/7/7/aromata-alu-folie-30-m.jpg",
+        "id": "100165437",
+        "name": "alu folie / נייר כסף"
+      },
       {
-        "link": "https://www.lidl.de/media/product/0/0/1/0/3/5/0/w5-glasreiniger--2.jpg", 
-        "id": "100189291", 
-        "name": "name"
+        "link": "https://www.lidl.de/media/product/0/0/1/0/3/5/0/w5-glasreiniger--2.jpg",
+        "id": "100189291",
+        "name": "glasreiniger / מנקה זכוכית"
       }
-    ], 
+    ],
     "consumed": {
-      "link": "https://www.lidl.de/media/product/0/1/7/1/1/9/8/w5-geschirrspueltabs-classic--7.jpg", 
-      "id": "100154328", 
-      "name": "name"
-    }, 
+      "link": "https://www.lidl.de/media/product/0/1/7/1/1/9/8/w5-geschirrspueltabs-classic--7.jpg",
+      "id": "100154328",
+      "name": "geschirrspül tabs / טבליות לשטיפת כלים"
+    },
     "chose": {
-      "link": "https://www.lidl.de/media/product/0/1/8/7/0/5/6/w5-spezialsalz-fuer-geschirrspuelmaschinen.jpg", 
-      "id": "100165408", 
-      "name": "name"
+      "link": "https://www.lidl.de/media/product/0/1/8/7/0/5/6/w5-spezialsalz-fuer-geschirrspuelmaschinen.jpg",
+      "id": "100165408",
+      "name": "spezial-salz / מלח למדיח כלים"
     }
-  }, 
+  },
   "10018719": {
     "rec": [
       {
-        "link": "https://www.lidl.de/media/product/0/2/1/1/2/0/9/kania-basilikum-gerebelt.jpg", 
-        "id": "100187189", 
-        "name": "name"
-      }, 
+        "link": "https://www.lidl.de/media/product/0/2/1/1/2/0/9/kania-basilikum-gerebelt.jpg",
+        "id": "100187189",
+        "name": "basilikum gerebelt / בזיליקום גרוס"
+      },
       {
-        "link": "https://www.lidl.de/media/product/0/2/0/9/7/5/6/kania-spices-knoblauch-granuliert.jpg", 
-        "id": "100184086", 
-        "name": "name"
-      }, 
+        "link": "https://www.lidl.de/media/product/0/2/0/9/7/5/6/kania-spices-knoblauch-granuliert.jpg",
+        "id": "100184086",
+        "name": "knoblauch granuliert / שום טחון"
+      },
       {
-        "link": "https://www.lidl.de/media/product/0/0/3/4/1/6/7/freshona-champignons-scheiben-i-wahl--4.jpg", 
-        "id": "100187122", 
-        "name": "name"
+        "link": "https://www.lidl.de/media/product/0/0/3/4/1/6/7/freshona-champignons-scheiben-i-wahl--4.jpg",
+        "id": "100187122",
+        "name": "champignons scheiben / פרוסות פטריות שמפניון"
       }
-    ], 
+    ],
     "consumed": {
-      "link": "https://www.lidl.de/media/product/0/2/1/1/2/1/1/kania-rosmarin.jpg", 
-      "id": "100187191", 
-      "name": "name"
-    }, 
+      "link": "https://www.lidl.de/media/product/0/2/1/1/2/1/1/kania-rosmarin.jpg",
+      "id": "100187191",
+      "name": "rosmarin geschnitten / רוזמרין חתוך"
+    },
     "chose": {
-      "link": "https://www.lidl.de/media/product/0/2/1/1/2/1/0/kania-oregano-gerebelt.jpg", 
-      "id": "10018719", 
-      "name": "name"
+      "link": "https://www.lidl.de/media/product/0/2/1/1/2/1/0/kania-oregano-gerebelt.jpg",
+      "id": "10018719",
+      "name": "oregano gerebelt / אורגנו גרוס"
     }
-  }, 
+  },
   "100183446": {
     "rec": [
       {
-        "link": "https://www.lidl.de/media/product/0/2/0/6/8/6/6/combino-fusilli-mit-kaese-kraeuter-sauce.jpg", 
-        "id": "100183447", 
-        "name": "name"
-      }, 
+        "link": "https://www.lidl.de/media/product/0/2/0/6/8/6/6/combino-fusilli-mit-kaese-kraeuter-sauce.jpg",
+        "id": "100183447",
+        "name": "fusilli mit kaese kraeuter sauce / פסטה פוזילי ברוטב גבינה ועשבים"
+      },
       {
-        "link": "https://www.lidl.de/media/product/0/0/3/6/8/4/4/freshona-spargel--3.jpg", 
-        "id": "100187255", 
-        "name": "name"
-      }, 
+        "link": "https://www.lidl.de/media/product/0/0/3/6/8/4/4/freshona-spargel--3.jpg",
+        "id": "100187255",
+        "name": "spargel / אספרגוס"
+      },
       {
-        "link": "https://www.lidl.de/media/product/0/2/0/6/8/7/3/combino-ravioli-in-tomatensauce.jpg", 
-        "id": "100183459", 
-        "name": "name"
+        "link": "https://www.lidl.de/media/product/0/2/0/6/8/7/3/combino-ravioli-in-tomatensauce.jpg",
+        "id": "100183459",
+        "name": "ravioli in tomatensauce / רביולי ברוטב עגבניות"
       }
-    ], 
+    ],
     "consumed": {
-      "link": "https://www.lidl.de/media/product/0/2/0/6/8/7/2/combino-fusilli-mit-pilz-rahm-sauce.jpg", 
-      "id": "100183458", 
-      "name": "name"
-    }, 
+      "link": "https://www.lidl.de/media/product/0/2/0/6/8/7/2/combino-fusilli-mit-pilz-rahm-sauce.jpg",
+      "id": "100183458",
+      "name": "fusilli mit pilz rahm sauce / פסטה פוזיליברוטה שמנת פטריות"
+    },
     "chose": {
-      "link": "https://www.lidl.de/media/product/0/2/0/6/8/6/5/combino-maccheroncini-mit-tomaten-sahne-sauce.jpg", 
-      "id": "100183446", 
-      "name": "name"
+      "link": "https://www.lidl.de/media/product/0/2/0/6/8/6/5/combino-maccheroncini-mit-tomaten-sahne-sauce.jpg",
+      "id": "100183446",
+      "name": "maccheroncini mit tomaten sahne sauce / מקרוני ברוטב שמנת עגבניות"
     }
-  }, 
+  },
   "100182792": {
     "rec": [
       {
-        "link": "https://www.lidl.de/media/product/0/2/0/5/9/9/9/combino-spaghetti.jpg", 
-        "id": "100182867", 
-        "name": "name"
-      }, 
+        "link": "https://www.lidl.de/media/product/0/2/0/5/9/9/9/combino-spaghetti.jpg",
+        "id": "100182867",
+        "name": "spaghetti / ספגטי"
+      },
       {
-        "link": "https://www.lidl.de/media/product/0/2/1/4/0/3/6/combino-feine-bandnudeln--2.jpg", 
-        "id": "100189601", 
-        "name": "name"
-      }, 
+        "link": "https://www.lidl.de/media/product/0/2/1/4/0/3/6/combino-feine-bandnudeln--2.jpg",
+        "id": "100189601",
+        "name": "feine bandnudeln / אטריות רחבות"
+      },
       {
-        "link": "https://www.lidl.de/media/product/0/2/1/4/0/4/1/kania-bruehe-im-glas-gemuese.jpg", 
-        "id": "100189609", 
-        "name": "name"
+        "link": "https://www.lidl.de/media/product/0/2/1/4/0/4/1/kania-bruehe-im-glas-gemuese.jpg",
+        "id": "100189609",
+        "name": "bruehe im glas gemuese / מרק צמחוני בזכוכית"
       }
-    ], 
+    ],
     "consumed": {
-      "link": "https://www.lidl.de/media/product/0/2/0/5/9/2/5/combino-fusilli.jpg", 
-      "id": "10018279", 
-      "name": "name"
-    }, 
+      "link": "https://www.lidl.de/media/product/0/2/0/5/9/2/5/combino-fusilli.jpg",
+      "id": "10018279",
+      "name": "fusilli / פסטה פוזילי"
+    },
     "chose": {
-      "link": "https://www.lidl.de/media/product/0/2/0/5/9/2/6/combino-penne-rigate.jpg", 
-      "id": "100182792", 
-      "name": "name"
+      "link": "https://www.lidl.de/media/product/0/2/0/5/9/2/6/combino-penne-rigate.jpg",
+      "id": "100182792",
+      "name": "penne rigate / פסטה פנה ריגטה"
     }
   }
 }

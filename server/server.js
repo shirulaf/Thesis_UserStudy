@@ -11,7 +11,7 @@ var router = express.Router();
 
 var fs = require("fs");
 var MyData = [];
-var directory = "C:/userStudyLogs/";
+var directory = "./userStudyLogs/";
 
 getRandomArray = function(arrayToRandom) {
   outputArray = [];
@@ -36,7 +36,9 @@ console.log("yelp data uploded");
 rawdata = fs.readFileSync("Lidl_items_final_data.json");
 parseData = JSON.parse(rawdata);
 let lidl_items = [];
-for (let item in parseData) lidl_items.push(parseData[item]);
+for (let item in parseData) {
+  lidl_items.push(parseData[item]);
+}
 
 console.log("lidl data uploded");
 app.use(express.static("server_components"));
@@ -59,6 +61,17 @@ app.get("/yelp", function(req, res) {
   res.send(randomize_yelp);
 });
 
+app.get("/itemsData", function(req, res) {
+  randomize_lidl = getRandomArray([...lidl_items]);
+  randomize_yelp = getRandomArray([...yelp_items]);
+  totalItems = randomize_lidl.length + randomize_yelp.length;
+  res.send({
+    lidlData: randomize_lidl,
+    yelpData: randomize_yelp,
+    itemsAmount: totalItems
+  });
+});
+
 app.post("/submitUserDetails", function(req, res) {
   //  console.log("submitUserDetails")
 
@@ -71,19 +84,6 @@ app.post("/submitUserDetails", function(req, res) {
     try {
       if (err) throw err;
       else {
-        //  console.log('Updated!');
-
-        let gr = Math.floor(Math.random() * 199);
-
-        MyData = [];
-        let movID;
-        for (let mov in groupsData[gr]) {
-          if (mov == "groupID") continue;
-          movID = groupsData[gr][mov];
-          MyData.push(movies[movID]);
-        }
-
-        //console.log("my data res:" + JSON.stringify(MyData));
         res.sendStatus(200);
       }
     } catch (error) {

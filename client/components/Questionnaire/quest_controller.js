@@ -1,5 +1,6 @@
 app.controller("quest_controller", [
   "localStorageModel",
+  "userHistory",
   "$scope",
   "$location",
   "$http",
@@ -7,6 +8,7 @@ app.controller("quest_controller", [
   "moviesExists",
   function(
     localStorageModel,
+    userHistory,
     $scope,
     $location,
     $http,
@@ -16,7 +18,6 @@ app.controller("quest_controller", [
   ) {
     var i = 0;
     var movies;
-    var userHistory = [];
     var dataToSave = [];
 
     // var host = "http://127.0.0.1:"
@@ -44,11 +45,16 @@ app.controller("quest_controller", [
       // console.log(index)
     };
 
-    if (!localStorageModel.getLocalStorage("lidlExists"))
+    if (!localStorageModel.getLocalStorage("lidlData"))
       //
-      $http.get(host + "8000/lidl").then(function(response) {
+      $http.get(host + "8000/itemsData").then(function(response) {
         //debugger
-        localStorageModel.addLocalStorage("lidlData", response.data);
+        localStorageModel.addLocalStorage("lidlData", response.data.lidlData);
+        localStorageModel.addLocalStorage("yelpData", response.data.yelpData);
+        localStorageModel.addLocalStorage(
+          "itemsAmount",
+          response.data.itemsAmount
+        );
         movies = localStorageModel.getLocalStorage("lidlData");
         $scope.movies = movies[i];
         updateMoviesInfo(i);
@@ -124,7 +130,8 @@ app.controller("quest_controller", [
       elmnt.scrollTop = 0; // For Safari
       elmnt.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 
-      var d = new Date().toUTCString();
+      debugger;
+      var d = userHistory.getDate();
       params = {
         userID: localStorageModel.getLocalStorage("userID"),
         TimeStamp: d,
@@ -135,7 +142,7 @@ app.controller("quest_controller", [
         data: dataToSave
       };
 
-      userHistory.push(
+      userHistory.add(
         JSON.stringify(params, localStorageModel.getLocalStorage("userID"))
       );
 
@@ -151,9 +158,7 @@ app.controller("quest_controller", [
         //setMoviesElements($scope,movies,i);
         updateMoviesInfo(i);
       } else {
-        saveTextAsFile(userHistory);
-
-        $location.path("/Final");
+        $location.path("/questPOIV2");
       }
     };
 
@@ -196,7 +201,7 @@ app.controller("quest_controller", [
 
     $scope.saveClick = function($event, movie_name, tmdb_id) {
       // console.log($event)
-      var d = new Date().toUTCString();
+      var d = userHistory.getDate();
       params = {
         userID: localStorageModel.getLocalStorage("userID"),
         TimeStamp: d,
@@ -243,13 +248,22 @@ app.controller("quest_controller", [
           break;
         }
 
+      movies[i]["rec"][mix1]["name"] =
+        movies[i]["rec"][mix1]["name"].charAt(0).toUpperCase() +
+        movies[i]["rec"][mix1]["name"].substr(1).toLowerCase();
+      movies[i]["rec"][mix2]["name"] =
+        movies[i]["rec"][mix2]["name"].charAt(0).toUpperCase() +
+        movies[i]["rec"][mix2]["name"].substr(1).toLowerCase();
+      movies[i]["rec"][mix3]["name"] =
+        movies[i]["rec"][mix3]["name"].charAt(0).toUpperCase() +
+        movies[i]["rec"][mix3]["name"].substr(1).toLowerCase();
       //debugger
       $scope.recItems.push(movies[i]["rec"][mix1]);
       $scope.recItems.push(movies[i]["rec"][mix2]);
       $scope.recItems.push(movies[i]["rec"][mix3]);
 
       setMoviesElements($scope, movies, i, mix1, mix2, mix3);
-      $scope.QuestAmount = movies.length;
+      $scope.QuestAmount = localStorageModel.getLocalStorage("itemsAmount");
       $scope.currentQuest = i + 1;
       if (i == movies.length - 1) $scope.Last = true;
       else $scope.Last = false;
@@ -289,11 +303,15 @@ app.controller("quest_controller", [
     }
 
     function setMoviesElements($scope, movies, i, mix1, mix2, mix3) {
-      //debugger
-      $scope.watched = movies[i].consumed.name;
+      // debugger;
+      $scope.watched =
+        movies[i].consumed.name.charAt(0).toUpperCase() +
+        movies[i].consumed.name.substr(1).toLowerCase();
       // $scope.watched_tmdb = movies[i].watched_tmdb;
       $scope.watched_poster = movies[i].consumed.link;
-      $scope.chose = movies[i].chose.name;
+      $scope.chose =
+        movies[i].chose.name.charAt(0).toUpperCase() +
+        movies[i].chose.name.substr(1).toLowerCase();
       // $scope.chose_tmdb = movies[i].chose_tmdb;
       $scope.chose_poster = movies[i].chose.link;
 

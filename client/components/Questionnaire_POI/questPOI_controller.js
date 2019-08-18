@@ -21,8 +21,8 @@ app.controller("questPOI_controller.js", [
     var userHistory = [];
     var dataToSave = [];
 
-    // var host = "http://132.72.23.161:"
-    var host = "http://132.72.64.204:";
+    // var host = "http://127.0.0.1:"
+    var host = "http://127.0.0.1:";
 
     var directory = "C:/def/";
 

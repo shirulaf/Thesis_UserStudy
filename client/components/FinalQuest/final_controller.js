@@ -67,6 +67,8 @@ app.controller("final_controller", [
         TimeStamp: d,
         QustionID: "FINAL"
       };
+
+      params["guide"] = $scope.item_guide;
       params["finalQuestAnswers"] = JSON.stringify($scope.answers);
       params["recDomain"] = $scope.DF.domain;
       params["data"] = dataToSave;

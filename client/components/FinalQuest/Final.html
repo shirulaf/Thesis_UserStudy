@@ -55,6 +55,28 @@
 
             <div class="form-group text-right" dir="rtl">
                 <p>
+                    <div>
+                <label>כאשר דירגת את טיב ההמלצות עבור התרחישים שהוצגו לך, במה התמקדת?</label>
+                <br>&emsp;
+                <input type="radio" id="item_guide_{{$index}}_watched" name="item_guide_{{$index}}_watched" value="watched" ng-disabled="myCheck"
+                  ng-model="item_guide" >
+                <label class=" pointer" for="item_guide_{{$index}}_watched">הפריט אותו המשתמש
+                  <b>צרך בעבר</b>
+                </label>
+                <br>&emsp;
+                <input type="radio" id="item_guide_{{$index}}_chose" name="item_guide_{{$index}}_chose" value="chose" 
+                  ng-model="item_guide" >
+                <label class=" pointer" for="item_guide_{{$index}}_chose">הפריט אותו המשתמש
+                  <b>בחר לצרוך</b>
+                </label>
+                <br>&emsp;
+                <input type="radio" id="item_guide_{{$index}}_both" name="item_guide_{{$index}}_both" value="both"  ng-model="item_guide"
+                 >
+                <label class=" pointer" for="item_guide_{{$index}}_both">הפריט אותו המשתמש צרך בעבר
+                  <b>וגם</b> הפריט בו בחר המשתמש לצרוך</label>
+                <br>
+                <br>
+              </div>
 
 
                     <label><h2>אנא בחר תחום בו הנך עושה שימוש באופן תדיר יחסית במערכות המלצה מהרשימה הבאה: </h2></label>

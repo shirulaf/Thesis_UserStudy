@@ -47,43 +47,14 @@
       }
     ],
     "consumed": {
-      "link": "https://www.lidl.de/media/product/0/2/0/9/7/7/2/harvin-mandarin-orangen.jpg",
-      "id": "100184115",
-      "name": "mandarin-orangen leicht gezuckert / מנדרינה כתומה מסוכרת קלות "
+      "link": "https://www.lidl.de/media/product/0/2/0/9/7/7/3/harvin-apfelmus.jpg",
+      "id": "100184117",
+      "name": "apfelmus / רסק תפוחים "
     },
     "chose": {
       "link": "https://www.lidl.de/media/product/0/1/7/2/0/9/6/freshona-sauerkirschen.jpg",
       "id": "100184116",
       "name": "sauerkirschen entsteint gezuckert / דובדבנים חמוצים מגולענים מסוכרים"
-    }
-  },
-  "100187257": {
-    "rec": [
-      {
-        "link": "https://www.lidl.de/media/product/0/2/1/1/2/6/7/solevita-apfel-nektar--3.jpg",
-        "id": "100187268",
-        "name": "apfel nektar / נקטר תפוחים"
-      },
-      {
-        "link": "https://www.lidl.de/media/product/0/1/9/2/3/8/6/crusti-croc-erdnussflips--2.jpg",
-        "id": "100182791",
-        "name": "Erdnussflips / במבה"
-      },
-      {
-        "link": "https://www.lidl.de/media/product/0/2/0/5/9/6/7/solevita-multivitaminsaft--1.jpg",
-        "id": "100182834",
-        "name": "multivitaminsaft / מיץ מולטיויטמין"
-      }
-    ],
-    "consumed": {
-      "link": "https://www.lidl.de/media/product/0/2/1/1/2/6/1/solevita-apfel-bananen-nektar.jpg",
-      "id": "10018725",
-      "name": "apfel-bananen nektar / מיץ תפוח-בננה"
-    },
-    "chose": {
-      "link": "https://www.lidl.de/media/product/0/2/1/1/2/6/6/solevita-orangen-nektar--3.jpg",
-      "id": "100187257",
-      "name": "orange nektar / מיץ תפוזים"
     }
   },
   "100191872": {
@@ -105,9 +76,9 @@
       }
     ],
     "consumed": {
-      "link": "https://www.lidl.de/media/product/0/2/1/6/9/2/4/maitre-jean-pierre-croissant-mit-nuss-nougat-fuellung.jpg",
+      "link": "https://www.lidl.de/media/product/0/0/3/0/0/9/4/confiserie-firenze-frischei-waffeln--1.jpg",
       "id": "10019188",
-      "name": "name"
+      "name": "waffeln / וואפל בלגי"
     },
     "chose": {
       "link": "https://www.lidl.de/media/product/0/2/1/6/9/2/4/maitre-jean-pierre-croissant-mit-nuss-nougat-fuellung.jpg",
@@ -144,36 +115,6 @@
       "name": "hefe / שמרים"
     }
   },
-  "100191794": {
-    "rec": [
-      {
-        "link": "https://www.lidl.de/media/product/0/2/1/6/8/9/1/solevita-fruchtsaftgetraenk-apfel-kirsch-10-x-0-2l--2.jpg",
-        "id": "100191795",
-        "name": "fruchtsaftgetraenk apfel kirsch / מיץ פירות דובדבן-תפוחים"
-      },
-      {
-        "link": "https://www.lidl.de/media/product/0/2/0/5/9/7/0/belbake-zucker.jpg",
-        "id": "100182837",
-        "name": "zucker / סוכר"
-      },
-      {
-        "link": "https://www.lidl.de/media/product/0/2/1/3/9/2/3/solevita-multivitamin.jpg",
-        "id": "100189448",
-        "name": "multivitamin / מיץ מולטיויטמין"
-      }
-    ],
-    "consumed": {
-      "link": "https://www.lidl.de/media/product/0/2/1/3/9/2/1/solevita-orange.jpg",
-      "id": "100189446",
-      "name": "fruchtsaftgetraenk orange / מיץ תפוזים"
-    },
-    "chose": {
-      "link": "https://www.lidl.de/media/product/0/2/1/6/8/9/0/solevita-fruchtsaftgetraenk-orange-10-x-0-2l--2.jpg",
-      "id": "100191794",
-      "name": "fruchtsaftgetraenk orange / מיץ תפוזים"
-    }
-  },
-
   "100183679": {
     "rec": [
       {
@@ -251,9 +192,9 @@
       }
     ],
     "consumed": {
-      "link": "https://www.lidl.de/media/product/0/2/1/1/2/1/1/kania-rosmarin.jpg",
-      "id": "100187191",
-      "name": "rosmarin geschnitten / רוזמרין חתוך"
+      "link": "https://www.lidl.de/media/product/0/2/0/9/7/5/3/kania-paprika-edelsuess.jpg",
+      "id": "100184083",
+      "name": "paprika / פפריקה"
     },
     "chose": {
       "link": "https://www.lidl.de/media/product/0/2/1/1/2/1/0/kania-oregano-gerebelt.jpg",
@@ -282,7 +223,7 @@
     "consumed": {
       "link": "https://www.lidl.de/media/product/0/2/0/6/8/7/2/combino-fusilli-mit-pilz-rahm-sauce.jpg",
       "id": "100183458",
-      "name": "fusilli mit pilz rahm sauce / פסטה פוזיליברוטה שמנת פטריות"
+      "name": "fusilli mit pilz rahm sauce / פסטה פוזילי ברוטב שמנת פטריות"
     },
     "chose": {
       "link": "https://www.lidl.de/media/product/0/2/0/6/8/6/5/combino-maccheroncini-mit-tomaten-sahne-sauce.jpg",
@@ -309,9 +250,9 @@
       }
     ],
     "consumed": {
-      "link": "https://www.lidl.de/media/product/0/2/0/5/9/2/5/combino-fusilli.jpg",
-      "id": "10018279",
-      "name": "fusilli / פסטה פוזילי"
+      "link": "https://www.lidl.de/media/product/0/2/0/6/8/1/7/milbona-h-milch-1-5--1.jpg",
+      "id": "100183391",
+      "name": "fettarme milch / חלב דל שומן"
     },
     "chose": {
       "link": "https://www.lidl.de/media/product/0/2/0/5/9/2/6/combino-penne-rigate.jpg",

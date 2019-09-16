@@ -23,8 +23,8 @@ app.controller("home_controller", [
     console.log("Iinitiate movies status");
     localStorageModel.addLocalStorage("moviesExists", false);
 
-    // var host= "http://127.0.0.1:"
-    var host = "http://127.0.0.1:";
+    // var host= "http://132.72.64.204:"
+    var host = "http://132.72.23.161:";
 
     $scope.DF = {};
     $scope.birthYear = [];

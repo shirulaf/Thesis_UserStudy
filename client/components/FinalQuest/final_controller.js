@@ -25,7 +25,7 @@ app.controller("final_controller", [
     var modalInstance;
     var dataToSave = [];
 
-    var host = "http://127.0.0.1:";
+    var host = "http://132.72.23.161:";
 
     var $ctrl = this;
     $scope.open = function(domainIndex) {

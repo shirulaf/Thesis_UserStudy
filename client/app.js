@@ -6,9 +6,7 @@ let app = angular.module("myApp", [
 
 app.value("moviesExists", false);
 //-------------------------------------------------------------------------------------------------------------------
-app.config(function(localStorageServiceProvider) {
-  localStorageServiceProvider.setPrefix("node_angular_App");
-});
+
 //-------------------------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------------------------
@@ -48,7 +46,8 @@ app.config([
         controller: "final_controller as finCtrl"
       })
       .when("/Bye", {
-        templateUrl: "./components/Bye.html"
+        templateUrl: "./components/Bye.html",
+        controller: "final_controller"
       })
       .when("/sitesNav/:id/:rec1/:rec2/:rec3", {
         templateUrl: "./components/sitesNav/sitesNav.html",

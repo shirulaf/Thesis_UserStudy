@@ -7,7 +7,7 @@
 
 
 <!--<div class="image">-->
-  <!--<img src="'../../shared/cinema.jpg" alt="";  style=" background-size:cover; opacity: 0.2">-->
+  <!--<img src="'../../shared/images/cinema.jpg" alt="";  style=" background-size:cover; opacity: 0.2">-->
 <div  id="bgImg"  >
   <img ng-src="components\Home\logo.jpg" >
 </div>
@@ -43,19 +43,7 @@
         <div class="col-md-10" >
           <form name="detailsForm" ng-submit="submitDetails(detailsForm.$valid, detailsForm)" style="font-size: large; background-color: #0c2840; padding: 20px"  novalidate>
 <div class="text-right" style="direction: rtl ; ">
-  <div style="color:#f1f227; font-size: x-large">
-            <input type="checkbox" id="myCheck" name="NotStudent" ng-model="NotStudent"  ng-change="defeaultMail()">
-            <label for="myCheck"  class="pointer">
-              <b>סמן תיבה זו במידה <u>ואינך</u> מבצע את הניסוי במסגרת סמינר</b>
-            </label></div><br>
-            <div ng-hide="NotStudent" class="form-group text-right" style="direction: rtl"> <label class="text-right">שם המשתמש אוניברסיטאי - חובה לסטודנטים העונים במסגרת סמינר</label>
 
-              <input type="text"  name="userID" class="form-control text-right" style="font-size: medium" placeholder="לדוגמא אם כתובת המייל האוניברסיטאי שלך היא: plony@post.bgu.ac.il, עליך להזין: plony"  ng-model="DF.userID"  required>
-              <span ng-show="(detailsForm.userID.$touched || error) && detailsForm.userID.$invalid  " style="color: #ffa07a">אנא הזן את שם המשתמש האוניברסיטאי שלך
-                </span>
-
-            </div>
-</div><br>
             <div class="form-group text-right" dir="rtl">
               <label>שנת לידה</label>
               <span ng-show="(detailsForm.birthYear.$touched || error) && detailsForm.birthYear.$invalid " style="color: #ffa07a"> &emsp;בחר שנת לידה</span>
@@ -104,19 +92,19 @@
                                 style="direction: rtl"  required>&nbsp;
                     <label class="pointer" for="occ_Ma">סטודנט לתואר שני</label>
 
-                    &emsp; <input type="radio" id="occ_wa" ng-disabled="!NotStudent" ng-click="setRequiresForOccup()"
+                    &emsp; <input type="radio" id="occ_wa" " ng-click="setRequiresForOccup()"
                                   ng-model="DF.Occupation" name="Occupation" value="wage"
                                 style="direction: rtl"  required>&nbsp;
                     <label class="pointer" for="occ_wa"> שכיר/עצמאי</label>
 
                     &emsp;
-                  <input type="radio" id="sold" ng-disabled="!NotStudent" ng-click="setRequiresForOccup()" size="10"
+                  <input type="radio" id="sold" " ng-click="setRequiresForOccup()" size="10"
                          ng-model="DF.Occupation" name="Occupation" value="Solider"
                          style="direction:rtl" required>&nbsp;
                     <label class="pointer" for="sold"> חייל</label>
 
                     &emsp;
-                  <input type="radio" id="occ_other" ng-disabled="!NotStudent" ng-click="setRequiresForOccup()" size="10" ng-model="DF.Occupation" name="Occupation"  value="other" style="direction:rtl" required>
+                  <input type="radio" id="occ_other" " ng-click="setRequiresForOccup()" size="10" ng-model="DF.Occupation" name="Occupation"  value="other" style="direction:rtl" required>
                     <label class="pointer" for="occ_other"> אחר</label>
 
 
@@ -240,11 +228,11 @@
           <li >
             <label class="text-right">מנה 3 סוגים המועדפות עליך ביותר של נקודות עניין/בילוי </label><br>
             לדוגמא: מסעדות, קניות בגדים, סרטים, משחקי ספורט, קונצרטים וכד'
-            <span ng-show="error && ( detailsForm.poi_categ_2.$invalid && detailsForm.poi_categ_3.$invalid)" style="color: #ffa07a">&emsp; עליכם לרשום לפחות קטגוריה מועדפת 1</span>
+            <span ng-show="error && ( detailsForm.poi_categ_1.$invalid)" style="color: #ffa07a">&emsp; עליכם למנות לפחות קטגוריה מועדפת 1</span>
             <br>
             <input type="text" ng-model="DF.poi_categ_1"  name="poi_categ_1" placeholder="קטגוריה 1"  style="direction: rtl ;color: black"  required size="50"><br>
-            <input type="text" ng-model="DF.poi_categ_2" name="poi_categ_2" placeholder="קטגוריה 2" style="direction: rtl ; color: black"  required size="50"><br>
-            <input type="text" ng-model="DF.poi_categ_3" name="poi_categ_3" placeholder="קטגוריה 3" style="direction: rtl; color: black"  required size="50"><br>
+            <input type="text" ng-model="DF.poi_categ_2" name="poi_categ_2" placeholder="קטגוריה 2" style="direction: rtl ; color: black"   size="50"><br>
+            <input type="text" ng-model="DF.poi_categ_3" name="poi_categ_3" placeholder="קטגוריה 3" style="direction: rtl; color: black"   size="50"><br>
             <br>
           </li>
           

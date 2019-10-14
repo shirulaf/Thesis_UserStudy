@@ -1,7 +1,7 @@
-
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    type="text/css">
 <link rel="stylesheet" href="https://v40.pingendo.com/assets/bootstrap/bootstrap-4.0.0-beta.1.css" type="text/css">
 <link href="components/FinalQuest/final_css.css" rel="stylesheet">
 
@@ -9,30 +9,31 @@
 
 
 <!--<div class="image">-->
-  <!--<img src="'../../shared/cinema.jpg" alt="";  style=" background-size:cover; opacity: 0.2">-->
-<div  id="bgImg"  >
-    <img ng-src="../../shared/‏‏logo.png" >
-    <img ng-src="../../shared/film.png" style="width: 100%" >
+<!--<img src="'../../shared/images/cinema.jpg" alt="";  style=" background-size:cover; opacity: 0.2">-->
+<div id="bgImg">
+    <img ng-src="../../shared/images/‏‏logo.png">
+    <img ng-src="../../shared/images/film.png" style="width: 100%">
 
 </div>
 
 
 
-<div class="py-5"    style="text-align:center; ; z-index: auto;" >
+<div class="py-5" style="text-align:center; ; z-index: auto;">
     <div class="container" dir="rtl">
-        <div class="col-md-1" ></div>
-        <div class="col-md-10" >
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
             <div class="text-center" style="font-size: 30px; z-index: 1; background-color: rgba(255, 180, 0,0.8); padding:
           30px">
                 <b><u>שאלון סיום</u></b>
                 <br>
-                <b><h1>               אנא השב לשאלות הבאות המתייחסות להעדפותיך, <br> במהלך השימוש במערכות המלצה.
-                </h1>
-                </b>            </div>
+                <b>
+                    <h1> אנא השב לשאלות הבאות המתייחסות להעדפותיך, <br> במהלך השימוש במערכות המלצה.
+                    </h1>
+                </b> </div>
 
 
         </div>
-        <div class="col-md-1" >
+        <div class="col-md-1">
         </div>
     </div>
 </div>
@@ -41,51 +42,75 @@
 
 
 
-<div class="container" style="color: #d9d9d9;" >
+<div class="container" style="color: #d9d9d9;">
 
     <!--<div class="row">-->
 
     <div class="col-md-1"></div>
-    <div class="col-md-10" >
+    <div class="col-md-10">
 
-        <form name="detailsForm"  style="font-size: large; background-color: #0c2840; padding: 30px"  novalidate>
+        <form name="detailsForm" style="font-size: large; background-color: #0c2840; padding: 30px" novalidate>
             <div class="text-right" style="direction: rtl ; ">
 
             </div><br>
 
             <div class="form-group text-right" dir="rtl">
                 <p>
+                    <div>
+                        <label>כאשר דירגת את טיב ההמלצות עבור התרחישים שהוצגו לך, במה התמקדת?</label>
+                        <br>&emsp;
+                        <input type="radio" id="item_guide_{{$index}}_watched" name="item_guide_{{$index}}_watched"
+                            value="watched" ng-disabled="myCheck" ng-model="item_guide">
+                        <label class=" pointer" for="item_guide_{{$index}}_watched">הפריט אותו המשתמש
+                            <b>צרך בעבר</b>
+                        </label>
+                        <br>&emsp;
+                        <input type="radio" id="item_guide_{{$index}}_chose" name="item_guide_{{$index}}_chose"
+                            value="chose" ng-model="item_guide">
+                        <label class=" pointer" for="item_guide_{{$index}}_chose">הפריט אותו המשתמש
+                            <b>בחר לצרוך</b>
+                        </label>
+                        <br>&emsp;
+                        <input type="radio" id="item_guide_{{$index}}_both" name="item_guide_{{$index}}_both"
+                            value="both" ng-model="item_guide">
+                        <label class=" pointer" for="item_guide_{{$index}}_both">הפריט אותו המשתמש צרך בעבר
+                            <b>וגם</b> הפריט בו בחר המשתמש לצרוך</label>
+                        <br>
+                        <br>
+                    </div>
 
 
-                    <label><h2>אנא בחר תחום בו הנך עושה שימוש באופן תדיר יחסית במערכות המלצה מהרשימה הבאה: </h2></label>
+                    <label>
+                        <h2>אנא בחר תחום בו הנך עושה שימוש באופן תדיר יחסית במערכות המלצה מהרשימה הבאה: </h2>
+                    </label>
                     <span ng-show="error && detailsForm.domain.$invalid " style="color: #ffa07a">&emsp; סמן את
-                    האופציה המתאימה</span>
+                        האופציה המתאימה</span>
                     <br>
                     <div ng-repeat="(domain,label) in domains_label">
 
-                <button ng-click="open($index)" class="btn btn-warning"><b>לחץ לדוגמא</b>  </button>
+                        <button ng-click="open($index)" class="btn btn-warning"><b>לחץ לדוגמא</b> </button>
                         <input type="radio" id="domain_{{$index}}" ng-model="DF.domain" name="domain" value="{{domain}}"
-                               style="direction:rtl" ng-change="print()">
+                            style="direction:rtl" ng-change="print()">
                         <label class="pointer" for="domain_{{$index}}">{{label}} </label>
 
 
 
-            </div>
+                    </div>
 
-                    <div >
+                    <div>
                         &emsp; &emsp;&emsp;&nbsp;&nbsp;
 
                         <input type="radio" id="domain_other" ng-model="DF.domain" name="domain" value="domain_other"
-                               style="direction:
+                            style="direction:
                             rtl">
-                     <label class="pointer" for="domain_other">אחר</label>
-                    &nbsp;<input type="text" placeholder="אנא הזן תחום" ng-model="DF.otherDomain"
-                                 ng-disabled="DF.domain!=='domain_other'"
-                                 ng-class="{'disableInput': DF.domain!=='domain_other', 'input_box':true}">
-                      </div>
+                        <label class="pointer" for="domain_other">אחר</label>
+                        &nbsp;<input type="text" placeholder="אנא הזן תחום" ng-model="DF.otherDomain"
+                            ng-disabled="DF.domain!=='domain_other'"
+                            ng-class="{'disableInput': DF.domain!=='domain_other', 'input_box':true}">
+                    </div>
                 </p>
 
-<br>
+                <br>
 
                 <h2 class="text-right">עליך לענות על השאלות הבאות, בהתייחס להמלצות הניתנות לך בתחום ההמלצה אותו בחרת:
                     {{domains_label[DF.domain]}}{{DF.otherDomain}}</h2>
@@ -94,77 +119,96 @@
                 <ol>
 
                     <li>
-                        <label class="text-right">עבור כל המלצה שהמערכת מציעה לך, כיצד תחליט אם ההצעה טובה?      </label>
+                        <label class="text-right">עבור כל המלצה שהמערכת מציעה לך, כיצד תחליט אם ההצעה טובה? </label>
                         <br>
-                        <textarea ng-blur="saveClick($event, answers.Q1)" ng-click="saveClick($event)" class="input_textarea" name="Q1" ng-model="answers.Q1" rows="3" cols="100"
-                                  required></textarea>
+                        <textarea ng-blur="saveClick($event, answers.Q1)" ng-click="saveClick($event)"
+                            class="input_textarea" name="Q1" ng-model="answers.Q1" rows="3" cols="100"
+                            required></textarea>
 
                     </li>
                     <br>
                     <li>
-                        <label class="text-right">בהנחה שהמערכת הציעה לך מספר המלצות טובות, מה השיקולים שלך באיזו המלצה  <U>לבחור</U>?     </label>
+                        <label class="text-right">בהנחה שהמערכת הציעה לך מספר המלצות טובות, מה השיקולים שלך באיזו המלצה
+                            <U>לבחור</U>? </label>
                         בשאלה זו התמקד בשיקולים לבחירת המלצה
                         <br>
-                        <textarea class="input_textarea" ng-blur="saveClick($event, answers.Q2)" ng-click="saveClick($event)" name="Q2" ng-model="answers.Q2" rows="3" cols="100"
-                                  required></textarea>
+                        <textarea class="input_textarea" ng-blur="saveClick($event, answers.Q2)"
+                            ng-click="saveClick($event)" name="Q2" ng-model="answers.Q2" rows="3" cols="100"
+                            required></textarea>
 
                     </li>
                     <br>
                     <li>
-                        <label class="text-right">בהנחה שהמערכת הציעה לך מספר המלצות, מה השיקולים שלך <U>לפסול</U> המלצה?     </label><br>
-                       בשאלה זו התמקד בשיקולים לדחיית המלצה
+                        <label class="text-right">בהנחה שהמערכת הציעה לך מספר המלצות, מה השיקולים שלך <U>לפסול</U>
+                            המלצה? </label><br>
+                        בשאלה זו התמקד בשיקולים לדחיית המלצה
                         <br>
-                        <textarea class="input_textarea" ng-blur="saveClick($event, answers.Q3)" ng-click="saveClick($event)" name="Q3" ng-model="answers.Q3" rows="3" cols="100"
-                                  required></textarea>
+                        <textarea class="input_textarea" ng-blur="saveClick($event, answers.Q3)"
+                            ng-click="saveClick($event)" name="Q3" ng-model="answers.Q3" rows="3" cols="100"
+                            required></textarea>
 
-                </li>
+                    </li>
                     <br>
                     <li>
                         <div>
-                            <h3 class="text-right"
-                                ><b>נניח כי ניתנו לך מספר המלצות, אך לא בחרת בהן,<br> במקומן בחרת בפריט אחר שלא קיים בסט ההמלצות שניתנו לך,<br> האם כל אחת מן ההמלצות שלא בחרת בהן בסט איננה רלוונטית עבורך?</b></h3>
-                           בשאלה זו התמקד ביחסך להמלצות שלא נבחרו
+                            <h3 class="text-right"><b>נניח כי ניתנו לך מספר המלצות, אך לא בחרת בהן,<br> במקומן בחרת
+                                    בפריט אחר שלא קיים בסט ההמלצות שניתנו לך,<br> האם כל אחת מן ההמלצות שלא בחרת בהן בסט
+                                    איננה רלוונטית עבורך?</b></h3>
+                            בשאלה זו התמקד ביחסך להמלצות שלא נבחרו
 
-                            <textarea class="input_textarea" ng-blur="saveClick($event, answers.Q4)" ng-click="saveClick($event)" name="Q4" ng-model="answers.Q4" rows="3" cols="100" required></textarea>
+                            <textarea class="input_textarea" ng-blur="saveClick($event, answers.Q4)"
+                                ng-click="saveClick($event)" name="Q4" ng-model="answers.Q4" rows="3" cols="100"
+                                required></textarea>
                         </div>
                     </li>
-                        <br>
-                        <li>
+                    <br>
+                    <li>
                         <div>
-                            <h3 class="text-right"
-                                ><b>מה יכולים להיות השיקולים שלך <u>לא לבחור באף פריט</u> מתוך סט ההמלצות, <br> אלא לבחור בפריט אחר שלא הוצג לך?</b></h3>
-                           בשאלה זו התמקד בפריט שנבחר למרות ההמלצות
-                            <textarea class="input_textarea" ng-blur="saveClick($event, answers.Q5)" ng-click="saveClick($event)" name="Q5" ng-model="answers.Q5" rows="3" cols="100" required></textarea>
+                            <h3 class="text-right"><b>מה יכולים להיות השיקולים שלך <u>לא לבחור באף פריט</u> מתוך סט
+                                    ההמלצות, <br> אלא לבחור בפריט אחר שלא הוצג לך?</b></h3>
+                            בשאלה זו התמקד בפריט שנבחר למרות ההמלצות
+                            <textarea class="input_textarea" ng-blur="saveClick($event, answers.Q5)"
+                                ng-click="saveClick($event)" name="Q5" ng-model="answers.Q5" rows="3" cols="100"
+                                required></textarea>
                         </div>
                     </li>
-            </li>
-                        <br>
-                        <li>
-                        <div>
-                            <h3 class="text-right"><b>
-                                האם היית רוצה שהמערכת  <u>תמליץ לך שוב במועד אחר  </u> על המלצות שהוצגו לך, אך לא בחרת בהן?
-                            </b></h3>
-כלומר, המערכת לא תסיר המלצות שנדחו מהמערכת, וייתכן כי יומלצו שוב בעתיד
-                            <textarea class="input_textarea" ng-blur="saveClick($event, answers.Q6)" ng-click="saveClick($event)" name="Q6" ng-model="answers.Q6" rows="3" cols="100" required></textarea>
-                        </div>
                     </li>
-            </li>
-                        <br>
+                    <br>
                     <li>
                         <div>
                             <h3 class="text-right"><b>
-                                האם היית רוצה שהמערכת  <u>תשמור לך היסטוריית המלצות שנדחו,</u> כך שתוכל לעיין מאוחר יותר בהמלצות שלא בחרת בהן ?</b></h3>
+                                    האם היית רוצה שהמערכת <u>תמליץ לך שוב במועד אחר </u> על המלצות שהוצגו לך, אך לא בחרת
+                                    בהן?
+                                </b></h3>
+                            כלומר, המערכת לא תסיר המלצות שנדחו מהמערכת, וייתכן כי יומלצו שוב בעתיד
+                            <textarea class="input_textarea" ng-blur="saveClick($event, answers.Q6)"
+                                ng-click="saveClick($event)" name="Q6" ng-model="answers.Q6" rows="3" cols="100"
+                                required></textarea>
+                        </div>
+                    </li>
+                    </li>
+                    <br>
+                    <li>
+                        <div>
+                            <h3 class="text-right"><b>
+                                    האם היית רוצה שהמערכת <u>תשמור לך היסטוריית המלצות שנדחו,</u> כך שתוכל לעיין מאוחר
+                                    יותר בהמלצות שלא בחרת בהן ?</b></h3>
 
-                            <textarea class="input_textarea" ng-blur="saveClick($event, answers.Q7)" ng-click="saveClick($event)" name="Q7" ng-model="answers.Q7" rows="3" cols="100" required></textarea>
+                            <textarea class="input_textarea" ng-blur="saveClick($event, answers.Q7)"
+                                ng-click="saveClick($event)" name="Q7" ng-model="answers.Q7" rows="3" cols="100"
+                                required></textarea>
                         </div>
                     </li>
                     <br>
-                             <li>
+                    <li>
                         <div>
-                            <h3 class="text-right"><b>האם ייתכן כי תשובותיך ישתנו עבור תחום המלצה אחר? במידה וכן, מהו התחום? </b></h3>
-                           
+                            <h3 class="text-right"><b>האם ייתכן כי תשובותיך ישתנו עבור תחום המלצה אחר? במידה וכן, מהו
+                                    התחום? </b></h3>
 
-                            <textarea class="input_textarea" ng-blur="saveClick($event, answers.Q8)" ng-click="saveClick($event)" name="Q8"  ng-model="answers.Q8" rows="3" cols="100" required></textarea>
+
+                            <textarea class="input_textarea" ng-blur="saveClick($event, answers.Q8)"
+                                ng-click="saveClick($event)" name="Q8" ng-model="answers.Q8" rows="3" cols="100"
+                                required></textarea>
                         </div>
                     </li>
 
@@ -174,13 +218,16 @@
 
                 </ol>
             </div>
-            <br>
-            <button type="submit" ng-click="submitDetails(detailsForm.$valid, detailsForm)" class="btn btn-primary btn-lg "   style="font-size: large; font-weight: bold; box-shadow: 0 8px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 #d5daa3;">לסיום הניסוי </button>
+            <br><a id="finish">
+                <button type="submit" ng-click="submitDetails(detailsForm.$valid, detailsForm)"
+                    class="btn btn-primary btn-lg "
+                    style="font-size: large; font-weight: bold; box-shadow: 0 8px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 #d5daa3;">לסיום
+                    הניסוי </button><a></a>
         </form>
     </div>
 
 
-    <div class="col-md-1" ></div>
+    <div class="col-md-1"></div>
 </div>
 
 

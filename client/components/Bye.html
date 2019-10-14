@@ -1,37 +1,70 @@
-
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    type="text/css">
 <link rel="stylesheet" href="https://v40.pingendo.com/assets/bootstrap/bootstrap-4.0.0-beta.1.css" type="text/css">
 <link href="components/FinalQuest/final_css.css" rel="stylesheet">
 
 
-<div  id="bgImg"  >
-    <img ng-src="../../shared/‏‏logo.png" >
-    <img ng-src="../../shared/film2.jpg" style="width: 100%" >
-
+<div id="bgImg">
+    <img ng-src="..\shared\images\‏‏logo.png">
 </div>
 
+<style>
+    OL {
+        counter-reset: item
+    }
 
+    LI {
+        display: block
+    }
 
-<div class="py-5"    style="text-align:center; ; z-index: auto;" >
-    <div class="container" dir="rtl">
-        <div class="col-md-1" ></div>
-        <div class="col-md-10" >
-            <div class="text-center" style="font-size: 30px; z-index: 1; background-color: rgba(255, 180, 0,0.8); padding:
+    LI:before {
+        content: counters(item, ".") ". ";
+        counter-increment: item
+    }
+</style>
+
+<div class="py-5" style="text-align:center; ; z-index: auto;">
+    <div class="container">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <div class="text-center" style=" z-index: 1; background-color: rgba(255, 180, 0,0.8); padding:
           30px">
-          <h1><b>סיימת! <br>  עליך לאשר את שמירת הקובץ ולשלוח אותו לכתובת shirfr@post.bgu.ac.il <br>  הקובץ מכיל את שם המשתמש שלך</b><br> אנא רשמו בנושא המייל את שמכם המלא</h1>
+                <h1><b>:כמעט סיימנו, דבר אחרון</b></h1><br>
+                <div class="text-right" dir="rtl">
+                    <h2>
+                        <ol type="1">
+                            <li>
+                                הורד למחשבך קובץ טקסט המכיל את תשובותיך לניסוי, לצורך
+                                גיבוי
+                                <button class="btn btn-primary " ng-click="download()"><b>להורדה</b></button>
+                                <br> <b><u>או לחילופין</u></b>, העתק את
+                                המידע ושמור לקובץ טקסט.<br>
+                                <textarea style="font-size: small;" cols="50" rows="4" ng-hide="false" id="hist_area"
+                                    ng-init="present()"></textarea>
+                                <button class="btn btn-primary" ng-click="copy()"><b>העתק ל clipboard</b></button>
 
-                <h1> <br>  אנו מודים לך על השתתפותך!</b></h1>
+                            </li>
+                            <br>
+                            <li>שלח לכתובת המייל shirfr@post.bgu.ac.il את הפרטים הבאים:
+                                <ol>
+                                    <li> <b>הקובץ</b> שזה עתה הורדת/יצרת</li>
+                                    <li> <b>שמך המלא</b> </li>
+                                    <li> מזהה הניסוי שלך : <b>{{userID}}</b> </li>
+                                </ol>
+
+                            </li><br>
+                            <li>
+                                סיימת! תודה רבה על השתתפותך ותרומתך למחקר!
+                            </li>
+                        </ol>
+                    </h2>
+                </div>
 
 
 
-</div>
-</div>
 
 
-
-
-
-
-
+            </div>
+        </div>

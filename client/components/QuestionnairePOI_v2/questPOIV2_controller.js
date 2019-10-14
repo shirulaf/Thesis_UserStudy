@@ -63,24 +63,25 @@ app.controller("questPOIV2_controller", [
     $scope.nextEval = function() {
       let isValid;
 
-      if ($scope.currentQuest > 2) {
+      if ($scope.currentQuest > 2)
         for (index = 0; index < $scope.recItems.length; index++)
           $scope.questForm[
             "explainFieldForm_" + index
           ].explain_mov.$setValidity("required", true);
-      } else {
-        for (index = 0; index < $scope.recItems.length; index++) {
-          $scope.questForm["ratingFieldForm_" + index][
-            "mov_guide_" + index + "_watched"
-          ].$setValidity("required", true);
-          $scope.questForm["ratingFieldForm_" + index][
-            "mov_guide_" + index + "_chose"
-          ].$setValidity("required", true);
-          $scope.questForm["ratingFieldForm_" + index][
-            "mov_guide_" + index + "_both"
-          ].$setValidity("required", true);
-        }
-      }
+
+      // } else {
+      //   for (index = 0; index < $scope.recItems.length; index++) {
+      //     $scope.questForm["ratingFieldForm_" + index][
+      //       "mov_guide_" + index + "_watched"
+      //     ].$setValidity("required", true);
+      //     $scope.questForm["ratingFieldForm_" + index][
+      //       "mov_guide_" + index + "_chose"
+      //     ].$setValidity("required", true);
+      //     $scope.questForm["ratingFieldForm_" + index][
+      //       "mov_guide_" + index + "_both"
+      //     ].$setValidity("required", true);
+      //   }
+      // };
 
       isValid = $scope.questForm.$valid;
 
@@ -96,7 +97,6 @@ app.controller("questPOIV2_controller", [
 
       var d = userHistory.getDate();
       params = {
-        userID: localStorageModel.getLocalStorage("userID"),
         TimeStamp: d,
         GroupID: movies[i].questID,
         event: "click",
@@ -148,15 +148,15 @@ app.controller("questPOIV2_controller", [
         "required",
         req
       );
-      $scope.questForm["ratingFieldForm_" + index][
-        "mov_guide_" + index + "_watched"
-      ].$setValidity("required", req);
-      $scope.questForm["ratingFieldForm_" + index][
-        "mov_guide_" + index + "_chose"
-      ].$setValidity("required", req);
-      $scope.questForm["ratingFieldForm_" + index][
-        "mov_guide_" + index + "_both"
-      ].$setValidity("required", req);
+      // $scope.questForm["ratingFieldForm_" + index][
+      //   "mov_guide_" + index + "_watched"
+      // ].$setValidity("required", req);
+      // $scope.questForm["ratingFieldForm_" + index][
+      //   "mov_guide_" + index + "_chose"
+      // ].$setValidity("required", req);
+      // $scope.questForm["ratingFieldForm_" + index][
+      //   "mov_guide_" + index + "_both"
+      // ].$setValidity("required", req);
 
       $event.check = check;
       $scope.saveClick($event, $scope.recItems[index], $scope.itemsName[index]);
@@ -164,10 +164,8 @@ app.controller("questPOIV2_controller", [
 
     $scope.saveClick = function($event, movie_name, tmdb_id) {
       // console.log($event)
-      debugger;
       var d = userHistory.getDate();
       params = {
-        userID: localStorageModel.getLocalStorage("userID"),
         TimeStamp: d,
         tmdb_id: tmdb_id,
         GroupID: movies[i].questID,
@@ -181,10 +179,9 @@ app.controller("questPOIV2_controller", [
 
       console.log(params);
       if (params) dataToSave.push(JSON.stringify(params));
-      //    $http.post(host + "8000/saveData",params)
-      //         .catch(function (error) {
-      //             console.log(error);
-      //         });
+      $http.post(host + "8000/saveData", params).catch(function(error) {
+        console.log(error);
+      });
     };
 
     $scope.posters = {

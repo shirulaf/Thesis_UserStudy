@@ -16,13 +16,13 @@ var directory = "./userStudyLogs/";
 getRandomArray = function(arrayToRandom) {
   outputArray = [];
   index_array = [];
-  console.log(arrayToRandom);
+  // console.log(arrayToRandom);
   while (arrayToRandom.length > 0) {
     index = Math.floor(Math.random() * arrayToRandom.length);
     index_array.push(index);
     outputArray.push(arrayToRandom.splice(index, 1)[0]);
   }
-  console.log(outputArray);
+  // console.log(outputArray);
   return outputArray;
 };
 
@@ -85,6 +85,7 @@ app.post("/submitUserDetails", function(req, res) {
       if (err) throw err;
       else {
         res.sendStatus(200);
+        console.log("data sended");
       }
     } catch (error) {
       console.log("catch");

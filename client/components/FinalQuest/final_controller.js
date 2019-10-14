@@ -52,6 +52,7 @@ app.controller("final_controller", [
       domain_travel: "תיירות"
     };
 
+    $scope.userID = localStorageModel.getLocalStorage("userID");
     $scope.DF = {};
     $scope.DF.domain = "";
     $scope.print = function() {
@@ -63,18 +64,17 @@ app.controller("final_controller", [
     $scope.submitDetails = function(valid, detailsForm) {
       var d = userHistory.getDate();
       var params = {
-        userID: localStorageModel.getLocalStorage("userID"),
+        userID: $scope.userID,
         TimeStamp: d,
         QustionID: "FINAL"
       };
 
       params["guide"] = $scope.item_guide;
-      params["finalQuestAnswers"] = JSON.stringify($scope.answers);
+      params["finalQuestAnswers"] = $scope.answers;
       params["recDomain"] = $scope.DF.domain;
       params["data"] = dataToSave;
 
       userHistory.add(JSON.stringify(params));
-      userHistory.downloadHist();
       $http.post(host + "8000/saveData", params).catch(function(error) {
         console.log(error);
       });
@@ -94,6 +94,30 @@ app.controller("final_controller", [
       if (val) params["val"] = val;
 
       dataToSave.push(JSON.stringify(params));
+    };
+
+    $scope.download = function() {
+      userHistory.downloadHist();
+    };
+
+    $scope.present = function() {
+      // $window.alert(userHistory.getHistory());
+      document.getElementById("hist_area").value = userHistory.getHistory();
+    };
+
+    $scope.copy = function() {
+      /* Get the text field */
+      var copyText = document.getElementById("hist_area");
+
+      /* Select the text field */
+      copyText.select();
+      copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+
+      /* Copy the text inside the text field */
+      document.execCommand("copy");
+
+      /* Alert the copied text */
+      alert("Copied the text: " + copyText.value);
     };
   }
 ]);

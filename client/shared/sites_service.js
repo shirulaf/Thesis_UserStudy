@@ -4,7 +4,7 @@ angular.module("myApp").service("userHistory", [
     let self = this;
     self.history = [];
 
-    self.add = function(data) {
+    self.passedTime = self.add = function(data) {
       self.history.push(data);
     };
 
@@ -22,13 +22,17 @@ angular.module("myApp").service("userHistory", [
         today.getDate();
       var time =
         today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-      var dateTime = date + " " + time;
+      var dateTime = [date + " " + time, "" + Date.now()];
 
       return dateTime;
     };
 
+    self.getHistory = function() {
+      return self.history;
+    };
+
     self.downloadHist = function() {
-      fileName = localStorageModel.getLocalStorage("userID") + "quest";
+      fileName = localStorageModel.getLocalStorage("userID");
       var textToSave = self.history;
       var textToSaveAsBlob = new Blob([textToSave], { type: "text/plain" });
       var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
@@ -36,13 +40,16 @@ angular.module("myApp").service("userHistory", [
 
       var downloadLink = document.createElement("a");
       downloadLink.download = fileNameToSaveAs;
-      downloadLink.innerHTML = "Download File";
+      downloadLink.innerHTML = "לסיום השאלון";
       downloadLink.href = textToSaveAsURL;
       downloadLink.onclick = destroyClickedElement;
       downloadLink.style.display = "none";
       document.body.appendChild(downloadLink);
 
       downloadLink.click();
+      for (let index = 0; index < 100; index++) {
+        const element = 100;
+      }
     };
     function destroyClickedElement(event) {
       document.body.removeChild(event.target);

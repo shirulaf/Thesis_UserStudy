@@ -133,7 +133,6 @@ app.controller("quest_controller", [
       // debugger;
       var d = userHistory.getDate();
       params = {
-        userID: localStorageModel.getLocalStorage("userID"),
         TimeStamp: d,
         GroupID: movies[i].questID,
         event: "click",
@@ -203,7 +202,6 @@ app.controller("quest_controller", [
       // console.log($event)
       var d = userHistory.getDate();
       params = {
-        userID: localStorageModel.getLocalStorage("userID"),
         TimeStamp: d,
         tmdb_id: tmdb_id,
         GroupID: movies[i].questID,
@@ -217,10 +215,9 @@ app.controller("quest_controller", [
 
       console.log(params);
       if (params) dataToSave.push(JSON.stringify(params));
-      //    $http.post(host + "8000/saveData",params)
-      //         .catch(function (error) {
-      //             console.log(error);
-      //         });
+      $http.post(host + "8000/saveData", params).catch(function(error) {
+        console.log(error);
+      });
     };
 
     $scope.posters = {
@@ -325,7 +322,7 @@ app.controller("quest_controller", [
       $scope.rec_2_poster = movies[i]["rec"][mix2]["link"];
       $scope.rec_3_poster = movies[i]["rec"][mix3]["link"];
 
-      for (expl in $scope.explain) $scope.explain[expl] = "";
+      for (let expl in $scope.explain) $scope.explain[expl] = "";
     }
   }
 ]);

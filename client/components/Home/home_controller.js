@@ -17,11 +17,7 @@ app.controller("home_controller", [
     $http,
     $window
   ) {
-    $window.localStorage.clear();
-
     $scope.detailsForm = {};
-    console.log("Iinitiate movies status");
-    localStorageModel.addLocalStorage("moviesExists", false);
 
     // var host= "http://127.0.0.1:"
     var host = "http://127.0.0.1:";
@@ -38,22 +34,16 @@ app.controller("home_controller", [
       'הפקולטה לניהול ע"ש גילפורד גלייזר'
     ];
 
-    $scope.userID = {
-      text: ""
-    };
     $scope.error = false;
 
     $scope.hi = function(sd) {
       console.log(sd);
     };
 
-    $scope.defeaultMail = function() {
-      if ($scope.NotStudent) {
-        random = new Date().getTime();
-        $scope.DF.userID = random + "";
-        console.log($scope.DF.userID);
-      } else $scope.DF.userID = "";
-    };
+    random = new Date().getTime();
+    $scope.DF.userID = random + "";
+    $scope.userID = $scope.DF.userID;
+    console.log("userid", $scope.userID);
 
     $scope.setRequiresForOccup = function() {
       let req = true;
@@ -79,15 +69,19 @@ app.controller("home_controller", [
       for (g in $scope.DF.Gen)
         if ($scope.DF.Gen[g] === false) delete $scope.DF.Gen[g];
 
-      var d = new Date().getTime();
-      $scope.DF.userID += "_" + d;
-
+      $window.localStorage.clear();
+      console.log("Iinitiate movies status");
+      localStorageModel.addLocalStorage("moviesExists", false);
       localStorageModel.addLocalStorage("userID", $scope.DF.userID);
 
       console.log("DF");
       console.log($scope.DF);
 
-      $scope.detailsForm["creationTS"] = userHistory.getDate();
+      $scope.DF["creationTS"] = userHistory.getDate();
+
+      debugger;
+      // save data for backup
+      userHistory.add(JSON.stringify($scope.DF));
 
       $http
         .post(host + "8000/submitUserDetails", $scope.DF)
@@ -103,7 +97,9 @@ app.controller("home_controller", [
         })
         .catch(function(error) {
           console.log(error);
-          $window.alert("We encountered in some errors, please try again ");
+          $window.alert(
+            "אופס... נתקלנו בבעיה. אנא נסה לשלוח את הקובץ בשנית. במידה והבעיה ממשיכה, אנא דווח עליה למייל shirfr@post.bgu.ac.il.  תודה!!"
+          );
         });
     };
   }

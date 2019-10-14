@@ -142,7 +142,6 @@ app.controller("questPOI_controller.js", [
 
       var d = new Date().toUTCString();
       params = {
-        userID: localStorageModel.getLocalStorage("userID"),
         TimeStamp: d,
         GroupID: movies[i].questID,
         event: "click",
@@ -214,7 +213,6 @@ app.controller("questPOI_controller.js", [
       // console.log($event)
       var d = new Date().toUTCString();
       params = {
-        userID: localStorageModel.getLocalStorage("userID"),
         TimeStamp: d,
         tmdb_id: tmdb_id,
         GroupID: movies[i].questID,

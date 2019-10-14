@@ -1,15 +1,15 @@
-
 <div id="poi"></div>
 <div class="ques2t col-md-5" id="questLeft" style="background-color: black;  height: 1300px;
         overflow-y: hidden;   overflow-x: hidden;">
   <!--Questionnaire instructions-->
 
-  <div class="ques2t " style=" text-align: center; direction: rtl; font-size: 120%; background-color: #111114 ; color:#d9e7ee; padding: 5px">
+  <div class="ques2t "
+    style=" text-align: center; direction: rtl; font-size: 120%; background-color: #111114 ; color:#d9e7ee; padding: 5px">
     <b>
       <p style="border: groove; border-color: #d9e7ee">
         <b>
-        הערך את טיב ההמלצה עבור כל אחד מהמקוםים, המופיעים במקרה לניתוח, בחלקו הימני של המסך.
-        <br> התחשב בהערכתך במקום אותו צרך המשתמש בעבר וכן במקום בו בחר המשתמש לצרוך למרות ההמלצות.</b>
+          הערך את טיב ההמלצה עבור כל אחד מהמקומות, המופיעים במקרה לניתוח, בחלקו הימני של המסך.
+          <br> התחשב בהערכתך במקום אותו צרך המשתמש בעבר וכן במקום בו בחר המשתמש לצרוך למרות ההמלצות.</b>
       </p>
       <p>
         <h4><b>מה דעתך על איכות ההמלצה עבור כל אחד מהמקוםים הבאים: </b></h4>
@@ -21,50 +21,58 @@
       <b>
         <div ng-style="set_color($index)" style="padding: 10px" ng-repeat="mov in recItems">
 
-          <p class="ques2t " style="font-weight: 700; direction: rtl; font-family: 'Book Antiqua'; font-size: 125%; ">{{$index+1}}. המקום: {{mov.name}} </p>
+          <p class="ques2t " style="font-weight: 700; direction: rtl; font-family: 'Book Antiqua'; font-size: 125%; ">
+            {{$index+1}}. המקום: {{mov.name}} </p>
 
           <div class="ques2t row">
 
             <div class="ques2t col-md-6">
               <a href="{{mov.link}}" target="_blank">
-                <img class="ques2t imgBox" title="לחץ על-מנת לעבור לאתר המקום" style="margin-top: 7px" ng-src={{mov.poster}}>
+                <img class="ques2t imgBox" title="לחץ על-מנת לעבור לאתר המקום" style="margin-top: 7px"
+                  ng-src={{mov.poster}}>
               </a>
             </div>
             <ng-form name="ratingFieldForm_{{$index}}" ng-model="ratingFieldForm" novalidate>
               <div class="ques2t col-md-6" dir="rtl">
-                <span ng-show="ratingFieldForm_{{$index}}.mov_rating_{{$index}}_1.$invalid && ratingFieldForm_{{$index}}.mov_rating_{{$index}}_2.$invalid && ratingFieldForm_{{$index}}.mov_rating_{{$index}}_3.$invalid && ratingFieldForm_{{$index}}.mov_rating_{{$index}}_4.$invalid && ratingFieldForm_{{$index}}.mov_rating_{{$index}}_5.$invalid && error"
+                <span
+                  ng-show="ratingFieldForm_{{$index}}.mov_rating_{{$index}}_1.$invalid && ratingFieldForm_{{$index}}.mov_rating_{{$index}}_2.$invalid && ratingFieldForm_{{$index}}.mov_rating_{{$index}}_3.$invalid && ratingFieldForm_{{$index}}.mov_rating_{{$index}}_4.$invalid && ratingFieldForm_{{$index}}.mov_rating_{{$index}}_5.$invalid && error"
                   style="color: #ffa07a">&emsp;אנא דרג את ההמלצה
                   <br>
                 </span>
 
-                <input type="radio" id="mov_rating_{{$index}}_1" name="mov_rating_{{$index}}_1" value="1" ng-disabled="myCheck" ng-model="mov_rating"
+                <input type="radio" id="mov_rating_{{$index}}_1" name="mov_rating_{{$index}}_1" value="1"
+                  ng-disabled="myCheck" ng-model="mov_rating"
                   ng-click="saveClick($event,recItems[$index],itemsName[$index])" required>
                 <label class="ques2t pointer" for="mov_rating_{{$index}}_1">1 (המלצה גרועה) </label>
                 <br>
-                <input type="radio" id="mov_rating_{{$index}}_2" name="mov_rating_{{$index}}_2" value="2" ng-disabled="myCheck" ng-model="mov_rating"
+                <input type="radio" id="mov_rating_{{$index}}_2" name="mov_rating_{{$index}}_2" value="2"
+                  ng-disabled="myCheck" ng-model="mov_rating"
                   ng-click="saveClick($event,recItems[$index],itemsName[$index])" required>
                 <label class="ques2t pointer" for="mov_rating_{{$index}}_2">2 </label>
 
                 <br>
-                <input type="radio" id="mov_rating_{{$index}}_3" name="mov_rating_{{$index}}_3" value="3" ng-disabled="myCheck" ng-model="mov_rating"
+                <input type="radio" id="mov_rating_{{$index}}_3" name="mov_rating_{{$index}}_3" value="3"
+                  ng-disabled="myCheck" ng-model="mov_rating"
                   ng-click="saveClick($event,recItems[$index],itemsName[$index])" required>
                 <label class="ques2t pointer" for="mov_rating_{{$index}}_3">3 </label>
 
                 <br>
-                <input type="radio" id="mov_rating_{{$index}}_4" name="mov_rating_{{$index}}_4" value="4" ng-disabled="myCheck" ng-model="mov_rating"
+                <input type="radio" id="mov_rating_{{$index}}_4" name="mov_rating_{{$index}}_4" value="4"
+                  ng-disabled="myCheck" ng-model="mov_rating"
                   ng-click="saveClick($event,recItems[$index],itemsName[$index])" required>
                 <label class="ques2t pointer" for="mov_rating_{{$index}}_4">4 </label>
 
 
                 <br>
-                <input type="radio" id="mov_rating_{{$index}}_5" name="mov_rating_{{$index}}_5" value="5" ng-disabled="myCheck" ng-model="mov_rating"
+                <input type="radio" id="mov_rating_{{$index}}_5" name="mov_rating_{{$index}}_5" value="5"
+                  ng-disabled="myCheck" ng-model="mov_rating"
                   ng-click="saveClick($event,recItems[$index],itemsName[$index])" required>
                 <label class="ques2t pointer" for="mov_rating_{{$index}}_5">5 (המלצה מצויינת) </label>
                 <br>
                 <br>
               </div>
 
-                <!-- <div ng-show="currentQuest>2" style="font-size: 15px; margin: 2px; padding: 10px">
+              <!-- <div ng-show="currentQuest>2" style="font-size: 15px; margin: 2px; padding: 10px">
                 <div> מה הוביל אותך לדירוג ההמלצה?
                 </div>
                 <span ng-show="(error  )&& ratingFieldForm_{{$index}}.mov_guide_{{$index}}_watched.$invalid && ratingFieldForm_{{$index}}.mov_guide_{{$index}}_chose.$invalid && ratingFieldForm_{{$index}}.mov_guide_{{$index}}_both.$invalid"
@@ -97,15 +105,16 @@
                 <p>
                   <div style="font-size: 15px;"> &emsp;הנימוק לבחירתך:
                   </div>
-                  <span ng-show="(error ||  explainFieldForm_{{$index}}.explain_mov.$touched )&& explainFieldForm_{{$index}}.explain_mov.$invalid "
+                  <span
+                    ng-show="(error ||  explainFieldForm_{{$index}}.explain_mov.$touched )&& explainFieldForm_{{$index}}.explain_mov.$invalid "
                     style="color: #ffa07a;  ">
                     &emsp;&emsp;אנא נמק את בחירתך
                     <br>
                   </span>
                   &emsp;
-                  <input type="text" style=" font-size: 15px; color:black" size="55" name="explain_mov" ng-disabled="myCheck" placeholder="כתוב את נימוקך כאן"
-                    ng-blur="saveClick($event, recItems[$index],itemsName[$index])" ng-model="explain_mov"
-                    required>
+                  <input type="text" style=" font-size: 15px; color:black" size="55" name="explain_mov"
+                    ng-disabled="myCheck" placeholder="כתוב את נימוקך כאן"
+                    ng-blur="saveClick($event, recItems[$index],itemsName[$index])" ng-model="explain_mov" required>
                 </p>
               </div>
 
@@ -151,7 +160,9 @@
 
   <!--Current movies presented to the user-->
   <div style="font-size: 100%; color: black; font-weight: bold; margin: 10px; ">
-    <h1 style=" text-align: center; direction: rtl; font-size: 120%; background-color: #f8f8f8 ; color:black;   font-weight: bold;padding: 5px">חלק זה של השאלון מתייחס להמלצות על <u>מקומות בילוי/עניין</h1>
+    <h1
+      style=" text-align: center; direction: rtl; font-size: 120%; background-color: #f8f8f8 ; color:black;   font-weight: bold;padding: 5px">
+      חלק זה של השאלון מתייחס להמלצות על <u>מקומות בילוי/עניין</h1>
     <u> משתמש צרך בעבר ואהב את המקום:</u>
     <div style="text-align: center; vertical-align: middle;">
       <br>
@@ -160,7 +171,7 @@
         <span class="ques2t test">
           {{watched}}
           <br>
-          <img ng-src={{watched_poster}} style="z-index: 100; width: 600px ; height: auto;"  alt="">
+          <img ng-src={{watched_poster}} style="z-index: 100; width: 600px ; height: auto;" alt="">
         </span>
       </a>
     </div>
@@ -172,15 +183,15 @@
     <div id="thumbs" style="font-size: 80%;">
       <p ng-repeat="mov in recItems">
         <a class="ques2t thumb" href="{{mov.link}}" target="_blank">
-          <img class="ques2t poster" style="font-size: 50px; z-index: -1; " ng-src="{{mov.poster}}">
+          <img class="ques2t poster" ng-src="{{mov.poster}}">
 
           <span class="ques2t test" style="z-index: 1;">
             {{mov.name}}
             <br>
-            <img ng-src="{{mov.poster}}" style=" width: 600px ; height: auto;"  alt="">
+            <img ng-src="{{mov.poster}}" style=" width: 600px ; height: auto;" alt="">
           </span>
         </a>
-        <span class="ques2t stretch"></span>
+        <!-- <span class="ques2t stretch"></span> -->
       </p>
 
 
@@ -193,7 +204,7 @@
       <div style="text-align: center; vertical-align: middle;">
         <br>
         <a class="ques2t thumb" href="{{chose_tmdb}}" target="_blank">
-          <img ng-src="{{chose_poster}}" style="font-size: 50px; z-index: -1; "  class="ques2t poster">
+          <img ng-src="{{chose_poster}}" style="font-size: 50px; z-index: -1; " class="ques2t poster">
           <span class="ques2t test" style="z-index: 1;  ">
             {{chose}}
             <br>
@@ -203,6 +214,4 @@
       </div>
     </p>
   </div>
-  </div>
-
-
+</div>

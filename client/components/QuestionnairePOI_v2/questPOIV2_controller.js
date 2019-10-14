@@ -97,7 +97,6 @@ app.controller("questPOIV2_controller", [
 
       var d = userHistory.getDate();
       params = {
-        userID: localStorageModel.getLocalStorage("userID"),
         TimeStamp: d,
         GroupID: movies[i].questID,
         event: "click",
@@ -167,7 +166,6 @@ app.controller("questPOIV2_controller", [
       // console.log($event)
       var d = userHistory.getDate();
       params = {
-        userID: localStorageModel.getLocalStorage("userID"),
         TimeStamp: d,
         tmdb_id: tmdb_id,
         GroupID: movies[i].questID,
@@ -181,10 +179,9 @@ app.controller("questPOIV2_controller", [
 
       console.log(params);
       if (params) dataToSave.push(JSON.stringify(params));
-      //    $http.post(host + "8000/saveData",params)
-      //         .catch(function (error) {
-      //             console.log(error);
-      //         });
+      $http.post(host + "8000/saveData", params).catch(function(error) {
+        console.log(error);
+      });
     };
 
     $scope.posters = {

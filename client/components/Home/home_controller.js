@@ -41,7 +41,7 @@ app.controller("home_controller", [
     };
 
     random = new Date().getTime();
-    $scope.DF.userID = random + "";
+    $scope.DF.userID =  random + "" +  Math.floor(Math.random() * (9 -0));
     $scope.userID = $scope.DF.userID;
     console.log("userid", $scope.userID);
 
@@ -79,7 +79,6 @@ app.controller("home_controller", [
 
       $scope.DF["creationTS"] = userHistory.getDate();
 
-      debugger;
       // save data for backup
       userHistory.add(JSON.stringify($scope.DF));
 

@@ -11,7 +11,9 @@ $theme-colors: (
   light: #f8f9fa,
   dark: #343a40
 );
-
+label {
+  cursor: pointer;
+}
 // Options
 //
 // Quickly modify global styling by enabling or disabling optional features.

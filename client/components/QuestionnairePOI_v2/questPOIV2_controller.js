@@ -19,9 +19,9 @@ app.controller("questPOIV2_controller", [
     var i = 0;
     var movies;
     var dataToSave = [];
-
+    $window.scrollTo(0, 0);
     // var host = "http://132.72.64.204:"
-    var host = "http://132.72.64.204:";
+    var host = "http://132.72.23.161:";
 
     var directory = "C:/def/";
 
@@ -29,6 +29,7 @@ app.controller("questPOIV2_controller", [
     $scope.itemsName = [];
     $scope.expList = ["exp1", "exp2", "exp3", "אחר"];
     $scope.error = false;
+    $scope.userID =  localStorageModel.getLocalStorage("userID");
 
     // $scope.posterSRC = "https://image.tmdb.org/t/p/w600_and_h900_bestv2/";
     // $scope.movieTMDsrc = "https://www.themoviedb.org/movie/";
@@ -47,9 +48,14 @@ app.controller("questPOIV2_controller", [
 
     if (!localStorageModel.getLocalStorage("yelpData"))
       //
-      $http.get(host + "8000/yelp").then(function(response) {
+      $http.get(host + "3002/itemsData").then(function(response) {
         //debugger
-        localStorageModel.addLocalStorage("yelpData", response.data);
+        localStorageModel.addLocalStorage("lidlData", response.data.lidlData);
+        localStorageModel.addLocalStorage("yelpData", response.data.yelpData);
+        localStorageModel.addLocalStorage(
+          "itemsAmount",
+          response.data.itemsAmount
+        );
         movies = localStorageModel.getLocalStorage("yelpData");
         $scope.movies = movies[i];
         updateMoviesInfo(i);
@@ -69,19 +75,6 @@ app.controller("questPOIV2_controller", [
             "explainFieldForm_" + index
           ].explain_mov.$setValidity("required", true);
 
-      // } else {
-      //   for (index = 0; index < $scope.recItems.length; index++) {
-      //     $scope.questForm["ratingFieldForm_" + index][
-      //       "mov_guide_" + index + "_watched"
-      //     ].$setValidity("required", true);
-      //     $scope.questForm["ratingFieldForm_" + index][
-      //       "mov_guide_" + index + "_chose"
-      //     ].$setValidity("required", true);
-      //     $scope.questForm["ratingFieldForm_" + index][
-      //       "mov_guide_" + index + "_both"
-      //     ].$setValidity("required", true);
-      //   }
-      // };
 
       isValid = $scope.questForm.$valid;
 
@@ -97,6 +90,7 @@ app.controller("questPOIV2_controller", [
 
       var d = userHistory.getDate();
       params = {
+        userID: $scope.userID,
         TimeStamp: d,
         GroupID: movies[i].questID,
         event: "click",
@@ -106,11 +100,11 @@ app.controller("questPOIV2_controller", [
       };
 
       userHistory.add(
-        JSON.stringify(params, localStorageModel.getLocalStorage("userID"))
+        JSON.stringify(params,  $scope.userID)
       );
 
       // console.log(params);
-      $http.post(host + "8000/saveData", params).catch(function(error) {
+      $http.post(host + "3002/saveData", params).catch(function(error) {
         console.log(error);
       });
 
@@ -121,7 +115,7 @@ app.controller("questPOIV2_controller", [
         //setMoviesElements($scope,movies,i);
         updateMoviesInfo(i);
       } else {
-        $location.path("/Final");
+        $location.path("/quest");
       }
     };
 
@@ -166,10 +160,11 @@ app.controller("questPOIV2_controller", [
       // console.log($event)
       var d = userHistory.getDate();
       params = {
+        userID : $scope.userID,
         TimeStamp: d,
         tmdb_id: tmdb_id,
         GroupID: movies[i].questID,
-        ElementName: `${$event.target.name} | ${movie_name}`,
+        ElementName: `${$event.target.name} | ${movie_name.id}`,
         event: $event.type
       };
 
@@ -179,7 +174,7 @@ app.controller("questPOIV2_controller", [
 
       console.log(params);
       if (params) dataToSave.push(JSON.stringify(params));
-      $http.post(host + "8000/saveData", params).catch(function(error) {
+      $http.post(host + "3002/saveData", params).catch(function(error) {
         console.log(error);
       });
     };
@@ -227,9 +222,7 @@ app.controller("questPOIV2_controller", [
       this.setMoviesElements($scope, movies, i, mix1, mix2, mix3);
       $scope.QuestAmount = localStorageModel.getLocalStorage("itemsAmount");
       $scope.currentQuest = i + 1;
-      $scope.previousQuest = localStorageModel.getLocalStorage(
-        "lidlData"
-      ).length;
+
       if (i == movies.length - 1) $scope.Last = true;
       else $scope.Last = false;
 

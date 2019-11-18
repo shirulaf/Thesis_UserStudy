@@ -20,6 +20,7 @@ app.controller("final_controller", [
     $uibModal
   ) {
     $scope.answers = {};
+    $scope.error= false;
     //TODO: add required condition for input "other" - line 85
     //TODO: add links for Recsys Examples
     var modalInstance;
@@ -51,7 +52,8 @@ app.controller("final_controller", [
       domain_music: "מוסיקה",
       domain_travel: "תיירות"
     };
-
+$scope.print2 = function(){console.log($scope.item_guide + "_" + $scope.item_guide_other);
+}
     $scope.userID = localStorageModel.getLocalStorage("userID");
     $scope.DF = {};
     $scope.DF.domain = "";
@@ -62,6 +64,12 @@ app.controller("final_controller", [
     };
 
     $scope.submitDetails = function(valid, detailsForm) {
+      if (!valid)
+      {
+        $scope.error = true
+        $window.alert("אנא השלימו את השדות החסרים")
+        return
+      }
       var d = userHistory.getDate();
       var params = {
         userID: $scope.userID,
@@ -69,13 +77,16 @@ app.controller("final_controller", [
         QustionID: "FINAL"
       };
 
-      params["guide"] = $scope.item_guide;
+      
+      params["guide"] = $scope.item_guide
+      if ($scope.item_guide_other)
+      params["guide"]+ "_" + $scope.item_guide_other;
       params["finalQuestAnswers"] = $scope.answers;
       params["recDomain"] = $scope.DF.domain;
       params["data"] = dataToSave;
 
       userHistory.add(JSON.stringify(params));
-      $http.post(host + "8000/saveData", params).catch(function(error) {
+      $http.post(host + "3002/saveData", params).catch(function(error) {
         console.log(error);
       });
 

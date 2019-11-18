@@ -12,6 +12,7 @@ var router = express.Router();
 var fs = require("fs");
 var MyData = [];
 var directory = "./userStudyLogs/";
+var counter = 1;
 
 getRandomArray = function(arrayToRandom) {
   outputArray = [];
@@ -40,6 +41,13 @@ for (let item in parseData) {
   lidl_items.push(parseData[item]);
 }
 
+app.use(express.static("../client/"));
+
+app.get("/", function(req, res) {
+    res.sendFile("../client/index.html"); //index.html file of your angularjs application
+});
+
+
 console.log("lidl data uploded");
 app.use(express.static("server_components"));
 
@@ -63,7 +71,7 @@ app.get("/yelp", function(req, res) {
 
 app.get("/itemsData", function(req, res) {
   randomize_lidl = getRandomArray([...lidl_items]);
-  randomize_yelp = getRandomArray([...yelp_items]);
+  randomize_yelp = getRandomArray([...yelp_items]).slice(0,5);
   totalItems = randomize_lidl.length + randomize_yelp.length;
   res.send({
     lidlData: randomize_lidl,
@@ -85,7 +93,8 @@ app.post("/submitUserDetails", function(req, res) {
       if (err) throw err;
       else {
         res.sendStatus(200);
-        console.log("data sended");
+        console.log("data sended -" + counter);
+        counter+=1;
       }
     } catch (error) {
       console.log("catch");
@@ -110,6 +119,8 @@ app.post("/saveData", function(req, res) {
     try {
       if (err) throw err;
       res.sendStatus(200);
+      console.log(directory + fileName + ".txt");
+      
       // console.log("saveData")
     } catch (error) {
       res.sendStatus(401);
@@ -121,7 +132,7 @@ app.post("/saveData", function(req, res) {
 //-------------------------------------------------------------------
 //-------------------------------------------------------------------
 
-var server = app.listen(8000, function() {
+var server = app.listen(3002, function() {
   var host = server.address().address;
   var port = server.address().port;
   app.use("/", router);

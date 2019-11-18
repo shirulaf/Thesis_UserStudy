@@ -1,20 +1,25 @@
+<div class="row">
+    <div class="" style=" text-align: center; direction: rtl; font-size: 110%;">
+        <b>
+          <p>
+            <b>
+              במסכים הבאים יופיעו פריטים שונים, כאשר בחלקו הימני של המסך יופיע מידע על הפריטים שהופיעו למשתמש במערכת המלצה,  <br>ואילו בחלקו השמאלי של המסך תתבקשו לחוות את דעתכם על ההמלצות השונות.
+              <br>עליכם להעריך את טיב ההמלצה עבור כל אחד מהפריטים שהומלצו למשתמש, המופיעים במקרה לניתוח, 
+            בחלקו הימני של המסך,
+            <br> בהתחשב בפריט אותו צרך המשתמש בעבר וכן בפריט בו בחר המשתמש לצרוך למרות ההמלצות.</b>
+          </p>
+            <div style="background-color: black; color: white;  font-size: 120%;">
+             <b>מה דעתך על איכות ההמלצה עבור כל אחד מהפריטים הבאים: </b> 
+            </div>
+          
+        
+      </div>
+</div>
 <div class="col-md-6" id="questLeft" style="background-color: black;  height: 100%;
         overflow-y: auto;   overflow-x: hidden;">
   <!--Questionnaire instructions-->
 
-  <div class="" style=" text-align: center; direction: rtl; font-size: 120%; background-color: #111114 ; color:#d9e7ee; padding: 5px">
-    <b>
-      <p style="border: groove; border-color: #d9e7ee">
-        <b>
-        הערך את טיב ההמלצה עבור כל אחד מהמקומות המופיעים במקרה לניתוח,<br>  בחלקו הימני של המסך.
-        <br> התחשב בהערכתך במקום בו ביקר המשתמש בעבר וכן במקום בו <br> בחר המשתמש לבקר למרות ההמלצות.</br>
-      </p>
-      <p>
-        <h3><b>מה דעתך על איכות ההמלצה עבור כל אחד מהמקומות הבאים: </b></h3>
-      </p>
-    </b>
-  </div>
-  <div>
+
     <form name="questForm" ng-model="questForm" style="direction: rtl; font-size: 130%" novalidate>
       <b>
         <div ng-style="set_color($index)" style="padding: 10px" ng-repeat="mov in recItems">
@@ -27,7 +32,7 @@
             <ng-form name="ratingFieldForm_{{$index}}" ng-model="ratingFieldForm" novalidate>
               <div class="col-md-12" dir="rtl">
                 <span ng-show="ratingFieldForm_{{$index}}.mov_rating_{{$index}}_1.$invalid && ratingFieldForm_{{$index}}.mov_rating_{{$index}}_2.$invalid && ratingFieldForm_{{$index}}.mov_rating_{{$index}}_3.$invalid && ratingFieldForm_{{$index}}.mov_rating_{{$index}}_4.$invalid && ratingFieldForm_{{$index}}.mov_rating_{{$index}}_5.$invalid && error"
-                  style="color: #ffa07a">&emsp;אנא דרג את ההמלצה
+                  style="color: #ff0000">&emsp;אנא דרג את ההמלצה
                   <br>
                 </span>
 
@@ -60,7 +65,7 @@
                 <div style="font-size: 20px; margin: 2px"> מה הוביל אותך לדירוג ההמלצה?
                 </div>
                 <span ng-show="(error  )&& ratingFieldForm_{{$index}}.mov_guide_{{$index}}_watched.$invalid && ratingFieldForm_{{$index}}.mov_guide_{{$index}}_chose.$invalid && ratingFieldForm_{{$index}}.mov_guide_{{$index}}_both.$invalid"
-                  style="color: #ffa07a;  ">
+                  style="color: #ff0000;  ">
                   &emsp;אנא ציין מה הוביל אותך לדירוג ההמלצה
                   <br>
                 </span>
@@ -91,7 +96,7 @@
                   <div style="font-size: 17px;"> &emsp;הנימוק לבחירתך:
                   </div>
                   <span ng-show="(error ||  explainFieldForm_{{$index}}.explain_mov.$touched )&& explainFieldForm_{{$index}}.explain_mov.$invalid "
-                    style="color: #ffa07a;  ">
+                    style="color: #ff0000;  ">
                     &emsp;&emsp;אנא נמק את בחירתך
                     <br>
                   </span>

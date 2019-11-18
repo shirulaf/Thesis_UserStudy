@@ -18,15 +18,25 @@
     <div class="container">
         <div class="col-md-1" ></div>
         <div class="col-md-10" >
+<div  style="font-size: 30px; z-index: 1; background-color: rgba(255, 180, 0,0.8); padding:
+30px">
 
-          <h1 class="text-center" style="font-size: 30px; z-index: 1; background-color: rgba(255, 180, 0,0.8); padding:
-          30px" >
-          <b>  <br>ניסוי משתמשים להערכת המלצות
-            <h2 class="text-center" style="font-size: 25px">אנא השיבו ומלאו את כלל הפרטים הבאים בשאלון לפני המעבר לניסוי עצמו <br> חובה למלא את כל השדות </h2>
+
+          <h1 class="text-center" >
+          <b>   ניסוי משתמשים להערכת המלצות במערכות המלצה
+        <br><br></h1>
+        <p style="font-size: large;">- הנכם לוקחים חלק בניסוי משתמשים בתחום מערכות המלצה <br>
+          .מערכות הממליצות על פריטים עבור משתמשים <br>
+          .וכדומה AMAZON  לדוגמא: הצעת סרטים או סדרות לצפייה בנטפליקס, המלצה על מוצרים לרכישה ב <br>
+          ,מערכות אלה משתמשות בדרך כלל בהיסטוריית השימוש של המשתמשים השונים במערכת  <br>
+          .על מנת לזהות את הפריטים המתאימים ביותר עבור המשתמש הנוכחי <br>
+         
+<u> ,בניסוי זה, נתמקד במקרים בהם המשתמש קיבל המלצות על פריטים מסוימים <br>.אך בחר פריט אחר מאלה שהומלצו לו</u>        </p>
+            <h2 class="text-center" >אנא השיבו ומלאו את כלל הפרטים הבאים בשאלון לפני המעבר לניסוי עצמו <br> חובה למלא את כל השדות 
            
             <br>
-            הניסוי מנוסח בלשון זכר מטעמי נוחות בלבד, אך פונה כמובן לשני המינים</h3>
-          </b> </h1>
+            הניסוי מנוסח בלשון זכר מטעמי נוחות בלבד, אך פונה כמובן לשני המינים
+          </b>  </div>
         </div>
         <div class="col-md-1" >
         </div>
@@ -46,7 +56,7 @@
 
             <div class="form-group text-right" dir="rtl">
               <label>שנת לידה</label>
-              <span ng-show="(detailsForm.birthYear.$touched || error) && detailsForm.birthYear.$invalid " style="color: #ffa07a"> &emsp;בחר שנת לידה</span>
+              <span ng-show="(detailsForm.birthYear.$touched || error) && detailsForm.birthYear.$invalid " style="color: #ff0000"> &emsp;בחר שנת לידה</span>
               <br>
               <select style="font-size: smaller; color:black" name="birthYear" ng-model="DF.birthYear" ng-options="y for y in birthYear"
                       required>
@@ -57,7 +67,7 @@
               <div class="form-group text-right" dir="rtl">
                 <p>
                   <label>מין </label>
-                  <span ng-show="error && detailsForm.gender.$invalid " style="color: #ffa07a">&emsp; סמן את
+                  <span ng-show="error && detailsForm.gender.$invalid " style="color: #ff0000">&emsp; סמן את
                     האופציה המתאימה</span>
                   <br>
                   <input type="radio" id="gender_F" ng-model="DF.gender" name="gender" value="F" style="direction: rtl"
@@ -79,7 +89,7 @@
 
                 <p>
                   <label>עיסוק</label>
-                  <span ng-show="error && detailsForm.Occupation.$invalid " style="color: #ffa07a">&emsp; סמנו את האופציה המתאימה</span>
+                  <span ng-show="error && detailsForm.Occupation.$invalid " style="color: #ff0000">&emsp; סמנו את האופציה המתאימה</span>
                   <br>
                   <input type="radio" id="occ_UG" ng-click="setRequiresForOccup()"  ng-model="DF.Occupation"
                          name="Occupation"
@@ -120,20 +130,21 @@
 
                   </select>
 
-                <span ng-show="(detailsForm.Faculty.$touched || error) && detailsForm.Faculty.$invalid" style="color: #ffa07a">בחר בפקולטה בה אתה לומד</span>
+                <span ng-show="(detailsForm.Faculty.$touched || error) && detailsForm.Faculty.$invalid" style="color: #ff0000">בחר בפקולטה בה אתה לומד</span>
                 </div>
                 </p>
 
                 <div>
                 <h2 class="text-right"><u>השאלות הבאות מתייחסות להרגלי הצריכה והעדפותיך באשר לרכישה באינטרנט:           </u></h2><br>
-              <ol>
+              <ol >
 
                 <li>
-                  <label class="text-right">כיצד היית מגדיר את העדפתך לרכישה של מוצרים באינטרנט            </label><span ng-show="error && detailsForm.purchase_pref.$invalid " style="color: #ffa07a">&emsp; סמנו את האופציה המתאימה</span>
+                  <label class="text-right">   כיצד היית מגדיר את העדפתך לרכישה של מוצרים באינטרנט בסולם שבין 1 ל-5            </label><span ng-show="error && detailsForm.purchase_pref.$invalid " style="color: #ff0000">&emsp; סמנו את האופציה המתאימה</span>
                   <br>
                   <input type="radio" id="purchase_pref_1" ng-model="DF.purchase_pref" name="purchase_pref" value="1"
                          style="direction: rtl"  required>
-                    <label class="pointer" for="purchase_pref_1">1 - אינני רוכש באינטרנט כלל</label>
+                    <label class="pointer" for="purchase_pref_1">1 -
+                        <span style="font-size: smaller;">אינני מעדיף לרכוש באינטרנט כלל</span> </label>
                     &emsp; <input type="radio"  id="purchase_pref_2" ng-model="DF.purchase_pref" name="purchase_pref"
                                   value="2"
                                   style="direction: rtl"  required>
@@ -147,14 +158,15 @@
                     <label class="pointer"  for="purchase_pref_4">4</label>
                     &emsp; <input type="radio"  id="purchase_pref_5" ng-model="DF.purchase_pref" name="purchase_pref"
                                   value="5" style="direction: rtl"  required>
-                    <label class="pointer" for="purchase_pref_5">5 - את רוב הרכישות שלי אני מבצע באינטרנט</label>
+                    <label class="pointer" for="purchase_pref_5">5 -
+                      <span style="font-size: smaller;"> את רוב הרכישות שלי אני מעדיף לבצע באינטרנט</span></label>
 
                 </li>  
               </li>
               <br>
               <li class="text-right">
 
-                <label class="text-right">באיזו תדירות אתה רוכש מוצרים באינטרנט?             </label><span ng-show="error && detailsForm.purchase_ratio_never.$invalid " style="color: #ffa07a">&emsp; סמנו את האופציה המתאימה</span>
+                <label class="text-right">באיזו תדירות אתה רוכש מוצרים באינטרנט?             </label><span ng-show="error && detailsForm.purchase_ratio_never.$invalid " style="color: #ff0000">&emsp; סמנו את האופציה המתאימה</span>
                 <br>
                 <input type="radio" id="purchase_ratio_never" ng-model="DF.purchase_ratio" name="purchase_ratio"
                        value="never"
@@ -175,8 +187,8 @@
 
               <li >
               <label class="text-right"> מנה 3 קטגוריות של מוצרים אותם רכשת באינטרנט  </label><br>
-              לדוגמא: קניות בסופר גאדג'טים, בגדים, נופש, קניות בסופר וכד'
-              <span ng-show="error && (detailsForm.fav_prod_categ_1.$invalid || detailsForm.fav_prod_categ_2.$invalid||detailsForm.fav_prod_categ_3.$invalid)" style="color: #ffa07a">&emsp; עליכם לרשום 3 קטגוריות מועדפות</span>
+              לדוגמא: קניות בסופר, גאדג'טים, בגדים, נופש וכד'
+              <span ng-show="error && (detailsForm.fav_prod_categ_1.$invalid || detailsForm.fav_prod_categ_2.$invalid||detailsForm.fav_prod_categ_3.$invalid)" style="color: #ff0000">&emsp; עליכם לרשום 3 קטגוריות מועדפות</span>
               <br>
               <input type="text" ng-model="DF.fav_prod_categ_1"  name="fav_prod_categ_1" placeholder="קטגוריה 1"  style="direction: rtl ;color: black"  required size="50"><br>
               <input type="text" ng-model="DF.fav_prod_categ_2" name="fav_prod_categ_2" placeholder="קטגוריה 2" style="direction: rtl ; color: black"  required size="50"><br>
@@ -190,7 +202,7 @@
             <ol>
 
               <li>
-                <label class="text-right">באיזו תדירות הנך משתמש באפליקציות למציאת מקומות עניין/בילוי בארץ או בחו"ל?          </label><span ng-show="error && detailsForm.poi_pref.$invalid " style="color: #ffa07a">&emsp; סמנו את האופציה המתאימה</span>
+                <label class="text-right">באיזו תדירות הנך משתמש באפליקציות למציאת מקומות עניין/בילוי בארץ או בחו"ל?          </label><span ng-show="error && detailsForm.poi_pref.$invalid " style="color: #ff0000">&emsp; סמנו את האופציה המתאימה</span>
                 <br>
                 <input type="radio" id="poi_pref_1" ng-model="DF.poi_pref" name="poi_pref" value="1"
                        style="direction: rtl"  required>
@@ -227,8 +239,8 @@
           
           <li >
             <label class="text-right">מנה 3 סוגים המועדפות עליך ביותר של נקודות עניין/בילוי </label><br>
-            לדוגמא: מסעדות, קניות בגדים, סרטים, משחקי ספורט, קונצרטים וכד'
-            <span ng-show="error && ( detailsForm.poi_categ_1.$invalid)" style="color: #ffa07a">&emsp; עליכם למנות לפחות קטגוריה מועדפת 1</span>
+            לדוגמא: מסעדות, סרטים, משחקי ספורט, קונצרטים וכד'
+            <span ng-show="error && ( detailsForm.poi_categ_1.$invalid)" style="color: #ff0000">&emsp; עליכם למנות לפחות קטגוריה מועדפת 1</span>
             <br>
             <input type="text" ng-model="DF.poi_categ_1"  name="poi_categ_1" placeholder="קטגוריה 1"  style="direction: rtl ;color: black"  required size="50"><br>
             <input type="text" ng-model="DF.poi_categ_2" name="poi_categ_2" placeholder="קטגוריה 2" style="direction: rtl ; color: black"   size="50"><br>
@@ -238,9 +250,9 @@
           
           <br>
         <div style="color: white ;  ">
-          במעבר לשאלון הניסוי הנך מבין ומסכים לדברים הבאים: <br>
-            פרטי השאלון חסויים, ואינם כוללים פרטים מזהים של המשתמשים.
-            <br><br><input type="checkbox" ng-model="agree" id="agree"> הנני מבין ומסכים  לדברים הנ"ל 
+          אנא סמן כי במעבר לשאלון הניסוי הנך מבין ומסכים לדברים הבאים: <br>
+            פרטי השאלון חסויים, ואינם כוללים פרטים מזהים של המשתמשים. לא תהיה הצלבה של משתתפי הניסוי לנתוני הניסוי וכן לא יועברו פרטים מזהים של משתתפי הניסוי לגורם שלישי. 
+           <br><input type="checkbox" ng-model="agree" id="agree"> הנני מבין ומסכים  לדברים הנ"ל 
         </div>
 
 

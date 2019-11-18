@@ -90,7 +90,7 @@ overflow-y: auto;   overflow-x: hidden;background-color: #6b6b6e">
             <ng-form name="ratingFieldForm_{{$index}}" ng-model="ratingFieldForm" novalidate>
               <div class="col-md-8" dir="ltr">
                 <span ng-show="ratingFieldForm_{{$index}}.mov_rating_{{$index}}_1.$invalid && ratingFieldForm_{{$index}}.mov_rating_{{$index}}_2.$invalid && ratingFieldForm_{{$index}}.mov_rating_{{$index}}_3.$invalid && ratingFieldForm_{{$index}}.mov_rating_{{$index}}_4.$invalid && ratingFieldForm_{{$index}}.mov_rating_{{$index}}_5.$invalid && error"
-                  style="color: #ffa07a">&emsp;אנא דרג את ההמלצה
+                  style="color: #ff0000">&emsp;אנא דרג את ההמלצה
                   <br>
                 </span>
 
@@ -123,7 +123,7 @@ overflow-y: auto;   overflow-x: hidden;background-color: #6b6b6e">
                   <div style="font-size: 20px; margin: 2px"> What has led you to that rating?
                   </div>
                   <span ng-show="(error  )&& ratingFieldForm_{{$index}}.mov_guide_{{$index}}_watched.$invalid && ratingFieldForm_{{$index}}.mov_guide_{{$index}}_chose.$invalid && ratingFieldForm_{{$index}}.mov_guide_{{$index}}_both.$invalid"
-                    style="color: #ffa07a;  ">
+                    style="color: #ff0000;  ">
                     &emsp;אנא ציין מה הוביל אותך לדירוג ההמלצה
                     <br>
                   </span>
@@ -160,7 +160,7 @@ overflow-y: auto;   overflow-x: hidden;background-color: #6b6b6e">
                   <div style="font-size: 17px;"> &emsp;The reason for your choice:
                   </div>
                   <span ng-show="(error ||  explainFieldForm_{{$index}}.explain_mov.$touched )&& explainFieldForm_{{$index}}.explain_mov.$invalid "
-                    style="color: #ffa07a;  ">
+                    style="color: #ff0000;  ">
                     &emsp;&emsp;אנא נמק את בחירתך
                     <br>
                   </span>

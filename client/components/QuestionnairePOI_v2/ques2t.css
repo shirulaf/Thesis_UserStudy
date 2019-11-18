@@ -9,6 +9,9 @@
   text-justify: distribute-all-lines;
 }
 
+label {
+  cursor: pointer;
+}
 .ques2t #thumbs p {
   margin-left: 20px;
   margin-right: 20px;

@@ -22,7 +22,7 @@ app.controller("questPOI_controller.js", [
     var dataToSave = [];
 
     // var host = "http://132.72.64.204:"
-    var host = "http://132.72.64.204:";
+    var host = "http://132.72.23.161:";
 
     var directory = "C:/def/";
 
@@ -61,7 +61,7 @@ app.controller("questPOI_controller.js", [
 
     if (!localStorageModel.getLocalStorage("yelpExists"))
       //
-      $http.get(host + "8000/yelp").then(function(response) {
+      $http.get(host + "3002/yelp").then(function(response) {
         //debugger
         localStorageModel.addLocalStorage("yelpData", response.data);
         movies = localStorageModel.getLocalStorage("yelpData");
@@ -82,7 +82,7 @@ app.controller("questPOI_controller.js", [
       params.userName = localStorageModel.getLocalStorage("userID");
       params.birthYear = localStorageModel.getLocalStorage("birthYear");
       $http
-        .post(host + "8000/getMovies", params)
+        .post(host + "3002/getMovies", params)
         .then(function(response) {
           // console.log("got POST")
 
@@ -155,7 +155,7 @@ app.controller("questPOI_controller.js", [
       );
 
       // console.log(params);
-      $http.post(host + "8000/saveData", params).catch(function(error) {
+      $http.post(host + "3002/saveData", params).catch(function(error) {
         console.log(error);
       });
 
@@ -216,7 +216,7 @@ app.controller("questPOI_controller.js", [
         TimeStamp: d,
         tmdb_id: tmdb_id,
         GroupID: movies[i].questID,
-        ElementName: `${$event.target.name} | ${movie_name}`,
+        ElementName: `${$event.target.name} | ${movie_name.id}`,
         event: $event.type
       };
 
@@ -226,7 +226,7 @@ app.controller("questPOI_controller.js", [
 
       console.log(params);
       if (params) dataToSave.push(JSON.stringify(params));
-      //    $http.post(host + "8000/saveData",params)
+      //    $http.post(host + "3002/saveData",params)
       //         .catch(function (error) {
       //             console.log(error);
       //         });

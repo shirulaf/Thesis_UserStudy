@@ -1,73 +1,90 @@
-<div class="col-md-6" id="questLeft" style="background-color: black;  height: 100%;
-        overflow-y: auto;   overflow-x: hidden;">
-  <!--Questionnaire instructions-->
-
-  <div class="" style=" text-align: center; direction: rtl; font-size: 130%; background-color: #111114 ; color:#d9e7ee; padding: 5px">
+<div class="row">
+  <div class="" style=" text-align: center; direction: rtl; font-size: 110%;">
     <b>
-      <p style="border: groove; border-color: #d9e7ee">
-        <b>
-        הערך את טיב ההמלצה עבור כל אחד מהפריטים, המופיעים במקרה לניתוח, בחלקו הימני של המסך.
-        <br> התחשב בהערכתך בפריט אותו צרך המשתמש בעבר וכן בפריט בו בחר המשתמש לצרוך למרות ההמלצות.</b>
-      </p>
       <p>
-        <h3><b>מה דעתך על איכות ההמלצה עבור כל אחד מהפריטים הבאים: </b></h3>
+        <b>
+          במסכים הבאים יופיעו פריטים שונים, כאשר בחלקו הימני של המסך יופיע מידע על הפריטים שהופיעו למשתמש במערכת המלצה,
+          <br>ואילו בחלקו השמאלי של המסך תתבקשו לחוות את דעתכם על ההמלצות השונות.
+          <br>עליכם להעריך את טיב ההמלצה עבור כל אחד מהפריטים שהומלצו למשתמש, המופיעים בחלקו הימני של המסך,
+          <br> בהתחשב בפריט אותו צרך המשתמש בעבר וכן בפריט בו בחר המשתמש לצרוך למרות ההמלצות.</b><br>
+          עימדו על תמונת הפריט מימין על מנת להגדילה. לחיצה על תמונות הפריטים תפתח חלון חדש עם פרטים על הפריט.
       </p>
-    </b>
+      <div style="height: 10px; background-color: black;"></div>
+
+
+
   </div>
-  <div>
-    <form name="questForm" ng-model="questForm" style="direction: rtl; font-size: 130%" novalidate>
-      <b>
-        <div ng-style="set_color($index)" style="padding: 10px" ng-repeat="mov in recItems">
+</div>
 
-          <p class="" style="font-weight: 800; direction: rtl; font-family: 'Book Antiqua'; font-size: 135%; ">{{$index+1}}. הפריט: {{mov.name}} </p>
-
-          <div class="row">
-
-            <div class="col-md-5">
-              <a href="{{mov.link}}" target="_blank">
-                <img class="imgBox" title="לחץ כדי לפתוח תמונה מוגדלת" style="margin-top: 7px" ng-src={{mov.link}}>
-              </a>
-            </div>
-            <ng-form name="ratingFieldForm_{{$index}}" ng-model="ratingFieldForm" novalidate>
-              <div class="col-md-7" dir="rtl">
-                <span ng-show="ratingFieldForm_{{$index}}.mov_rating_{{$index}}_1.$invalid && ratingFieldForm_{{$index}}.mov_rating_{{$index}}_2.$invalid && ratingFieldForm_{{$index}}.mov_rating_{{$index}}_3.$invalid && ratingFieldForm_{{$index}}.mov_rating_{{$index}}_4.$invalid && ratingFieldForm_{{$index}}.mov_rating_{{$index}}_5.$invalid && error"
-                  style="color: #ffa07a">&emsp;אנא דרג את ההמלצה
-                  <br>
-                </span>
-
-                <input type="radio" id="mov_rating_{{$index}}_1" name="mov_rating_{{$index}}_1" value="1" ng-disabled="myCheck" ng-model="mov_rating"
-                  ng-click="saveClick($event,recItems[$index],itemsName[$index])" required>
-                <label class="pointer" for="mov_rating_{{$index}}_1">1 (המלצה גרועה) </label>
-                <br>
-                <input type="radio" id="mov_rating_{{$index}}_2" name="mov_rating_{{$index}}_2" value="2" ng-disabled="myCheck" ng-model="mov_rating"
-                  ng-click="saveClick($event,recItems[$index],itemsName[$index])" required>
-                <label class="pointer" for="mov_rating_{{$index}}_2">2 </label>
-
-                <br>
-                <input type="radio" id="mov_rating_{{$index}}_3" name="mov_rating_{{$index}}_3" value="3" ng-disabled="myCheck" ng-model="mov_rating"
-                  ng-click="saveClick($event,recItems[$index],itemsName[$index])" required>
-                <label class="pointer" for="mov_rating_{{$index}}_3">3 </label>
-
-                <br>
-                <input type="radio" id="mov_rating_{{$index}}_4" name="mov_rating_{{$index}}_4" value="4" ng-disabled="myCheck" ng-model="mov_rating"
-                  ng-click="saveClick($event,recItems[$index],itemsName[$index])" required>
-                <label class="pointer" for="mov_rating_{{$index}}_4">4 </label>
+<div style="background-color: black; height: 200%;">
+  <div class="col-md-6" id="questLeft" style="background-color: black;  height: 100%;">
+    <!--Questionnaire instructions-->
 
 
-                <br>
-                <input type="radio" id="mov_rating_{{$index}}_5" name="mov_rating_{{$index}}_5" value="5" ng-disabled="myCheck" ng-model="mov_rating"
-                  ng-click="saveClick($event,recItems[$index],itemsName[$index])" required>
-                <label class="pointer" for="mov_rating_{{$index}}_5">5 (המלצה מצויינת) </label>
-                
-                <br>
-                <br>
+    <div>
+      <form name="questForm" ng-model="questForm" style="direction: rtl; font-size: 130%" novalidate>
+          <div style="padding: 10px; background-color: rgb(228, 228, 228); color: black; font-size: large;" >2)
+              דרגו את איכות ההמלצה על כל אחד מהפריטים, על פי הפריט שהמשתמש אהב בעבר ועל פי הפריט שנבחר על ידי המשתמש
+       </div>
+        <b>
+          <div ng-style="set_color($index)" style="padding: 10px" ng-repeat="mov in recItems">
+
+            <p class="" style="font-weight:700; direction: rtl; font-family: 'Book Antiqua'; font-size: 125%; ">
+              {{$index+1}}. הפריט: {{mov.name}} </p>
+
+            <div class="row">
+
+              <div class="col-md-5">
+                <a href="{{mov.link}}" target="_blank">
+                  <img class="imgBox" title="לחץ כדי לפתוח תמונה מוגדלת" style="margin-top: 7px" ng-src={{mov.link}}>
+                </a>
               </div>
+              <ng-form name="ratingFieldForm_{{$index}}" ng-model="ratingFieldForm" novalidate>
+                <div class="col-md-7" dir="rtl">
+                  <span style="color: #ff0000;"
+                    ng-show="ratingFieldForm_{{$index}}.mov_rating_{{$index}}_1.$invalid && ratingFieldForm_{{$index}}.mov_rating_{{$index}}_2.$invalid && ratingFieldForm_{{$index}}.mov_rating_{{$index}}_3.$invalid && ratingFieldForm_{{$index}}.mov_rating_{{$index}}_4.$invalid && ratingFieldForm_{{$index}}.mov_rating_{{$index}}_5.$invalid && error"
+                   >&emsp;אנא דרג את ההמלצה
+                    <br>
+                  </span>
+
+                  <input type="radio" id="mov_rating_{{$index}}_1" name="mov_rating_{{$index}}_1" value="1"
+                    ng-disabled="myCheck" ng-model="mov_rating"
+                    ng-click="saveClick($event,recItems[$index],itemsName[$index])" required>
+                  <label class="pointer" for="mov_rating_{{$index}}_1">1 (המלצה גרועה) </label>
+                  <br>
+                  <input type="radio" id="mov_rating_{{$index}}_2" name="mov_rating_{{$index}}_2" value="2"
+                    ng-disabled="myCheck" ng-model="mov_rating"
+                    ng-click="saveClick($event,recItems[$index],itemsName[$index])" required>
+                  <label class="pointer" for="mov_rating_{{$index}}_2">2 </label>
+
+                  <br>
+                  <input type="radio" id="mov_rating_{{$index}}_3" name="mov_rating_{{$index}}_3" value="3"
+                    ng-disabled="myCheck" ng-model="mov_rating"
+                    ng-click="saveClick($event,recItems[$index],itemsName[$index])" required>
+                  <label class="pointer" for="mov_rating_{{$index}}_3">3 </label>
+
+                  <br>
+                  <input type="radio" id="mov_rating_{{$index}}_4" name="mov_rating_{{$index}}_4" value="4"
+                    ng-disabled="myCheck" ng-model="mov_rating"
+                    ng-click="saveClick($event,recItems[$index],itemsName[$index])" required>
+                  <label class="pointer" for="mov_rating_{{$index}}_4">4 </label>
+
+
+                  <br>
+                  <input type="radio" id="mov_rating_{{$index}}_5" name="mov_rating_{{$index}}_5" value="5"
+                    ng-disabled="myCheck" ng-model="mov_rating"
+                    ng-click="saveClick($event,recItems[$index],itemsName[$index])" required>
+                  <label class="pointer" for="mov_rating_{{$index}}_5">5 (המלצה מצויינת) </label>
+
+                  <br>
+                  <br>
+                </div>
 
                 <!-- <div ng-show="currentQuest>2">
-                <div style="font-size: 20px; margin: 2px">  &emsp;הנימוק לבחירתך: מה הוביל אותך לדירוג ההמלצה?
+                <div style="font-size: 20px; margin: 2px">  &emsp;הנימוק לציון אותו בחרת: מה הוביל אותך לדירוג ההמלצה?
                 </div>
                 <span ng-show="(error  )&& ratingFieldForm_{{$index}}.mov_guide_{{$index}}_watched.$invalid && ratingFieldForm_{{$index}}.mov_guide_{{$index}}_chose.$invalid && ratingFieldForm_{{$index}}.mov_guide_{{$index}}_both.$invalid"
-                  style="color: #ffa07a;  ">
+                  style="color: #ff0000;  ">
                   &emsp;אנא ציין מה הוביל אותך לדירוג ההמלצה
                   <br>
                 </span>
@@ -90,118 +107,129 @@
                 <br>
                 <br>
               </div> -->
-            </ng-form>
-            <ng-form name="explainFieldForm_{{$index}}" ng-show="currentQuest<=2" ng-model="explainFieldForm" novalidate>
-              <div class="row" style="padding: 10px">
-                <p>
-                  <div style="font-size: 17px;"> &emsp;הנימוק לבחירתך:
+              </ng-form>
+              <ng-form name="explainFieldForm_{{$index}}" ng-show="showExplain<=2" ng-model="explainFieldForm"
+                novalidate>
+                <div class="row" style="padding-right: 10px">
+
+                  <div style="font-size: 17px;"> &emsp;הנימוק לציון אותו בחרת:
                   </div>
-                  <span ng-show="(error ||  explainFieldForm_{{$index}}.explain_mov.$touched )&& explainFieldForm_{{$index}}.explain_mov.$invalid "
-                    style="color: #ffa07a;  ">
-                    &emsp;&emsp;אנא נמק את בחירתך
-                    <br>
+                  <span
+                    ng-show="(error ||  explainFieldForm_{{$index}}.explain_mov.$touched )&& explainFieldForm_{{$index}}.explain_mov.$invalid "
+                    style="color: #ff0000;  ">
+                    &emsp;אנא נמק את בחירתך
+
                   </span>
                   &emsp;
-                  <input type="text" style=" font-size: 17px; color:black" size="60" name="explain_mov" ng-disabled="myCheck" placeholder="כתוב את נימוקך כאן"
-                   ng-blur="saveClick($event, recItems[$index],itemsName[$index])" ng-model="explain_mov"
-                    required>
-                </p>
-              </div>
+                  <input type="text" style=" font-size: 17px; color:black" size="60" name="explain_mov"
+                    ng-disabled="myCheck" placeholder="כתוב את נימוקך כאן"
+                    ng-blur="saveClick($event, recItems[$index],itemsName[$index])" ng-model="explain_mov" required>
+
+                </div>
 
 
-            </ng-form>
+              </ng-form>
 
 
 
 
-          </div>&emsp;
-          <!-- <input type="checkbox" id={{$index}} name="checkbox-familiar_{{$index}}" ng-model="myCheck" ng-click="checkedClick($event, this, $index, myCheck)">
+            </div>
+            <!-- <input type="checkbox" id={{$index}} name="checkbox-familiar_{{$index}}" ng-model="myCheck" ng-click="checkedClick($event, this, $index, myCheck)">
           <label class="pointer" for={{$index}}> הסרט שונה מדי מהסרטים בהם אני צופה בדרך כלל ואינני מצליח לגבש דעה לגביו </label> -->
 
 
-          </p>
-        </div>
-  </div>
-  </b>
-
-
-
-  <div style="text-align: center; color: white; font-size: medium">
-    <b> שאלון : {{currentQuest}}/{{QuestAmount}}
-    </b> &emsp;
-    <button type="submit" style="color: white" ng-click="nextEval()" novalidate>
-      <b>עבור להערכה הבאה</b>
-    </button>
-
-
-
-    <br>
-  </div>
-  </form>
-</div>
-</div>
-
-
-<div class="col-md-6" id="questRight" style="direction: rtl; font-size: large ;  height: 100%;
-     overflow-y: auto;   overflow-x: hidden;background-color: #f8f8f8">
-
-
-
-
-
-  <!--Current movies presented to the user-->
-  <div style="font-size: 100%; color: black; font-weight: bold; margin: 10px; ">
-    <h1 style=" text-align: center; direction: rtl; font-size: 120%; background-color: #f8f8f8 ; color:black;   font-weight: bold;padding: 5px">חלק זה של השאלון מתייחס להמלצות על <u>רכישת מוצרים</h1>
-    <u> משתמש צרך בעבר ואהב את הפריט:</u>
-    <div style="text-align: center; vertical-align: middle;">
-      <br>
-      <a class="thumb" href="{{watched_poster}}" target="_blank">
-        <img class="poster" ng-src={{watched_poster}}>
-        <span class="test">
-          {{watched}}
-          <br>
-          <img ng-src={{watched_poster}} style="z-index: 100;"  alt="">
-        </span>
-      </a>
+            </p>
+          </div>
     </div>
+    </b>
 
 
-    <br>
 
-    <u> משתמש במערכת קיבל המלצה על הפריטים הבאים:</u>
-    <div id="thumbs" style="font-size: 80%;">
-      <p ng-repeat="mov in recItems">
-        <a class="thumb" href="{{mov.link}}" target="_blank">
-          <img class="poster" style="font-size: 50px; z-index: -1; " ng-src="{{mov.link}}">
-
-          <span class="test" style="z-index: 1;">
-            {{mov.name}}
-            <br>
-            <img ng-src="{{mov.link}}"  alt="">
-          </span>
-        </a>
-        <span class="stretch"></span>
-      </p>
+    <div style="text-align: center; color: white; font-size: medium">
+      <b> שאלון : {{currentQuest}}/{{QuestAmount}}
+      </b> &emsp;
+      <button type="submit" style="color: white" ng-click="nextEval()" novalidate>
+        <b>עבור להערכה הבאה</b>
+      </button>
 
 
+
+      <br>
     </div>
+    </form>
+  </div>
 
-    <p class="">
-      <br>
-      <u> למרות ההמלצות, המשתמש בחר לצרוך פריט אחר שלא הומלץ לו: </u>
-      <br>
-      <div style="text-align: center; margin-bottom: 30px; vertical-align: middle;font-size: 80%;">
-        <a class="thumb" href="{{chose_poster}}" target="_blank">
-          <img ng-src="{{chose_poster}}" class="poster">
-          <span class="test" style="z-index: 1; top:-200px; left: -200px;width: 200% ">
-            {{chose}}
+
+
+  <div class="col-md-6" id="questRight" style="direction: rtl; font-size: large ;  height: 100%;
+background-color: #f8f8f8">
+<div style="padding: 10px; background-color: rgb(228, 228, 228); color: black;  font-size: large;">
+    1) קראו בעיון את פרטי התרחיש הבא, אנא וודאו כי הנכם גוללים עד לתחתית העמוד:
+</div>
+ 
+
+
+
+
+    <!--Current movies presented to the user-->
+    <div style="font-size: 100%; color: black; font-weight: bold; margin: 10px; ">
+      <h1
+        style=" text-align: center; direction: rtl; font-size: 120%; background-color: #f8f8f8 ; color:black;   font-weight: bold;padding: 5px">
+        במסגרת אפליקציה להמלצה על מוצרים לרכישה:</h1>
+      <u> משתמש ביקר במערכת בעבר ואהב את הפריט:</u>
+      <div style="text-align: center; vertical-align: middle; font-size: 80%;">
+        <br>
+        {{watched}} <br>
+
+        <a class="thumb" href="{{watched_poster}}" target="_blank">
+          <img class="poster" ng-src={{watched_poster}}>
+          <span class="test">
+            {{watched}}
             <br>
-            <img ng-src="{{chose_poster}}" width="60%" alt="">
+            <img ng-src={{watched_poster}} style="z-index: 100;" alt="">
           </span>
         </a>
       </div>
-    </p>
+
+
+      <br>
+
+      <u> המשתמש קיבל המלצה במערכת על הפריטים הבאים:</u>
+      <div id="thumbs" style="font-size: 80%;">
+        <p ng-repeat="mov in recItems">
+          {{mov.name}} <br>
+          <a class="thumb" href="{{mov.link}}" target="_blank">
+            <img class="poster"  ng-src="{{mov.link}}">
+            <span class="test" >
+              {{mov.name}}
+              <br>
+              <img ng-src="{{mov.link}}"  style="z-index: 100;" alt="">
+            </span>
+          </a>
+        </p>
+
+
+      </div>
+
+      <p class="">
+        <br>
+        <u> למרות ההמלצות, המשתמש בחר לרכוש פריט אחר שלא הומלץ לו: </u>
+        <br>
+        <div style="text-align: center; margin-bottom: 30px; vertical-align: middle;font-size: 80%;">
+            {{chose}} <br>
+
+          <a class="thumb" href="{{chose_poster}}" target="_blank">
+            <img ng-src="{{chose_poster}}" class="poster">
+            <span class="test" style="z-index: 1; top:-200px; left: -200px;width: 200% ">
+              {{chose}}
+              <br>
+              <img ng-src="{{chose_poster}}" width="60%" alt="">
+            </span>
+          </a>
+        </div>
+      </p>
+    </div>
+
+
   </div>
-
-
 </div>

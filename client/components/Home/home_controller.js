@@ -83,7 +83,7 @@ app.controller("home_controller", [
       userHistory.add(JSON.stringify($scope.DF));
 
       $http
-        .post(host + "8000/submitUserDetails", $scope.DF)
+        .post(host + "3002/submitUserDetails", $scope.DF)
         .then(function(response) {
           console.log("got POST");
           console.log(response.data);
@@ -92,7 +92,7 @@ app.controller("home_controller", [
           localStorageModel.addLocalStorage("moviesData", movies);
         })
         .then(function() {
-          $location.path("/quest");
+          $location.path("/questPOIV2");
         })
         .catch(function(error) {
           console.log(error);

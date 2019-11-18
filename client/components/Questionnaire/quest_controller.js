@@ -19,16 +19,19 @@ app.controller("quest_controller", [
     var i = 0;
     var movies;
     var dataToSave = [];
+    $window.scrollTo(0, 0);
+
 
     // var host = "http://132.72.64.204:"
-    var host = "http://132.72.64.204:";
+    var host = "http://132.72.23.161:";
 
-    var directory = "C:/def/";
 
     $scope.itemsLink = [];
     $scope.itemsName = [];
+    $scope.showExplain = 1;
     $scope.expList = ["exp1", "exp2", "exp3", "אחר"];
     $scope.error = false;
+    $scope.userID =  localStorageModel.getLocalStorage("userID");
 
     // $scope.posterSRC = "https://image.tmdb.org/t/p/w600_and_h900_bestv2/";
     // $scope.movieTMDsrc = "https://www.themoviedb.org/movie/";
@@ -47,7 +50,7 @@ app.controller("quest_controller", [
 
     if (!localStorageModel.getLocalStorage("lidlData"))
       //
-      $http.get(host + "8000/itemsData").then(function(response) {
+      $http.get(host + "3002/itemsData").then(function(response) {
         //debugger
         localStorageModel.addLocalStorage("lidlData", response.data.lidlData);
         localStorageModel.addLocalStorage("yelpData", response.data.yelpData);
@@ -65,33 +68,7 @@ app.controller("quest_controller", [
       updateMoviesInfo(i);
     }
 
-    function getMovies() {
-      // console.log("getMovies")
-
-      params = {};
-      params.userName = localStorageModel.getLocalStorage("userID");
-      params.birthYear = localStorageModel.getLocalStorage("birthYear");
-      $http
-        .post(host + "8000/getMovies", params)
-        .then(function(response) {
-          // console.log("got POST")
-
-          // console.log(response.data)
-
-          movies = response.data;
-          setMoviesElements($scope, movies, i);
-        })
-        .then(function() {
-          localStorageModel.updateLocalStorage("moviesExists", true);
-          localStorageModel.addLocalStorage("moviesData", movies);
-          // console.log("Movies: " +  localStorageModel.getLocalStorage(moviesExists))
-        })
-        .catch(function(error) {
-          // console.log(error)
-          $window.alert("We encountered in some errors, please try again ");
-        });
-    }
-
+  
     $scope.nextEval = function() {
       let isValid;
 
@@ -100,19 +77,7 @@ app.controller("quest_controller", [
           $scope.questForm[
             "explainFieldForm_" + index
           ].explain_mov.$setValidity("required", true);
-      // } else {
-      //   for (index = 0; index < $scope.recItems.length; index++) {
-      //     $scope.questForm["ratingFieldForm_" + index][
-      //       "mov_guide_" + index + "_watched"
-      //     ].$setValidity("required", true);
-      //     $scope.questForm["ratingFieldForm_" + index][
-      //       "mov_guide_" + index + "_chose"
-      //     ].$setValidity("required", true);
-      //     $scope.questForm["ratingFieldForm_" + index][
-      //       "mov_guide_" + index + "_both"
-      //     ].$setValidity("required", true);
-      //   }
-      // }
+
 
       isValid = $scope.questForm.$valid;
 
@@ -133,6 +98,7 @@ app.controller("quest_controller", [
       // debugger;
       var d = userHistory.getDate();
       params = {
+        userID:  $scope.userID,
         TimeStamp: d,
         GroupID: movies[i].questID,
         event: "click",
@@ -142,11 +108,11 @@ app.controller("quest_controller", [
       };
 
       userHistory.add(
-        JSON.stringify(params, localStorageModel.getLocalStorage("userID"))
+        JSON.stringify(params, $scope.userID)
       );
 
       // console.log(params);
-      $http.post(host + "8000/saveData", params).catch(function(error) {
+      $http.post(host + "3002/saveData", params).catch(function(error) {
         console.log(error);
       });
 
@@ -157,8 +123,9 @@ app.controller("quest_controller", [
         //setMoviesElements($scope,movies,i);
         updateMoviesInfo(i);
       } else {
-        $location.path("/questPOIV2");
+        $location.path("/Final");
       }
+      $scope.showExplain +=  1;
     };
 
     $scope.checkedClick = function($event, elem, index, check) {
@@ -202,10 +169,11 @@ app.controller("quest_controller", [
       // console.log($event)
       var d = userHistory.getDate();
       params = {
+        userID: $scope.userID,
         TimeStamp: d,
         tmdb_id: tmdb_id,
         GroupID: movies[i].questID,
-        ElementName: `${$event.target.name} | ${movie_name}`,
+        ElementName: `${$event.target.name} | ${movie_name.id}`,
         event: $event.type
       };
 
@@ -215,7 +183,7 @@ app.controller("quest_controller", [
 
       console.log(params);
       if (params) dataToSave.push(JSON.stringify(params));
-      $http.post(host + "8000/saveData", params).catch(function(error) {
+      $http.post(host + "3002/saveData", params).catch(function(error) {
         console.log(error);
       });
     };
@@ -261,7 +229,11 @@ app.controller("quest_controller", [
 
       setMoviesElements($scope, movies, i, mix1, mix2, mix3);
       $scope.QuestAmount = localStorageModel.getLocalStorage("itemsAmount");
-      $scope.currentQuest = i + 1;
+      previousQuestAmount = localStorageModel.getLocalStorage(
+        "yelpData"
+      ).length;
+
+      $scope.currentQuest = i + 1 + previousQuestAmount;
       if (i == movies.length - 1) $scope.Last = true;
       else $scope.Last = false;
 
@@ -278,23 +250,7 @@ app.controller("quest_controller", [
       $scope.itemsName.push(movies[i]["rec"][mix2]["name"]);
       $scope.itemsName.push(movies[i]["rec"][mix3]["name"]);
     }
-    function saveTextAsFile(params) {
-      fileName = localStorageModel.getLocalStorage("userID") + "quest";
-      var textToSave = params;
-      var textToSaveAsBlob = new Blob([textToSave], { type: "text/plain" });
-      var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
-      var fileNameToSaveAs = fileName;
 
-      var downloadLink = document.createElement("a");
-      downloadLink.download = fileNameToSaveAs;
-      downloadLink.innerHTML = "Download File";
-      downloadLink.href = textToSaveAsURL;
-      downloadLink.onclick = destroyClickedElement;
-      downloadLink.style.display = "none";
-      document.body.appendChild(downloadLink);
-
-      downloadLink.click();
-    }
     function destroyClickedElement(event) {
       document.body.removeChild(event.target);
     }

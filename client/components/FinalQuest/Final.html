@@ -57,40 +57,57 @@
             <div class="form-group text-right" dir="rtl">
                 <p>
                     <div>
-                        <label>כאשר דירגת את טיב ההמלצות עבור התרחישים שהוצגו לך, במה התמקדת?</label>
+                        <label>במענה לשאלון הקודם, כאשר דירגת את טיב ההמלצות עבור התרחישים שהוצגו לך, במה
+                            התמקדת?</label>
                         <br>&emsp;
-                        <input type="radio" id="item_guide_{{$index}}_watched" name="item_guide_{{$index}}_watched"
-                            value="watched" ng-disabled="myCheck" ng-model="item_guide">
-                        <label class=" pointer" for="item_guide_{{$index}}_watched">הפריט אותו המשתמש
-                            <b>צרך בעבר</b>
+                        <span
+                            ng-show="error && detailsForm.item_guide_watched.$invalid &&  detailsForm.item_guide_chose.$invalid && detailsForm.item_guide_both.$invalid"
+                            style="color: #ff0000">
+                            <br>&emsp;
+                            סמן את
+                            האופציה המתאימה</span><br>
+                            &emsp;
+                        <input type="radio" id="item_guide_watched" name="item_guide_watched" value="watched"
+                            ng-disabled="myCheck" ng-model="item_guide" required>
+                        <label class=" pointer" for="item_guide_watched">הפריט אותו המשתמש
+                            <u>צרך בעבר</u>
                         </label>
                         <br>&emsp;
-                        <input type="radio" id="item_guide_{{$index}}_chose" name="item_guide_{{$index}}_chose"
-                            value="chose" ng-model="item_guide">
-                        <label class=" pointer" for="item_guide_{{$index}}_chose">הפריט אותו המשתמש
-                            <b>בחר לצרוך</b>
+                        <input type="radio" id="item_guide_chose" name="item_guide_chose" value="chose"
+                            ng-model="item_guide" required>
+                        <label class=" pointer" for="item_guide_chose">הפריט אותו המשתמש
+                            <u>בחר לצרוך</u>
                         </label>
                         <br>&emsp;
-                        <input type="radio" id="item_guide_{{$index}}_both" name="item_guide_{{$index}}_both"
-                            value="both" ng-model="item_guide">
-                        <label class=" pointer" for="item_guide_{{$index}}_both">הפריט אותו המשתמש צרך בעבר
-                            <b>וגם</b> הפריט בו בחר המשתמש לצרוך</label>
-                        <br>
+                        <input type="radio" id="item_guide_both" name="item_guide_both" value="both"
+                            ng-model="item_guide" required>
+                        <label class=" pointer" for="item_guide_both">הפריט אותו המשתמש צרך בעבר
+                            <u>וגם</u> הפריט בו בחר המשתמש לצרוך</label>
+                        <br>&emsp;
+                        <input type="radio" id="item_guide_else" ng-model="item_guide" name="item_guide_else" value="item_guide_else"
+                            style="direction:
+                            rtl">
+                        <label  class="pointer" for="item_guide_else">אחר</label>
+                        &nbsp;<input type="text" placeholder="אנא הזן תשובתך" ng-model="item_guide_other"
+                            ng-disabled="item_guide!=='item_guide_else'"
+                            ng-class="{'disableInput': item_guide!=='item_guide_else', 'input_box':true}" >
                         <br>
                     </div>
+                    <br>
+                    <br>
 
 
                     <label>
                         <h2>אנא בחר תחום בו הנך עושה שימוש באופן תדיר יחסית במערכות המלצה מהרשימה הבאה: </h2>
                     </label>
-                    <span ng-show="error && detailsForm.domain.$invalid " style="color: #ffa07a">&emsp; סמן את
+                    <span ng-show="error && detailsForm.domain.$invalid " style="color: #ff0000"><br>&emsp; סמן את
                         האופציה המתאימה</span>
                     <br>
                     <div ng-repeat="(domain,label) in domains_label">
 
                         <button ng-click="open($index)" class="btn btn-warning"><b>לחץ לדוגמא</b> </button>
                         <input type="radio" id="domain_{{$index}}" ng-model="DF.domain" name="domain" value="{{domain}}"
-                            style="direction:rtl" ng-change="print()">
+                            style="direction:rtl" ng-change="print()" required>
                         <label class="pointer" for="domain_{{$index}}">{{label}} </label>
 
 
@@ -112,15 +129,19 @@
 
                 <br>
 
-                <h2 class="text-right">עליך לענות על השאלות הבאות, בהתייחס להמלצות הניתנות לך בתחום ההמלצה אותו בחרת:
+                <h2 class="text-right">עליך לענות על השאלות הבאות, בהתייחס להמלצות הניתנות לך במערכת המלצה, בתחום ההמלצה אותו בחרת:
                     {{domains_label[DF.domain]}}{{DF.otherDomain}}</h2>
 
                 <br>
                 <ol>
 
                     <li>
-                        <label class="text-right">עבור כל המלצה שהמערכת מציעה לך, כיצד תחליט אם ההצעה טובה? </label>
+                        <label class="text-right">עבור כל המלצה שהמערכת מציעה לך, כיצד תחליט האם ההצעה מתאימה עבורך?
+                        </label>
                         <br>
+                        <span ng-show="error && detailsForm.Q1.$invalid " style="color: #ff0000">&emsp; אנא השיבו
+                            לשאלה</span>
+
                         <textarea ng-blur="saveClick($event, answers.Q1)" ng-click="saveClick($event)"
                             class="input_textarea" name="Q1" ng-model="answers.Q1" rows="3" cols="100"
                             required></textarea>
@@ -128,10 +149,12 @@
                     </li>
                     <br>
                     <li>
-                        <label class="text-right">בהנחה שהמערכת הציעה לך מספר המלצות טובות, מה השיקולים שלך באיזו המלצה
+                        <label class="text-right">בהנחה שהמערכת הציעה לך מספר המלצות טובות, מה השיקולים שלך באיזו מההמלצות
                             <U>לבחור</U>? </label>
-                        בשאלה זו התמקד בשיקולים לבחירת המלצה
+                     בשאלה זו התמקד בשיקולים לבחירת המלצה ספציפית
                         <br>
+                        <span ng-show="error && detailsForm.Q2.$invalid " style="color: #ff0000">&emsp; אנא השיבו
+                            לשאלה</span>
                         <textarea class="input_textarea" ng-blur="saveClick($event, answers.Q2)"
                             ng-click="saveClick($event)" name="Q2" ng-model="answers.Q2" rows="3" cols="100"
                             required></textarea>
@@ -141,8 +164,10 @@
                     <li>
                         <label class="text-right">בהנחה שהמערכת הציעה לך מספר המלצות, מה השיקולים שלך <U>לפסול</U>
                             המלצה? </label><br>
-                        בשאלה זו התמקד בשיקולים לדחיית המלצה
+                        בשאלה זו התמקד בשיקולים לפסילת המלצה ספציפית
                         <br>
+                        <span ng-show="error && detailsForm.Q3.$invalid " style="color: #ff0000">&emsp; אנא השיבו
+                            לשאלה</span>
                         <textarea class="input_textarea" ng-blur="saveClick($event, answers.Q3)"
                             ng-click="saveClick($event)" name="Q3" ng-model="answers.Q3" rows="3" cols="100"
                             required></textarea>
@@ -152,10 +177,13 @@
                     <li>
                         <div>
                             <h3 class="text-right"><b>נניח כי ניתנו לך מספר המלצות, אך לא בחרת בהן,<br> במקומן בחרת
-                                    בפריט אחר שלא קיים בסט ההמלצות שניתנו לך,<br> האם כל אחת מן ההמלצות שלא בחרת בהן בסט
+                                    בפריט אחר שלא קיים ברשימת ההמלצות שניתנו לך,<br> האם כל אחת מן ההמלצות שלא בחרת בהן
+                                    מהרשימה
                                     איננה רלוונטית עבורך?</b></h3>
-                            בשאלה זו התמקד ביחסך להמלצות שלא נבחרו
+                            בשאלה זו התמקד ביחסך להמלצות שלא נבחרו <br>
 
+                            <span ng-show="error && detailsForm.Q4.$invalid " style="color: #ff0000">&emsp; אנא השיבו
+                                לשאלה</span>
                             <textarea class="input_textarea" ng-blur="saveClick($event, answers.Q4)"
                                 ng-click="saveClick($event)" name="Q4" ng-model="answers.Q4" rows="3" cols="100"
                                 required></textarea>
@@ -164,9 +192,13 @@
                     <br>
                     <li>
                         <div>
-                            <h3 class="text-right"><b>מה יכולים להיות השיקולים שלך <u>לא לבחור באף פריט</u> מתוך סט
+                            <h3 class="text-right"><b>מה יכולים להיות השיקולים שלך <u>לא לבחור באף פריט</u> מתוך רשימת
                                     ההמלצות, <br> אלא לבחור בפריט אחר שלא הוצג לך?</b></h3>
                             בשאלה זו התמקד בפריט שנבחר למרות ההמלצות
+                            <br>
+
+                            <span ng-show="error && detailsForm.Q5.$invalid " style="color: #ff0000">&emsp; אנא השיבו
+                                לשאלה</span>
                             <textarea class="input_textarea" ng-blur="saveClick($event, answers.Q5)"
                                 ng-click="saveClick($event)" name="Q5" ng-model="answers.Q5" rows="3" cols="100"
                                 required></textarea>
@@ -177,10 +209,15 @@
                     <li>
                         <div>
                             <h3 class="text-right"><b>
-                                    האם היית רוצה שהמערכת <u>תמליץ לך שוב במועד אחר </u> על המלצות שהוצגו לך, אך לא בחרת
+                                    האם היית רוצה שהמערכת <u>תמליץ עבורך שוב, במועד אחר, </u> את אותן ההמלצות שהוצגו לך, אך לא
+                                    בחרת
                                     בהן?
                                 </b></h3>
                             כלומר, המערכת לא תסיר המלצות שנדחו מהמערכת, וייתכן כי יומלצו שוב בעתיד
+                            <br>
+                            <span ng-show="error && detailsForm.Q6.$invalid " style="color: #ff0000">&emsp; אנא השיבו
+                                לשאלה</span>
+
                             <textarea class="input_textarea" ng-blur="saveClick($event, answers.Q6)"
                                 ng-click="saveClick($event)" name="Q6" ng-model="answers.Q6" rows="3" cols="100"
                                 required></textarea>
@@ -191,9 +228,11 @@
                     <li>
                         <div>
                             <h3 class="text-right"><b>
-                                    האם היית רוצה שהמערכת <u>תשמור לך היסטוריית המלצות שנדחו,</u> כך שתוכל לעיין מאוחר
+                                    האם היית רוצה שהמערכת <u>תשמור עבורך היסטוריית המלצות שנדחו,</u> כך שתוכל לעיין
+                                    מאוחר
                                     יותר בהמלצות שלא בחרת בהן ?</b></h3>
-
+                            <span ng-show="error && detailsForm.Q7.$invalid " style="color: #ff0000">&emsp; אנא השיבו
+                                לשאלה</span>
                             <textarea class="input_textarea" ng-blur="saveClick($event, answers.Q7)"
                                 ng-click="saveClick($event)" name="Q7" ng-model="answers.Q7" rows="3" cols="100"
                                 required></textarea>
@@ -205,7 +244,8 @@
                             <h3 class="text-right"><b>האם ייתכן כי תשובותיך ישתנו עבור תחום המלצה אחר? במידה וכן, מהו
                                     התחום? </b></h3>
 
-
+                            <span ng-show="error && detailsForm.Q8.$invalid " style="color: #ff0000">&emsp; אנא השיבו
+                                לשאלה</span>
                             <textarea class="input_textarea" ng-blur="saveClick($event, answers.Q8)"
                                 ng-click="saveClick($event)" name="Q8" ng-model="answers.Q8" rows="3" cols="100"
                                 required></textarea>

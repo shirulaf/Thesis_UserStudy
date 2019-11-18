@@ -4,6 +4,9 @@
     margin: 10px;
 
 }
+label {
+    cursor: pointer;
+}
 
 #imageCont {
     background: url("cinema.jpg") no-repeat;
